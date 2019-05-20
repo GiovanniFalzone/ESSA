@@ -1,2 +1,2 @@
 # ESSA
-ESSA, Energy Saving Smart-Home Application
+Energy Saving Smart-Home Application
