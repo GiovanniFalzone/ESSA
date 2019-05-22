@@ -1,6 +1,8 @@
 \babel@toc {english}{}
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}
-\contentsline {subsection}{\numberline {1.1}Room module}{2}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Temperature control}{2}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}Central unit}{2}{subsection.1.3}
-\contentsline {section}{Appendices}{3}{section*.1}
+\contentsline {section}{\numberline {2}Room Module}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Temperature control}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Energy Saving mode}{3}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Functional requirements}{4}{subsection.2.3}
+\contentsline {section}{\numberline {3}Central Unit}{4}{section.3}
+\contentsline {section}{Appendices}{5}{section*.1}

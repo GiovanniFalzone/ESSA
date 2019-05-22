@@ -1,0 +1,36 @@
+\section{Room Module}
+The aim of this module is to periodically get the temperature and the motion inside a room,
+act on the valve in order to achieve a goal temperature and send the status of the room to the
+Central unit.
+
+The module is composed by:
+\begin{itemize}
+	\item Temperature sensor
+	\item Humidity sensor
+	\item Motion sensor
+	\item Valve actuator
+	\item Wireless communication module
+\end{itemize}
+
+\subsection{Temperature control}
+The module act on a servomotor that control a valve in order to adjust the temperature of the room.
+The valve is set to different positions based on the temperature error (difference between the actual temperature and the desired themperature):
+\begin{itemize}
+	\item if the temperature error is below then -COLD\_VALUE the valve is moved in OPEN\_POSITION
+	\item if the temperature error is below then -WARM\_VALUE the valve is moved in 3/4
+	\item if the temperature error is between a [-APPROCHING, APPROCHING] the valve is moved in HALF\_POSITION
+	\item if the temperature error is greater then WARM\_VALUE the valve is moved in 1/4 position
+	\item if the temperature error is greater then HOT\_VALUE the valve is moved in CLOSED\_POSITION
+\end{itemize}
+
+\subsection{Energy Saving mode}
+In order to minimize the consumpion the module keep tracks on the precense of people inside the room
+using a motion sensor.
+If a motion is detected the module know that and set the desired temperature room temperature to the one set by the user.
+If there is the number of motions detected by the sensor is not sufficient to say that someone is inside the room then the module set
+the desired temperature to a value equal to the user desired temperature minus a default value (-1\degree).
+
+\newpage
+\subsection{Functional requirements}
+
+\newpage{Hardware implementation}

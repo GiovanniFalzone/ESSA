@@ -2,31 +2,7 @@
 The goal of this project is to realize a smart-home application to control the temperature of different room in order to minimize the consumption of the entire building.
 
 The system is composed by two differ modules
-
-\subsection{Room module}
-The aim of this module is to periodically get the temperature and the motion inside a room,
-act on the valve in order to achieve a goal temperature and send the status of the room to the
-Central unit.
-
-The module is composed by:
 \begin{itemize}
-	\item Temperature sensor
-	\item Humidity sensor
-	\item Motion sensor
-	\item Valve actuator
-	\item Wireless communication module
+	\item A central unit
+	\item A room module
 \end{itemize}
-
-\subsection{Temperature control}
-The module act on a servomotor that control a valve in order to adjust the temperature of the room.
-The valve is set to different positions based on the temperature error (difference between the actual temperature and the desired themperature):
-\begin{itemize}
-	\item if the temperature error is below then -COLD_VALUE the valve is moved in OPEN_POSITION
-	\item if the temperature error is below then -WARM_VALUE the valve is moved in 3/4
-	\item if the temperature error is between a [-APPROCHING, +APPROCHING] the valve is moved in HALF_POSITION
-	\item if the temperature error is greater then WARM_VALUE the valve is moved in 1/4 position
-	\item if the temperature error is greater then HOT_VALUE the valve is moved in CLOSED_POSITION
-\end{itemize}
-
-
-\subsection{Central unit}
