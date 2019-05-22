@@ -26,6 +26,9 @@
 \usepackage{listings}		%code listings (lstlisting)
 \usepackage{color}
 
+\setlistdepth{9}									% enumerate depth 
+\newlist{req_enum}{enumerate}{9}					% definition of a new enumerate type
+\setlist[req_enum]{label=\thesubsection.\arabic{*}.}	% include the chapter number
 
 \definecolor{gray}{rgb}{0.4,0.4,0.4}
 \definecolor{darkblue}{rgb}{0.0,0.0,0.6}
