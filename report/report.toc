@@ -5,5 +5,9 @@
 \contentsline {subsection}{\numberline {2.2}Energy Saving mode}{3}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}User Requirements}{4}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Functional requirements}{4}{subsection.2.4}
-\contentsline {section}{\numberline {3}Central Unit}{7}{section.3}
-\contentsline {section}{Appendices}{8}{section*.1}
+\contentsline {section}{\numberline {3}Central Unit}{6}{section.3}
+\contentsline {section}{\numberline {4}Hardware implementation}{6}{section.4}
+\contentsline {subsection}{\numberline {4.1}Room module}{6}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Central Unit moduke}{6}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Network configuration}{6}{subsection.4.3}
+\contentsline {section}{Appendices}{7}{section*.1}

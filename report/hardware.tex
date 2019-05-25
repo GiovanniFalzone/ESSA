@@ -1,0 +1,39 @@
+\section{Hardware implementation}
+In this chapter it is shown the hardware implementation of each module, the hardware is chosen
+to be compliant with the requirements of the project.
+
+\subsection{Room module}
+The room module is implemented on a ATM328P
+\begin{itemize}
+	\item Atmega328P
+	\item Xbee Pro S1
+	\item DHT22 Temperature and Humidity sensor
+	\item PIR motion sensor
+	\item Red led
+	\item Green led
+	\item Yellow led
+\end{itemize}
+
+\subsection{Central Unit moduke}
+\begin{itemize}
+	\item STM32F407VG DISCOVERY
+	\item 3”5 LCD board Touchscreen
+	\item Relè switch
+	\item Fan
+\end{itemize}
+
+\subsection{Network configuration}
+PAN ID:
+\begin{center}
+	\begin{tabular}{|c || c | c | c | c|} 
+	\hline
+	\textbf{Device} & \textbf{Role} & \textbf{ATID} & \textbf{ATDL} & \textbf{ATMY} \\ [0.5ex] 
+	\hline
+	\textit{Central Unit} & Coordinator & 1 & 87837 & 787 \\ 
+	\hline
+	\textit{Room 1} & End device & 2 & 78 & 5415 \\
+	\hline
+	\textit{Room 2} & End device & 3 & 78 & 5415 \\
+	\hline
+   \end{tabular}
+   \end{center}
