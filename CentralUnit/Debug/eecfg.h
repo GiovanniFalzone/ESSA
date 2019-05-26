@@ -13,9 +13,10 @@
  **************************************************************************/
 
     /* TASK definition */
-    #define EE_MAX_TASK 2
+    #define EE_MAX_TASK 3
     #define TaskPollingRooms 0
     #define PrintGraphic 1
+    #define CheckMessage 2
 
     /* MUTEX definition */
     #define EE_MAX_RESOURCE 0U

@@ -54,7 +54,11 @@
 #include "lcd_log.h"
 #include <stdio.h>
 #include <string.h>
+
 #include "ESSTA_lib.h"
+#include "ESSTA_JSON_lib.h"
+
+#define DEBUG_LOG_MODE
 
 USART_InitTypeDef USART_InitStructure;
 
@@ -74,38 +78,15 @@ void check_USART_RX() {
 	EE_UINT8 ch;
 	while (USART_GetFlagStatus(EVAL_COM1, USART_FLAG_RXNE) != RESET){
 		ch = USART_ReceiveData(EVAL_COM1);
-		LCD_UsrLog("\r\nReceived = %c", (char)ch);
 		if(ch != '\n' && ch != '\r'){
-			if(msg_pos>=MSG_LEN){
-					msg_pos = 0;
-					memset(msg, '\0', MSG_LEN);
+			if(msg_pos >= MSG_LEN){
+				LCD_ErrLog("\r\nMessage too long or interleaved %d", msg_pos);
+				msg_pos = 0;
+				memset(msg, '\0', MSG_LEN);
 			}
 			msg[msg_pos++] = ch;
-			switch(check_message(msg)){
-				case 1:	// message correct JSON
-					msg_pos = 0;
-					JSON_to_room_struct(msg);
-					memset(msg, '\0', MSG_LEN);
-					break;
-
-				case 2:	// message incomplete
-					break;
-
-				case 3:	// message corrupted
-					#ifdef DEBUG
-						LCD_ErrLog("\r\n not JSON compliant!");
-						LCD_ErrLog("\r\n %s", msg);
-					#endif
-					msg_pos = 0;
-					memset(msg, '\0', MSG_LEN);
-					break;
-
-				default:
-					break;
-			}
 		} else {
-			msg_pos = 0;
-			memset(msg, '\0', MSG_LEN);
+			ActivateTask(CheckMessage);
 		}
 	}
 }
@@ -131,13 +112,58 @@ void print_string(char* str){
 }
 
 
+TASK(CheckMessage) {
+	switch(check_message(msg)){
+		case 1:	// message correct JSON
+			msg_pos = 0;
+			uint8_t id = JSON_to_room_struct(msg);
+			memset(msg, '\0', MSG_LEN);
+			if(id != 255){
+				rooms[id].net_par.response = true;
+				rooms[id].net_par.error = false;
+			}
+			break;
+
+		case 2:	// message incomplete
+			break;
+
+		case 3:	// message corrupted
+			#ifdef DEBUG_LOG
+				LCD_ErrLog("\r\n not JSON compliant!");
+			#endif
+			msg_pos = 0;
+			memset(msg, '\0', MSG_LEN);
+			break;
+
+		default:
+			break;
+	}
+}
+
 TASK(PrintGraphic) {
-	print_rooms();
+//	print_rooms();
 }
 
 TASK(TaskPollingRooms) {
-	STM_EVAL_LEDToggle(LED4);
-	send_string("ciao!\n");
+	static uint8_t id = 0;
+	char* msg[32];
+	if(rooms[id].net_par.response == true) {
+		rooms[id].net_par.response = false;
+		rooms[id].net_par.resend = 0;
+		id = (id+1)%N_ROOMS;
+	} else {
+		if(rooms[id].net_par.resend > 2){
+			LCD_ErrLog("\r\n Polling error node %2d crashed, Resend:%d", (id+1), rooms[id].net_par.resend);
+			rooms[id].net_par.error = true;
+			rooms[id].net_par.resend = 0;
+			id = (id+1)%N_ROOMS;
+		} else {
+			rooms[id].net_par.resend++;
+		}
+	}
+
+	sprintf(msg, "start::{\"Id\":\"%02d\"}\n", (id+1));
+	send_string(msg);
 }
 
 int main(void) {
@@ -160,12 +186,15 @@ int main(void) {
 
 		/*Initialize the LCD*/
 	STM32f4_Discovery_LCD_Init();
-	LCD_LOG_Init();
-	LCD_LOG_SetHeader("Hi ... Erika is running!");
-	LCD_LOG_SetFooter("Erika RTOS LCD log Demo");
-	LCD_UsrLog("\r\nTest-> Log Initialized!");
-	LCD_DbgLog("\r\nTest-> DBG message!");
-	LCD_ErrLog("\r\nTest-> ERR message!");
+
+	#ifdef DEBUG_LOG
+		LCD_LOG_Init();
+		LCD_LOG_SetHeader("Hi ... Erika is running!");
+		LCD_LOG_SetFooter("Erika RTOS LCD log Demo");
+		LCD_UsrLog("\r\nTest-> Log Initialized!");
+		LCD_DbgLog("\r\nTest-> DBG message!");
+		LCD_ErrLog("\r\nTest-> ERR message!");
+	#endif
 
 	STM_EVAL_LEDInit(LED4);
 

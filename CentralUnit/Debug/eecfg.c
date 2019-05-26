@@ -12,28 +12,33 @@
     /* Definition of task's body */
     DeclareTask(TaskPollingRooms);
     DeclareTask(PrintGraphic);
+    DeclareTask(CheckMessage);
 
     const EE_THREAD_PTR EE_hal_thread_body[EE_MAX_TASK] = {
         &FuncTaskPollingRooms,		/* thread TaskPollingRooms */
-        &FuncPrintGraphic 		/* thread PrintGraphic */
+        &FuncPrintGraphic,		/* thread PrintGraphic */
+        &FuncCheckMessage 		/* thread CheckMessage */
 
     };
 
     /* ready priority */
     const EE_TYPEPRIO EE_th_ready_prio[EE_MAX_TASK] = {
         0x2U,		/* thread TaskPollingRooms */
-        0x1U 		/* thread PrintGraphic */
+        0x1U,		/* thread PrintGraphic */
+        0x1U 		/* thread CheckMessage */
     };
 
     /* dispatch priority */
     const EE_TYPEPRIO EE_th_dispatch_prio[EE_MAX_TASK] = {
         0x2U,		/* thread TaskPollingRooms */
-        0x1U 		/* thread PrintGraphic */
+        0x1U,		/* thread PrintGraphic */
+        0x1U 		/* thread CheckMessage */
     };
 
     /* thread status */
     #if defined(__MULTI__) || defined(__WITH_STATUS__)
         EE_TYPESTATUS EE_th_status[EE_MAX_TASK] = {
+            EE_READY,
             EE_READY,
             EE_READY
         };
@@ -41,6 +46,7 @@
 
     /* next thread */
     EE_TID EE_th_next[EE_MAX_TASK] = {
+        EE_NIL,
         EE_NIL,
         EE_NIL
     };

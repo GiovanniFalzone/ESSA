@@ -143,7 +143,7 @@ LIB_OPT  += __LIB_STM32F4_DISCOVERY__
 # Sources
 #
 ############################################################################
-APP_SRCS += eecfg.c code.c
+APP_SRCS += eecfg.c code.c ESSTA_JSON_lib.c ESSTA_lib.c
 
 
 ############################################################################
