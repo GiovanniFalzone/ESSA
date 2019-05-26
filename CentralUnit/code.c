@@ -74,13 +74,21 @@ ISR2(systick_handler) {
 	CounterTick(myCounter);
 }
 
-void check_USART_RX() {
+// ISR1(usart6_rx_handler) {
+// 	STM_EVAL_LEDToggle(LED4);
+// 	send_string("ciao\0");
+// }
+
+TASK(ReceiveData) {
+//void check_USART_RX() {
 	EE_UINT8 ch;
 	while (USART_GetFlagStatus(EVAL_COM1, USART_FLAG_RXNE) != RESET){
 		ch = USART_ReceiveData(EVAL_COM1);
 		if(ch != '\n' && ch != '\r'){
 			if(msg_pos >= MSG_LEN){
+				#ifdef DEBUG_LOG
 				LCD_ErrLog("\r\nMessage too long or interleaved %d", msg_pos);
+				#endif
 				msg_pos = 0;
 				memset(msg, '\0', MSG_LEN);
 			}
@@ -89,6 +97,7 @@ void check_USART_RX() {
 			ActivateTask(CheckMessage);
 		}
 	}
+//}
 }
 
 void send_char(char c) {
@@ -110,7 +119,6 @@ void print_string(char* str){
 	LCD_UsrLog("\r\n");
 	LCD_UsrLog(str);
 }
-
 
 TASK(CheckMessage) {
 	switch(check_message(msg)){
@@ -140,10 +148,6 @@ TASK(CheckMessage) {
 	}
 }
 
-TASK(PrintGraphic) {
-//	print_rooms();
-}
-
 TASK(TaskPollingRooms) {
 	static uint8_t id = 0;
 	char* msg[32];
@@ -164,6 +168,10 @@ TASK(TaskPollingRooms) {
 
 	sprintf(msg, "start::{\"Id\":\"%02d\"}\n", (id+1));
 	send_string(msg);
+}
+
+TASK(RefreshGraphic) {
+//	print_rooms();
 }
 
 int main(void) {
@@ -189,11 +197,8 @@ int main(void) {
 
 	#ifdef DEBUG_LOG
 		LCD_LOG_Init();
-		LCD_LOG_SetHeader("Hi ... Erika is running!");
-		LCD_LOG_SetFooter("Erika RTOS LCD log Demo");
-		LCD_UsrLog("\r\nTest-> Log Initialized!");
-		LCD_DbgLog("\r\nTest-> DBG message!");
-		LCD_ErrLog("\r\nTest-> ERR message!");
+		LCD_LOG_SetHeader("ESSTA System running");
+		LCD_LOG_SetFooter("Powered by Erika");
 	#endif
 
 	STM_EVAL_LEDInit(LED4);
@@ -217,25 +222,21 @@ int main(void) {
 
 
 	/* Output message */
-	char msg[32];
-	memset(msg, '\0', 32);
-	sprintf(msg, "Hello Gionni!!!\n\0");
-	print_string(msg);
-	send_string(msg);
+	print_string("ESSTA System running\n\0");
+	send_string("ESSTA System running\n\0");
 
 
 	/* Program cyclic alarms which will fire after an initial offset,
 	 * and after that periodically
 	 * */
-
-	SetRelAlarm(Alarm_PollingRooms, 1000, 30000);
-	SetRelAlarm(Alarm_PrintGraphic, 1000, 60000);
+	SetRelAlarm(Alarm_ReceiveData, 1000, 10);
+	SetRelAlarm(Alarm_PollingRooms, 1000, 5000);
+	SetRelAlarm(Alarm_RefreshGraphic, 1000, 10000);
 
 	init_rooms();
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;) {
-		check_USART_RX();
 	}
 
 }

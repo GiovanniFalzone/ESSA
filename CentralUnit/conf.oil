@@ -119,12 +119,25 @@ CPU mySystem {
 		SCHEDULE = FULL;	// full preemptive
 	};
 
-	ALARM Alarm_PrintGraphic {
+	ALARM Alarm_ReceiveData {
 		COUNTER = myCounter;
-		ACTION = ACTIVATETASK { TASK = PrintGraphic; };
+		ACTION = ACTIVATETASK { TASK = ReceiveData; };
+	};
+
+	TASK ReceiveData {
+		PRIORITY = 0x02;   /* High priority */
+		AUTOSTART = FALSE;
+		STACK = SHARED;
+		ACTIVATION = 1;    /* only one pending activation */
+		SCHEDULE = FULL;		
+	};
+
+	ALARM Alarm_RefreshGraphic {
+		COUNTER = myCounter;
+		ACTION = ACTIVATETASK { TASK = RefreshGraphic; };
 	};
 	
-	TASK PrintGraphic {
+	TASK RefreshGraphic {
 		PRIORITY = 0x01;   /* Low priority */
 		AUTOSTART = FALSE;
 		STACK = SHARED;
@@ -145,4 +158,11 @@ CPU mySystem {
 		ENTRY = "SYSTICK";
 		PRIORITY = 1;
 	};
+
+//	ISR usart6_rx_handler {
+//		CATEGORY = 1;
+//		ENTRY = "USART6";
+//		PRIORITY = 2;
+//	};
+
 };

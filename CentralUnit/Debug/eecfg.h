@@ -13,18 +13,20 @@
  **************************************************************************/
 
     /* TASK definition */
-    #define EE_MAX_TASK 3
+    #define EE_MAX_TASK 4
     #define TaskPollingRooms 0
-    #define PrintGraphic 1
-    #define CheckMessage 2
+    #define ReceiveData 1
+    #define RefreshGraphic 2
+    #define CheckMessage 3
 
     /* MUTEX definition */
     #define EE_MAX_RESOURCE 0U
 
     /* ALARM definition */
-    #define EE_MAX_ALARM 2U
+    #define EE_MAX_ALARM 3U
     #define Alarm_PollingRooms 0U
-    #define Alarm_PrintGraphic 1U
+    #define Alarm_ReceiveData 1U
+    #define Alarm_RefreshGraphic 2U
 
     /* SCHEDULING TABLE definition */
     #define EE_MAX_SCHEDULETABLE 0U
@@ -94,7 +96,7 @@
  * Vector size defines
  *
  **************************************************************************/
-    #define EE_ALARM_ROM_SIZE 2
+    #define EE_ALARM_ROM_SIZE 3
 
 
 #endif

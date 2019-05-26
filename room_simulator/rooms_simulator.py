@@ -8,6 +8,7 @@ import sys
 
 MESSAGE_LOST_PROB = 0.1
 MESSAGE_CORRUPTED_PROB = 0.1
+SEND_TIME_DELAY = 0.01	# 10 ms
 
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 
@@ -38,7 +39,7 @@ def room_simulator(Id):
 		print("Send: "+msg)
 		for i in msg:
 			ser.write(bytes(i, 'utf-8'))
-			time.sleep(0.1)
+			time.sleep(SEND_TIME_DELAY)
 		ser.write(bytes('\n', 'utf-8'))
 
 def main():
