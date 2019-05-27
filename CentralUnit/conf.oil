@@ -51,14 +51,25 @@ CPU mySystem {
 
 		EE_OPT = "DEBUG";
 		//EE_OPT = "__KEIL_4_54_OLDER__";
-		EE_OPT = "__KEIL_USE_AXF_EXT__";
+		//EE_OPT = "__KEIL_USE_AXF_EXT__";
 		
 		
 		CPU_DATA = CORTEX_MX {
 			MODEL = M4;
 			APP_SRC = "code.c";
-			APP_SRC = "ESSTA_JSON_lib.c";
-			APP_SRC = "ESSTA_lib.c";
+			
+			APP_SRC = "lib/ESSTA_JSON_lib.c";
+			APP_SRC = "lib/ESSTA_lib.c";
+			APP_SRC = "lib/ESSTA_graphic.c";
+
+			APP_SRC = "lib/graphic_lcd/Touch.c";
+			APP_SRC = "lib/graphic_lcd/pictures.c";
+			APP_SRC = "lib/graphic_lcd/Event.c";
+			APP_SRC = "lib/graphic_lcd/Widget.c";
+			APP_SRC = "lib/graphic_lcd/WidgetConfig.c";
+			APP_SRC = "lib/graphic_lcd/Stopwatch_SM.c";
+			APP_SRC = "lib/graphic_lcd/STMPE811QTR.c";
+			APP_SRC = "lib/graphic_lcd/debug.c";
 			//COMPILER_TYPE = KEIL; 
 			COMPILER_TYPE = GNU;
 			MULTI_STACK = FALSE;
@@ -72,12 +83,18 @@ CPU mySystem {
 
 		EE_OPT = "__ADD_LIBS__";
 		
-		LIB = ENABLE { NAME = "ST_CMSIS"; };
-		
+		LIB = ENABLE { NAME = "ST_CMSIS"; };		
 		LIB = ENABLE { NAME = "STM32F4XX_SPD"; 
 			STM32F4XX_SPD = ENABLE {
-                		USEUSART = TRUE;
-            		};
+				USEGPIO = TRUE;
+				USESPI = TRUE;
+				USEEXTI = TRUE;
+				USEMISC = TRUE;
+				USEFLASH = TRUE;
+				USEI2C = TRUE;
+				USEDMA = TRUE;
+				USEUSART = TRUE;
+			};
 		};
 		
 		LIB = ENABLE {
@@ -104,7 +121,32 @@ CPU mySystem {
 
 	};
  	
-	COUNTER myCounter;
+	COUNTER myCounter {
+        	MINCYCLE = 2;
+			MAXALLOWEDVALUE = 0xFFFF ;
+        	TICKSPERBASE = 1;
+    	};
+
+	ALARM Alarm_ReceiveData {
+		COUNTER = myCounter;
+		ACTION = ACTIVATETASK { TASK = ReceiveData; };
+	};
+
+	TASK ReceiveData {
+		PRIORITY = 0x03;   /* High priority */
+		AUTOSTART = FALSE;
+		STACK = SHARED;
+		ACTIVATION = 1;    /* only one pending activation */
+		SCHEDULE = FULL;		
+	};
+
+	TASK CheckMessage {
+		PRIORITY = 0x03;
+		AUTOSTART = FALSE;
+		STACK = SHARED;
+		ACTIVATION = 1;
+		SCHEDULE = FULL;
+	};
 
 	ALARM Alarm_PollingRooms {
 		COUNTER = myCounter;
@@ -119,33 +161,25 @@ CPU mySystem {
 		SCHEDULE = FULL;	// full preemptive
 	};
 
-	ALARM Alarm_ReceiveData {
+	ALARM Alarm_TaskLCD {
 		COUNTER = myCounter;
-		ACTION = ACTIVATETASK { TASK = ReceiveData; };
+		ACTION = ACTIVATETASK { TASK = TaskLCD; };
 	};
 
-	TASK ReceiveData {
-		PRIORITY = 0x02;   /* High priority */
-		AUTOSTART = FALSE;
-		STACK = SHARED;
-		ACTIVATION = 1;    /* only one pending activation */
-		SCHEDULE = FULL;		
-	};
-
-	ALARM Alarm_RefreshGraphic {
-		COUNTER = myCounter;
-		ACTION = ACTIVATETASK { TASK = RefreshGraphic; };
-	};
-	
-	TASK RefreshGraphic {
+	TASK TaskLCD {
 		PRIORITY = 0x01;   /* Low priority */
 		AUTOSTART = FALSE;
 		STACK = SHARED;
 		ACTIVATION = 1;    /* only one pending activation */
 		SCHEDULE = FULL;
 	};
-	
-	TASK CheckMessage {
+
+	ALARM Alarm_UserTask {
+		COUNTER = myCounter;
+		ACTION = ACTIVATETASK { TASK = UserTask; };
+	};
+
+	TASK UserTask {
 		PRIORITY = 0x01;   /* Low priority */
 		AUTOSTART = FALSE;
 		STACK = SHARED;

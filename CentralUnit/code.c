@@ -47,18 +47,25 @@
 
 
 #include "ee.h"
+#include "ee_irq.h"
 
 #include "stm32f4xx.h"
+#include "stm32f4xx_conf.h"
 #include "stm32f4_discovery.h"
-#include "stm32f4_discovery_lcd.h"
+#include "stm32f4_discovery_lcd.h"T
 #include "lcd_log.h"
+
 #include <stdio.h>
 #include <string.h>
 
-#include "ESSTA_lib.h"
-#include "ESSTA_JSON_lib.h"
+#include "lib/ESSTA_definitions.h"
+#include "lib/ESSTA_lib.h"
+#include "lib/ESSTA_JSON_lib.h"
+#include "lib/ESSTA_graphic.h"
 
-#define DEBUG_LOG_MODE
+#define DEBUG
+//#define DEBUG_LOG
+//#define DEBUG_LOG_JSON
 
 USART_InitTypeDef USART_InitStructure;
 
@@ -79,6 +86,10 @@ ISR2(systick_handler) {
 // 	send_string("ciao\0");
 // }
 
+TASK(TaskLCD) {
+
+}
+
 TASK(ReceiveData) {
 //void check_USART_RX() {
 	EE_UINT8 ch;
@@ -87,7 +98,7 @@ TASK(ReceiveData) {
 		if(ch != '\n' && ch != '\r'){
 			if(msg_pos >= MSG_LEN){
 				#ifdef DEBUG_LOG
-				LCD_ErrLog("\r\nMessage too long or interleaved %d", msg_pos);
+					LCD_ErrLog("\r\nMessage too long or interleaved %d", msg_pos);
 				#endif
 				msg_pos = 0;
 				memset(msg, '\0', MSG_LEN);
@@ -100,26 +111,7 @@ TASK(ReceiveData) {
 //}
 }
 
-void send_char(char c) {
-	while (USART_GetFlagStatus(EVAL_COM1, USART_FLAG_TC) == RESET);	// wait finished
-	USART_SendData(EVAL_COM1, (EE_UINT8) c);
-	while (USART_GetFlagStatus(EVAL_COM1, USART_FLAG_TC) == RESET);	// wait finished
-}
-
-void send_string(char* str) {
-	EE_UINT8 i = 0;
-	LCD_UsrLog("\r\nSend: ");
-	LCD_UsrLog(str);
-	while (str[i] != '\0') {
-		send_char(str[i++]);
-	}
-}
-
-void print_string(char* str){
-	LCD_UsrLog("\r\n");
-	LCD_UsrLog(str);
-}
-
+// sporadic task
 TASK(CheckMessage) {
 	switch(check_message(msg)){
 		case 1:	// message correct JSON
@@ -157,7 +149,9 @@ TASK(TaskPollingRooms) {
 		id = (id+1)%N_ROOMS;
 	} else {
 		if(rooms[id].net_par.resend > 2){
-			LCD_ErrLog("\r\n Polling error node %2d crashed, Resend:%d", (id+1), rooms[id].net_par.resend);
+			#ifdef DEBUG_LOG
+				LCD_ErrLog("\r\n Polling error node %2d crashed", (id+1));
+			#endif
 			rooms[id].net_par.error = true;
 			rooms[id].net_par.resend = 0;
 			id = (id+1)%N_ROOMS;
@@ -170,8 +164,8 @@ TASK(TaskPollingRooms) {
 	send_string(msg);
 }
 
-TASK(RefreshGraphic) {
-//	print_rooms();
+TASK(UserTask) {
+	graphic_step();
 }
 
 int main(void) {
@@ -192,15 +186,6 @@ int main(void) {
 	EE_systick_enable_int();
 	EE_systick_start();
 
-		/*Initialize the LCD*/
-	STM32f4_Discovery_LCD_Init();
-
-	#ifdef DEBUG_LOG
-		LCD_LOG_Init();
-		LCD_LOG_SetHeader("ESSTA System running");
-		LCD_LOG_SetFooter("Powered by Erika");
-	#endif
-
 	STM_EVAL_LEDInit(LED4);
 
 	/* USARTx configured as follow:
@@ -220,20 +205,15 @@ int main(void) {
 
 	STM_EVAL_COMInit(COM1, &USART_InitStructure);
 
-
-	/* Output message */
-	print_string("ESSTA System running\n\0");
-	send_string("ESSTA System running\n\0");
-
+	ESSTA_init();
 
 	/* Program cyclic alarms which will fire after an initial offset,
 	 * and after that periodically
 	 * */
 	SetRelAlarm(Alarm_ReceiveData, 1000, 10);
+	SetRelAlarm(Alarm_TaskLCD, 1000, 100);
+	SetRelAlarm(Alarm_UserTask, 1000, 100);
 	SetRelAlarm(Alarm_PollingRooms, 1000, 5000);
-	SetRelAlarm(Alarm_RefreshGraphic, 1000, 10000);
-
-	init_rooms();
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;) {

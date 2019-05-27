@@ -8,7 +8,21 @@
 EEOPT += __USE_STM32F4XX_SPD__
 
 
+EEOPT += __USE_STM32F4XX_SPD_DMA__
+
+EEOPT += __USE_STM32F4XX_SPD_EXTI__
+
+EEOPT += __USE_STM32F4XX_SPD_FLASH__
+
+EEOPT += __USE_STM32F4XX_SPD_GPIO__
+
+EEOPT += __USE_STM32F4XX_SPD_I2C__
+
+EEOPT += __USE_STM32F4XX_SPD_SPI__
+
 EEOPT += __USE_STM32F4XX_SPD_USART__
+
+EEOPT += __USE_STM32F4XX_SPD_MISC__
 
 
 ############################################################################
@@ -55,7 +69,6 @@ RTDRUID_CONFIGURATOR_NUMBER:=1278
 #
 ############################################################################
 EEOPT += DEBUG
-EEOPT += __KEIL_USE_AXF_EXT__
 EEOPT += __USE_SYSTICK__
 EEOPT += __ADD_LIBS__
 
@@ -143,7 +156,7 @@ LIB_OPT  += __LIB_STM32F4_DISCOVERY__
 # Sources
 #
 ############################################################################
-APP_SRCS += eecfg.c code.c ESSTA_JSON_lib.c ESSTA_lib.c
+APP_SRCS += eecfg.c code.c lib/ESSTA_JSON_lib.c lib/ESSTA_lib.c lib/ESSTA_graphic.c lib/graphic_lcd/Touch.c lib/graphic_lcd/pictures.c lib/graphic_lcd/Event.c lib/graphic_lcd/Widget.c lib/graphic_lcd/WidgetConfig.c lib/graphic_lcd/Stopwatch_SM.c lib/graphic_lcd/STMPE811QTR.c lib/graphic_lcd/debug.c
 
 
 ############################################################################
