@@ -1,12 +1,12 @@
 # ESSTA
 Energy Saving Smart-home distributed Temperature Application
 
-##Description
+## Description
 ESSTA is a distributed system with the aim to control the temperature in a distributed environment
 
-##Authors
+## Authors
 Giovanni Falzone - www.github.com/GiovanniFalzone - giovannifalzone.github.io
 
-##Dependencies
+## Dependencies
 
-#Howto
+# Howto
