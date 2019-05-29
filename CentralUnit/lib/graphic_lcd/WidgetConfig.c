@@ -13,65 +13,83 @@
 #include "fonts.h"
 
 ButtonIcon button_left_arrow = {
-	icontime_on, icontime_off, E_LEFT_ARROW
+	img_left_arrow, img_left_arrow, E_LEFT_ARROW
 };
 
 ButtonIcon button_right_arrow = {
-	icontimeset_on, icontimeset_off, E_RIGHT_ARROW
+	img_right_arrow, img_right_arrow, E_RIGHT_ARROW
 };
 
 ButtonIcon button_settings = {
-	iconalarm_on, iconalarm_off, E_SETTINGS
+	img_Settings, img_Settings, E_SETTINGS
 };
 
 ButtonIcon button_eco = {
-	button_plus_on, button_plus_off, E_ECO
+	img_Eco, img_bck_Eco, E_ECO
 };
 
 ButtonIcon button_plus = {
-	button_postpone_on, button_postpone_off, E_PLUS
+	img_Plus_on, img_Plus_off, E_PLUS
 };
 
 ButtonIcon button_minus = {
-	button_postpone_on, button_postpone_off, E_MINUS
+	img_Minus_off, img_Minus_on, E_MINUS
 };
 
 //---------------------
+Image image_home = {
+	img_Home
+};
+Image image_room = {
+	img_Home
+};
+
 Image image_alert = {
-	iconswatch_on
+	img_Warning
 };
 
-Image image_temperature = {
-	button_minus_on
+Image image_hot_temperature = {
+	img_Hot
 };
+
+Image image_cold_temperature = {
+	img_Cold
+};
+
 Image image_humidity = {
-	button_alarm_on
+	img_Humidity
 };
 
 //---------------------
-const Text Digits[2]={
-	{ &Font16x24, White, Black, Bck_hours, COLOR },	// temperature
-	{ &Font16x24, White, Black, Bck_minutes, COLOR },	// humidity
+const Text Digits[3]={
+	{ &Font16x24, Black, Black, img_bck_temp_text, IMG },	// temperature
+	{ &Font16x24, Black, Black, img_bck_hum_text, IMG },	// humidity
+	{ &Font16x24, Black, Black, img_bck_room_id, IMG },	// room id
 };
 
 Image backg = {
-	ImageBuffer
+	img_background
 };
 
 const Widget Screen_objects[NUMWIDGETS] = {
-	{0, 0, 320, 240, BACKGROUND, (void *)&backg},
-	{0, 175, 64, 64, BUTTONICON, (void *)&button_left_arrow},
-	{89, 175, 64, 64, BUTTONICON, (void *)&button_right_arrow},
-	{174, 175, 64, 64, BUTTONICON, (void *)&button_settings},
-	{278, 36-32, 32, 32, BUTTONICON, (void *)&button_eco},
-	{278, 146-32, 32, 32, BUTTONICON, (void *)&button_plus},
-	{278, 146-32, 32, 32, BUTTONICON, (void *)&button_minus},
+	{0,			0, 320, 	240, BACKGROUND, (void *)&backg},
 
-	{253, 175, 64, 64, IMAGE, (void *)&image_alert},
-	{278, 72-32, 32, 32, IMAGE, (void *)&image_temperature},
-	{278, 109-32, 32, 32, IMAGE, (void *)&image_humidity},
+	{8,			66, 18, 	128, 	BUTTONICON, (void *)&button_left_arrow},
+	{298, 		66, 18, 	128, 	BUTTONICON, (void *)&button_right_arrow},
+	{231, 		204, 	32, 32, BUTTONICON, (void *)&button_settings},
+	{54,	 	240-4-32, 	32, 32, BUTTONICON, (void *)&button_eco},
+	{199, 		64, 	32, 32, BUTTONICON, (void *)&button_plus},
+	{245, 		64, 	32, 32, BUTTONICON, (void *)&button_minus},
 
-	{100, 64, 	80, 40, TEXT, (void *)&Digits[0]},		// Temperature
-	{100, 64+40, 80, 40, TEXT, (void *)&Digits[1]},		// Humidity
+	{149, 		240-4-32, 	32, 32, IMAGE, (void *)&image_alert},
+	{54,	 	64, 		32, 32, IMAGE, (void *)&image_hot_temperature},
+	{54,	 	64, 		32, 32, IMAGE, (void *)&image_cold_temperature},
+	{54, 		130, 		32, 32, IMAGE, (void *)&image_humidity},
+	{149, 		4, 			32, 32, IMAGE, (void *)&image_home},
+	{149, 		4, 			32, 32, IMAGE, (void *)&image_room},
+
+	{100, 		64, 		100, 40, TEXT, (void *)&Digits[0]},		// Temperature
+	{100, 		130, 		100, 40, TEXT, (void *)&Digits[1]},		// Humidity
+	{149+32+4, 	8, 			32, 32, TEXT, (void *)&Digits[2]},		// Room Id
 };
 

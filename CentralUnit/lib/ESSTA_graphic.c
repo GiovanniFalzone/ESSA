@@ -18,11 +18,15 @@ void graphic_init(){
 		display_data.humidity = 56.78;
 		display_data.eco = true;
 		display_data.error = true;
+		display_data.id = 0;
 		graphic_update();
 	#endif
 }
 
 void assign_room_data(struct room_struct room){
+	if(room.id != 255){
+		display_data.id = room.id;
+	}
 	display_data.temperature = room.temperature.value;
 	display_data.humidity = room.humidity.value;
 	display_data.eco = room.eco;
@@ -60,10 +64,13 @@ void graphic_update(){
 	char str[5];
 	WClear(&Screen_objects[T_TEMPERATURE]);
 	WClear(&Screen_objects[T_HUMIDITY]);
+	WClear(&Screen_objects[T_ROOM_ID]);
 	sprintf(str, "%2.2f", display_data.temperature);
 	WPrint(&Screen_objects[T_TEMPERATURE], str);
 	sprintf(str, "%2.2f", display_data.humidity);
 	WPrint(&Screen_objects[T_HUMIDITY], str);
+	sprintf(str, "%1d", display_data.id);
+	WPrint(&Screen_objects[T_ROOM_ID], str);
 	if(display_data.eco){
 		DrawOn(&Screen_objects[B_ECO]);
 	} else {

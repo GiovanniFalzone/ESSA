@@ -8,7 +8,7 @@
 #ifndef WIDGETCONFIG_H_
 #define WIDGETCONFIG_H_
 
-#define NUMWIDGETS 12
+#define NUMWIDGETS 16
 
 #define BAKCG 			0
 #define B_LEFT_ARROW 	1
@@ -19,11 +19,15 @@
 #define B_MINUS 		6
 
 #define I_ALERT 		7
-#define I_TEMPERATURE 	8
-#define I_HUMIDITY 		9
+#define I_HOT_TEMPERATURE 	8
+#define I_COLD_TEMPERATURE 	9
+#define I_HUMIDITY 			10
+#define I_HOME				11
+#define I_ROOM				12
 
-#define T_TEMPERATURE 		10
-#define T_HUMIDITY 			11
+#define T_TEMPERATURE 		13
+#define T_HUMIDITY 			14
+#define T_ROOM_ID 			15
 
 #define E_LEFT_ARROW 	0x01
 #define E_RIGHT_ARROW 	0x02

@@ -25,6 +25,7 @@
 #define ROOM2_SETTINGS_PAGE	4
 
 struct display_data {
+	uint8_t id;
 	float temperature;
 	float humidity;
 	bool eco;

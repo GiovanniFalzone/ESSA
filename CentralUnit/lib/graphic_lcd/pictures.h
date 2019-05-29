@@ -29,34 +29,27 @@ extern "C" {
 }
 #endif
 
-extern const unsigned char ImageBuffer[153654];
-extern const unsigned char icontime_on[3340];
-extern const unsigned char icontime_off[3340];
-extern const unsigned char icontimeset_on[3340];
-extern const unsigned char icontimeset_off[3340];
-extern const unsigned char iconalarm_on[3322];
-extern const unsigned char iconalarm_off[3322];
-extern const unsigned char iconswatch_on[3064];
-extern const unsigned char iconswatch_off[3064];
+extern const unsigned char img_bck_room_id[2102];
+extern const unsigned char img_Plus_on[2102];
+extern const unsigned char img_Plus_off[2102];
+extern const unsigned char img_Minus_on[2102];
+extern const unsigned char img_Minus_off[2102];
+extern const unsigned char img_Settings[2102];
+extern const unsigned char img_Eco[2102];
+extern const unsigned char img_bck_Eco[2102];
+extern const unsigned char img_Warning[2102];
+extern const unsigned char img_bck_Warning[2102];
+extern const unsigned char img_Hot[2102];
+extern const unsigned char img_Cold[2102];
+extern const unsigned char img_Humidity[2102];
+extern const unsigned char img_Home[2102];
+extern const unsigned char img_Room[2102];
+extern const unsigned char img_left_arrow[4662];
+extern const unsigned char img_right_arrow[4662];
+extern const unsigned char img_bck_temp_text[8054];
+extern const unsigned char img_bck_hum_text[4662];
+extern const unsigned char img_background[153654];
 
-extern const unsigned char button_alarm_on[2102];
-extern const unsigned char button_alarm_off[2102];
-
-extern const unsigned char button_minus_on[2102];
-extern const unsigned char button_minus_off[2102];
-extern const unsigned char button_plus_on[2102];
-extern const unsigned char button_plus_off[2102];
-extern const unsigned char button_postpone_on[2102];
-extern const unsigned char button_postpone_off[2102];
-
-
-extern const unsigned char Bck_hours[2454];
-extern const unsigned char Bck_minutes[2454];
-extern const unsigned char Bck_seconds[2454];
-extern const unsigned char Bck_tenths[2454];
-extern const unsigned char Bck_sep1[854];
-extern const unsigned char Bck_sep2[854];
-extern const unsigned char Bck_sep3[854];
 
 #endif /*__PICTURES_H */ 
 
