@@ -67,7 +67,6 @@ CPU mySystem {
 			APP_SRC = "lib/graphic_lcd/Event.c";
 			APP_SRC = "lib/graphic_lcd/Widget.c";
 			APP_SRC = "lib/graphic_lcd/WidgetConfig.c";
-			APP_SRC = "lib/graphic_lcd/Stopwatch_SM.c";
 			APP_SRC = "lib/graphic_lcd/STMPE811QTR.c";
 			APP_SRC = "lib/graphic_lcd/debug.c";
 			//COMPILER_TYPE = KEIL; 

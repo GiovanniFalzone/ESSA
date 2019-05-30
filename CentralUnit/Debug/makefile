@@ -156,7 +156,7 @@ LIB_OPT  += __LIB_STM32F4_DISCOVERY__
 # Sources
 #
 ############################################################################
-APP_SRCS += eecfg.c code.c lib/ESSTA_JSON_lib.c lib/ESSTA_lib.c lib/ESSTA_graphic.c lib/graphic_lcd/Touch.c lib/graphic_lcd/pictures.c lib/graphic_lcd/Event.c lib/graphic_lcd/Widget.c lib/graphic_lcd/WidgetConfig.c lib/graphic_lcd/Stopwatch_SM.c lib/graphic_lcd/STMPE811QTR.c lib/graphic_lcd/debug.c
+APP_SRCS += eecfg.c code.c lib/ESSTA_JSON_lib.c lib/ESSTA_lib.c lib/ESSTA_graphic.c lib/graphic_lcd/Touch.c lib/graphic_lcd/pictures.c lib/graphic_lcd/Event.c lib/graphic_lcd/Widget.c lib/graphic_lcd/WidgetConfig.c lib/graphic_lcd/STMPE811QTR.c lib/graphic_lcd/debug.c
 
 
 ############################################################################

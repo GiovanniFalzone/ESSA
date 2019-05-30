@@ -87,7 +87,7 @@ ISR2(systick_handler) {
 // }
 
 TASK(TaskLCD) {
-
+	touch_event_step();
 }
 
 TASK(ReceiveData) {
@@ -116,11 +116,13 @@ TASK(CheckMessage) {
 	switch(check_message(msg)){
 		case 1:	// message correct JSON
 			msg_pos = 0;
-			uint8_t id = JSON_to_room_struct(msg);
+			struct room_struct my_room = JSON_to_room_struct(msg);
 			memset(msg, '\0', MSG_LEN);
-			if(id != 255){
-				rooms[id].net_par.response = true;
-				rooms[id].net_par.error = false;
+			if(my_room.id != 255){
+				rooms[my_room.id-1] = my_room;
+				rooms[my_room.id-1].net_par.response = true;
+				rooms[my_room.id-1].net_par.error = false;
+				compute_house_status();
 			}
 			break;
 
@@ -142,7 +144,6 @@ TASK(CheckMessage) {
 
 TASK(TaskPollingRooms) {
 	static uint8_t id = 0;
-	char* msg[32];
 	if(rooms[id].net_par.response == true) {
 		rooms[id].net_par.response = false;
 		rooms[id].net_par.resend = 0;
@@ -159,9 +160,7 @@ TASK(TaskPollingRooms) {
 			rooms[id].net_par.resend++;
 		}
 	}
-
-	sprintf(msg, "start::{\"Id\":\"%02d\"}\n", (id+1));
-	send_string(msg);
+	ESSTA_send_node_request(id+1);
 }
 
 TASK(UserTask) {
@@ -211,7 +210,7 @@ int main(void) {
 	 * and after that periodically
 	 * */
 	SetRelAlarm(Alarm_ReceiveData, 1000, 10);
-	SetRelAlarm(Alarm_TaskLCD, 1000, 100);
+	SetRelAlarm(Alarm_TaskLCD, 1000, 50);
 	SetRelAlarm(Alarm_UserTask, 1000, 100);
 	SetRelAlarm(Alarm_PollingRooms, 1000, 5000);
 

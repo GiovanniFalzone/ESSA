@@ -13,51 +13,55 @@
 #include "fonts.h"
 
 ButtonIcon button_left_arrow = {
-	img_left_arrow, img_left_arrow, E_LEFT_ARROW
+	img_left_arrow, img_left_arrow, NULL, E_LEFT_ARROW
 };
 
 ButtonIcon button_right_arrow = {
-	img_right_arrow, img_right_arrow, E_RIGHT_ARROW
+	img_right_arrow, img_right_arrow, NULL, E_RIGHT_ARROW
 };
 
 ButtonIcon button_settings = {
-	img_Settings, img_Settings, E_SETTINGS
+	img_Settings, img_Settings, NULL, E_SETTINGS
 };
 
 ButtonIcon button_eco = {
-	img_Eco, img_bck_Eco, E_ECO
+	img_Eco, img_bck_Eco, NULL, E_ECO
 };
 
 ButtonIcon button_plus = {
-	img_Plus_on, img_Plus_off, E_PLUS
+	img_Plus_on, img_Plus_off, img_bck_Plus, E_PLUS
 };
 
 ButtonIcon button_minus = {
-	img_Minus_off, img_Minus_on, E_MINUS
+	img_Minus_off, img_Minus_on, img_bck_Minus, E_MINUS
 };
 
 //---------------------
 Image image_home = {
-	img_Home
+	img_Home, NULL
 };
 Image image_room = {
-	img_Home
+	img_Room, NULL
 };
 
 Image image_alert = {
-	img_Warning
+	img_Warning, img_bck_Warning
 };
 
 Image image_hot_temperature = {
-	img_Hot
+	img_Hot, NULL
 };
 
 Image image_cold_temperature = {
-	img_Cold
+	img_Cold, NULL
 };
 
 Image image_humidity = {
-	img_Humidity
+	img_Humidity, NULL
+};
+
+Image backg = {
+	img_background, NULL
 };
 
 //---------------------
@@ -67,19 +71,15 @@ const Text Digits[3]={
 	{ &Font16x24, Black, Black, img_bck_room_id, IMG },	// room id
 };
 
-Image backg = {
-	img_background
-};
-
 const Widget Screen_objects[NUMWIDGETS] = {
-	{0,			0, 320, 	240, BACKGROUND, (void *)&backg},
+	{0,			0, 			320, 240, 	BACKGROUND, (void *)&backg},
 
-	{8,			66, 18, 	128, 	BUTTONICON, (void *)&button_left_arrow},
-	{298, 		66, 18, 	128, 	BUTTONICON, (void *)&button_right_arrow},
-	{231, 		204, 	32, 32, BUTTONICON, (void *)&button_settings},
-	{54,	 	240-4-32, 	32, 32, BUTTONICON, (void *)&button_eco},
-	{199, 		64, 	32, 32, BUTTONICON, (void *)&button_plus},
-	{245, 		64, 	32, 32, BUTTONICON, (void *)&button_minus},
+	{8,			66, 		18, 128, 	BUTTONICON, (void *)&button_left_arrow},
+	{298, 		66, 		18, 128, 	BUTTONICON, (void *)&button_right_arrow},
+	{231, 		204, 		32, 32, 	BUTTONICON, (void *)&button_settings},
+	{54,	 	240-4-32, 	32, 32, 	BUTTONICON, (void *)&button_eco},
+	{199, 		64, 		32, 32, 	BUTTONICON, (void *)&button_plus},
+	{245, 		64, 		32, 32, 	BUTTONICON, (void *)&button_minus},
 
 	{149, 		240-4-32, 	32, 32, IMAGE, (void *)&image_alert},
 	{54,	 	64, 		32, 32, IMAGE, (void *)&image_hot_temperature},

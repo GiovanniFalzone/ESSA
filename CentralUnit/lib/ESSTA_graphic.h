@@ -13,16 +13,9 @@
 #include "graphic_lcd/WidgetConfig.h"
 #include "graphic_lcd/Touch.h"
 #include "graphic_lcd/Event.h"
-#include "graphic_lcd/Stopwatch_SM.h"
 #include "graphic_lcd/lcd_add.h"
 #include "graphic_lcd/fonts.h"
 #include "graphic_lcd/debug.h"
-
-#define HOME_PAGE			0
-#define ROOM1_PAGE			1
-#define ROOM2_PAGE			2
-#define ROOM1_SETTINGS_PAGE	3
-#define ROOM2_SETTINGS_PAGE	4
 
 struct display_data {
 	uint8_t id;
@@ -32,12 +25,22 @@ struct display_data {
 	bool error;
 };
 
-uint8_t page;
-struct display_data display_data;
+typedef enum Signal {
+	ENTRY_SIG, EXIT_SIG, LEFT_ARROW_SIG, RIGHT_ARROW_SIG, SETTINGS_SIG, ECO_SIG, PLUS_SIG, MINUS_SIG, NULL_SIG
+} Signal_t;
+
+enum State_Control {
+	HOME, HOME_SETTINGS, ROOM, ROOM_SETTINGS
+};
+
+
+enum State_Control State_Control;
+struct display_data display_data, old_display_data;
+uint8_t room_selector;
 
 void graphic_init();
 void graphic_step();
 
-void graphic_update();
+void touch_event_step();
 
 #endif /* ESSTA_GRAPHIC_H */

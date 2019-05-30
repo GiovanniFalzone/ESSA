@@ -22,5 +22,7 @@ void send_char(char c);
 void send_string(char* str);
 
 void ESSTA_init();
+void ESSTA_send_node_request(uint8_t id);
+
 
 #endif //ESSTA_LIB_H

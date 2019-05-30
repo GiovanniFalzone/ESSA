@@ -22,11 +22,13 @@ typedef enum{
 
 typedef struct {
 	unsigned char *image;
+	unsigned char *bck_img;
 } Image;
 
 typedef struct {
 	unsigned char *iconp;
 	unsigned char *iconr;
+	unsigned char *icon_clear;
 	Event		  onpress;
 } ButtonIcon;
 

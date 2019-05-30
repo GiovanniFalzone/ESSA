@@ -29,6 +29,8 @@ extern "C" {
 }
 #endif
 
+extern const unsigned char img_bck_Minus[2102];
+extern const unsigned char img_bck_Plus[2102];
 extern const unsigned char img_bck_room_id[2102];
 extern const unsigned char img_Plus_on[2102];
 extern const unsigned char img_Plus_off[2102];

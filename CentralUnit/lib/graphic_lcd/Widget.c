@@ -40,7 +40,7 @@ unsigned char DrawInit(Widget ws[])
 {
 	unsigned char i;
 	for(i=0; i<NUMWIDGETS; i++) {
-		DrawOff(&ws[i]);
+		DrawOn(&ws[i]);
 	}
 	return 1;
 }
@@ -53,10 +53,10 @@ unsigned char DrawOn(Widget *w)
 	case BUTTONICON:
 		imgptr = biconinfo(w)->iconp;
 		break;
-	case BACKGROUND:
 	case TEXT:
 		imgptr = txtinfo(w)->bimage;
 		break;
+	case BACKGROUND:
 	case IMAGE:
 		imgptr = imginfo(w)->image;
 		break;
@@ -78,7 +78,7 @@ unsigned char DrawOff(Widget *w)
 		break;
 	case BACKGROUND:
 	case IMAGE:
-		imgptr = imginfo(w)->image;
+		imgptr = imginfo(w)->bck_img;
 		break;
 	}
 	if (imgptr != 0) {
@@ -105,17 +105,31 @@ unsigned char WPrint(Widget *w, char *s)
 }
 unsigned char WClear(Widget *w)
 {
-	if (w->wt == TEXT) {
-		if(txtinfo(w)->bmode==COLOR){
-				LCD_SetTextColor(txtinfo(w)->bcolor);
-				LCD_SetBackColor(txtinfo(w)->bcolor);
-				LCD_DrawFullRect(w->xl, w->yt, w->xw, w->yh);
-		}
-		if(txtinfo(w)->bmode==IMG)
-			DrawOn(w);
-		return 1;
-	} else
-		return 0;
+	char *imgptr = 0;
+	switch(w->wt){
+		case TEXT:
+			if(txtinfo(w)->bmode==COLOR){
+					LCD_SetTextColor(txtinfo(w)->bcolor);
+					LCD_SetBackColor(txtinfo(w)->bcolor);
+					LCD_DrawFullRect(w->xl, w->yt, w->xw, w->yh);
+			}
+			if(txtinfo(w)->bmode==IMG)
+				DrawOn(w);
+			return 1;
+			break;
+
+		case BUTTONICON:
+			imgptr = biconinfo(w)->icon_clear;
+			if(imgptr != 0){
+				LCD_DrawPicture(w->xl, w->yt, w->xw, w->yh, imgptr);
+			}
+			return 1;
+			break;
+
+		default:
+			return 0;
+			break;
+	}
 }
 
 

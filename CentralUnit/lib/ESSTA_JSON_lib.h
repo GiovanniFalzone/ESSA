@@ -14,6 +14,6 @@ bool set_room_Eco(char* str, struct room_struct* my_room);
 bool check_json_sensor(char* str, char* sensor_name);
 bool set_room_Temperature(char* str, struct room_struct* my_room);
 bool set_room_Humidity(char* str, struct room_struct* my_room);
-uint8_t JSON_to_room_struct(char* str);
+struct room_struct JSON_to_room_struct(char* str);
 
 #endif // ESSTA_JSON_LIB_H

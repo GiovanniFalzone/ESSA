@@ -9,16 +9,21 @@
 //#define DEBUG_LOG
 //#define DEBUG_LOG_JSON
 
-#define MAX_ROOMS	2
+#define N_ROOMS 2
 
 #define MSG_LEN	256
 
-#define TEMP_MIN	0
-#define TEMP_MAX 	50
+#define TEMP_MIN	15
+#define TEMP_MAX 	30
 #define HUM_MIN		0
 #define HUM_MAX		100
 
-#define N_ROOMS 2
+#define DEFAULT_DES_TEMPERATURE	24.00
+#define TEMPERATURE_GOAL_OFFSET	0.5
+
+#define STEP_TEMPERATURE 0.5
+
+
 
 struct net_par_struct {
 	bool response;
@@ -38,5 +43,15 @@ struct room_struct {
 	struct sensor_struct humidity;
 	struct net_par_struct net_par;
 };
-extern struct room_struct rooms[MAX_ROOMS];
+
+struct home_struct {
+	float temperature;
+	float humidity;
+	bool eco;
+	bool error;
+	float des_temperature;
+};
+
+extern struct room_struct rooms[N_ROOMS];
+extern struct home_struct home_struct;
 #endif //ESSTA_TYPES_H

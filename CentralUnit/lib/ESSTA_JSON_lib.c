@@ -93,13 +93,15 @@ bool set_room_ID(char* str, struct room_struct* my_room){
 		memcpy(value, str+7, 2);
 		value[3]='\0';
 		id = str_to_2d_uint8(value);
-		if (id > 0 && id < 8){
+		if (id > 0 && id <= N_ROOMS){
 			my_room->id = id;
 			ret = true;
 		} else {
+			my_room->id = 255;
 			ret = false;
 		}
 	} else {
+		my_room->id = 255;
 		ret = false;
 	}
 
@@ -271,7 +273,7 @@ bool set_room_Humidity(char* str, struct room_struct* my_room){
 	return ret;
 }
 
-uint8_t JSON_to_room_struct(char* str){
+struct room_struct JSON_to_room_struct(char* str){
 	bool check = true;
 	struct room_struct my_room;
 
@@ -279,11 +281,6 @@ uint8_t JSON_to_room_struct(char* str){
 	check &= set_room_Eco(str, &my_room);
 	check &= set_room_Temperature(str, &my_room);
 	check &= set_room_Humidity(str, &my_room);
-
-	if(check){
-		my_room.net_par = rooms[my_room.id-1].net_par;
-		rooms[my_room.id-1] = my_room;
-	}
 
 	#ifdef DEBUG_LOG
 		char tmp[16];
@@ -296,9 +293,9 @@ uint8_t JSON_to_room_struct(char* str){
 			log_room(my_room);
 		}
 	#endif
-	if(check){
-		return (my_room.id -1);
-	} else {
-		return -1;	// 255 max value
+	if(check){	// copy old room parameters
+		my_room.net_par = rooms[my_room.id-1].net_par;
 	}
+
+	return my_room;
 }
