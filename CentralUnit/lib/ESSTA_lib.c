@@ -47,7 +47,7 @@ void send_string(char* str) {
 
 void ESSTA_send_node_request(uint8_t id){
 	char* msg[50];
-	sprintf(msg, "start::{\"Id\":\"%02d\",\"DTemp\":\"%2.2f\"}\n\0", id, home_struct.des_temperature);
+	sprintf(msg, "{\"Id\":\"%02d\",\"DTemp\":\"%2.2f\"}\n\0", id, home_struct.des_temperature);
 	send_string(msg);
 }
 

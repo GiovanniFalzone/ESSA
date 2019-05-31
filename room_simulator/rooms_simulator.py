@@ -10,7 +10,7 @@ MESSAGE_LOST_PROB = 0.1
 MESSAGE_CORRUPTED_PROB = 0.1
 SEND_TIME_DELAY = 0.01	# 10 ms
 
-ser = serial.Serial('/dev/ttyUSB0', 9600)
+ser = serial.Serial('/dev/ttyUSB1', 9600)
 
 def signal_handler(sig, frame):
 	print('You pressed Ctrl+C!')
@@ -45,16 +45,17 @@ def room_simulator(Id):
 		ser.write(bytes('\n', 'utf-8'))
 
 def main():
+	ser.flushInput()
+	raw_msg = ser.readline().decode('utf-8').rstrip()
+	print("--------------------------------")
+	print(raw_msg)
 	while(1):
 		ser.flushInput()
 		raw_msg = ser.readline().decode('utf-8').rstrip()
 		print("--------------------------------")
 		print("Receive: " + raw_msg)
-		start = raw_msg.split("::")[0]
-		if(start=="start"):
-			msg=raw_msg.split("::")[1]
-			json_msg = json.loads(msg)
-			room_simulator(json_msg["Id"])
+		json_msg = json.loads(raw_msg)
+		room_simulator(json_msg["Id"])
 
 if __name__ == "__main__":
     main()
