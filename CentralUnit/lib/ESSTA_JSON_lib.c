@@ -20,15 +20,25 @@ bool strequal(const char* s1, const char* s2){
 	}
 }
 
-uint8_t str_to_2d_uint8(char* str){
+uint8_t str_3d_to_uint8(char* str){
+	uint8_t ret = 0;
+
+	ret = (str[0] - '0')*100;
+	ret += (str[1] - '0')*10;
+	ret += (str[2] - '0');
+
+	return ret;
+}
+
+uint8_t str_2d_to_uint8(char* str){
 	uint8_t ret = (str[0] - '0')*10;
 	ret += (str[1] - '0');
 	return ret;
 }
 
-float str_to_2_2d_float(char *str){	//01.23
-	float ret = (float)str_to_2d_uint8(str);
-	ret += ((float)str_to_2d_uint8(str+3))/100;
+float str_2_2d_to_float(char *str){	//01.23
+	float ret = (float)str_2d_to_uint8(str);
+	ret += ((float)str_2d_to_uint8(str+3))/100;
 }
 
 uint8_t check_message(char* str){
@@ -92,7 +102,7 @@ bool set_room_ID(char* str, struct room_struct* my_room){
 	if(check){
 		memcpy(value, str+7, 2);
 		value[3]='\0';
-		id = str_to_2d_uint8(value);
+		id = str_2d_to_uint8(value);
 		if (id > 0 && id <= N_ROOMS){
 			my_room->id = id;
 			ret = true;
@@ -161,7 +171,7 @@ bool check_json_sensor(char* str, char* sensor_name){
 	#ifdef DEBUG_LOG_JSON
 		char tmp_deb[32];
 		if(!ret){
-			sprintf(tmp_deb, "\r\n JSON_S check %s", tmp);
+			sprintf(tmp_deb, "\r\n JSON_S check_Nm %s", tmp);
 			LCD_ErrLog(tmp_deb);
 		}
 	#endif
@@ -172,7 +182,7 @@ bool check_json_sensor(char* str, char* sensor_name){
 
 	#ifdef DEBUG_LOG_JSON
 		if(!ret){
-			sprintf(tmp_deb, "\r\n JSON_S check %s", tmp);
+			sprintf(tmp_deb, "\r\n JSON_S check_Name %s", tmp);
 			LCD_ErrLog(tmp_deb);
 		}
 	#endif
@@ -183,7 +193,7 @@ bool check_json_sensor(char* str, char* sensor_name){
 
 	#ifdef DEBUG_LOG_JSON
 		if(!ret){
-			sprintf(tmp_deb, "\r\n JSON_S check %s", tmp);
+			sprintf(tmp_deb, "\r\n JSON_S check_Val %s", tmp);
 			LCD_ErrLog(tmp_deb);
 		}
 	#endif
@@ -195,11 +205,103 @@ bool check_json_sensor(char* str, char* sensor_name){
 
 	#ifdef DEBUG_LOG_JSON
 		if(!ret){
-			sprintf(tmp_deb, "\r\n %s", tmp);
+			sprintf(tmp_deb, "\r\n JSON_S check_Fmt %s", tmp);
 			LCD_ErrLog(tmp_deb);
 		}
 	#endif
 
+	return ret;
+}
+
+bool check_json_actuator(char* str, char* sensor_name){
+// {"Nm":"Vlv","Val":"057","Fmt":"%"}
+	bool ret = true;
+	char tmp[16];
+
+	memcpy(tmp, str+2, 2);
+	tmp[2]='\0';
+	ret &= strequal(tmp, "Nm\0");
+
+	#ifdef DEBUG_LOG_JSON
+		char tmp_deb[32];
+		if(!ret){
+			sprintf(tmp_deb, "\r\n JSON_S check_Nm %s", tmp);
+			LCD_ErrLog(tmp_deb);
+		}
+	#endif
+
+	memcpy(tmp, str+7, 3);
+	tmp[3]='\0';
+	ret &= strequal(tmp, sensor_name);
+
+	#ifdef DEBUG_LOG_JSON
+		if(!ret){
+			sprintf(tmp_deb, "\r\n JSON_S check_Name %s", tmp);
+			LCD_ErrLog(tmp_deb);
+		}
+	#endif
+
+	memcpy(tmp, str+13, 3);
+	tmp[3]='\0';
+	ret &= strequal(tmp, "Val\0");
+
+	#ifdef DEBUG_LOG_JSON
+		if(!ret){
+			sprintf(tmp_deb, "\r\n JSON_S check_Val %s", tmp);
+			LCD_ErrLog(tmp_deb);
+		}
+	#endif
+
+
+	memcpy(tmp, str+25, 3);
+	tmp[3]='\0';
+	ret &= strequal(tmp, "Fmt\0");
+
+	#ifdef DEBUG_LOG_JSON
+		if(!ret){
+			sprintf(tmp_deb, "\r\n \r\n JSON_S check_Fmt %s", tmp);
+			LCD_ErrLog(tmp_deb);
+		}
+	#endif
+
+	return ret;
+}
+
+bool set_room_Valve(char* str, struct room_struct* my_room){
+	// {"Id":"02","Eco":"1","sens":[{"Nm":"Tmp","Val":"20.94","Fmt":"C"},{"Nm":"Hum","Val":"62.34","Fmt":"%"}],"acts":[{"Nm":"Vlv","Val":"057","Fmt":"%"}]}
+	// {"Nm":"Vlv","Val":"057","Fmt":"%"}
+	bool ret = false;
+	char value_str[3];
+	uint8_t value = 0;
+	char format;
+	char* str_json_init = str+112;	// {"Nm":"Vlv","Val":"057","Fmt":"%"}
+
+	ret = check_json_actuator(str_json_init, "Vlv\0");
+	if(ret){
+		memcpy(value_str, str_json_init+19, 3);
+		value_str[3]='\0';
+
+		value = str_3d_to_uint8(value_str);
+		format = *(str_json_init + 31);
+
+		if ((value >= VALVE_MIN) && (value <= VALVE_MAX) && (format=='%')){
+			my_room->valve.value = value;
+			my_room->valve.format = format;
+			ret = true;
+		} else {
+			ret = false;
+		}
+	} else {
+		ret = false;
+	}
+
+	#ifdef DEBUG_LOG
+	if(!ret){
+		char tmp[24];
+		sprintf(tmp, "\r\n Valve: %03d %c", value, format);
+		LCD_ErrLog(tmp);
+	}
+	#endif
 	return ret;
 }
 
@@ -215,7 +317,7 @@ bool set_room_Temperature(char* str, struct room_struct* my_room){
 	if(ret){
 		memcpy(value_str, str_json_init+19, 5);
 		value_str[5]='\0';
-		value = str_to_2_2d_float(value_str);
+		value = str_2_2d_to_float(value_str);
 		format = *(str_json_init + 33);
 		if (value >= TEMP_MIN && value <= TEMP_MAX && (format=='C' || format=='K')){
 			my_room->temperature.value = value;
@@ -250,7 +352,7 @@ bool set_room_Humidity(char* str, struct room_struct* my_room){
 	if(ret){
 		memcpy(value_str, str_json_init+19, 5);
 		value_str[5]='\0';
-		value = str_to_2_2d_float(value_str);
+		value = str_2_2d_to_float(value_str);
 		format = *(str_json_init+33);
 		if (value >= HUM_MIN && value <= HUM_MAX && format=='%'){
 			my_room->humidity.value = value;
@@ -281,6 +383,7 @@ struct room_struct JSON_to_room_struct(char* str){
 	check &= set_room_Eco(str, &my_room);
 	check &= set_room_Temperature(str, &my_room);
 	check &= set_room_Humidity(str, &my_room);
+	check &= set_room_Valve(str, &my_room);
 
 	#ifdef DEBUG_LOG
 		char tmp[16];

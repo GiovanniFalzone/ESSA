@@ -29,6 +29,8 @@ extern "C" {
 }
 #endif
 
+extern const unsigned char img_Valve[2102];
+
 extern const unsigned char img_bck_Minus[2102];
 extern const unsigned char img_bck_Plus[2102];
 extern const unsigned char img_bck_room_id[2102];
@@ -36,20 +38,26 @@ extern const unsigned char img_Plus_on[2102];
 extern const unsigned char img_Plus_off[2102];
 extern const unsigned char img_Minus_on[2102];
 extern const unsigned char img_Minus_off[2102];
+
 extern const unsigned char img_Settings[2102];
 extern const unsigned char img_Eco[2102];
 extern const unsigned char img_bck_Eco[2102];
 extern const unsigned char img_Warning[2102];
 extern const unsigned char img_bck_Warning[2102];
+
 extern const unsigned char img_Hot[2102];
 extern const unsigned char img_Cold[2102];
 extern const unsigned char img_Humidity[2102];
 extern const unsigned char img_Home[2102];
 extern const unsigned char img_Room[2102];
+
 extern const unsigned char img_left_arrow[4662];
 extern const unsigned char img_right_arrow[4662];
+
 extern const unsigned char img_bck_temp_text[8054];
-extern const unsigned char img_bck_hum_text[4662];
+extern const unsigned char img_bck_hum_text[8054];
+extern const unsigned char img_bck_valve_text[8054];
+
 extern const unsigned char img_background[153654];
 
 

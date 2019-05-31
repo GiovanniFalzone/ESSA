@@ -22,8 +22,8 @@ signal.signal(signal.SIGINT, signal_handler)
 def room_simulator(Id):
 	temp = "{:05.2f}".format(random.uniform(15.0,30.0))
 	hum = "{:05.2f}".format(random.uniform(0.0,100.0))
-	open = "{:03d}".format(random.randint(0,100))
-	msg = '{"Id":"'+Id+'","Eco":"1","sens":[{"Nm":"Tmp","Val":"'+temp+'","Fmt":"C"},{"Nm":"Hum","Val":"'+hum+'","Fmt":"%"}],"acts":[{"Nm":"Valve","Val":"'+temp+'","Fmt":"%"}]}'
+	valve = "{:03d}".format(random.randint(0,100))
+	msg = '{"Id":"'+Id+'","Eco":"1","sens":[{"Nm":"Tmp","Val":"'+temp+'","Fmt":"C"},{"Nm":"Hum","Val":"'+hum+'","Fmt":"%"}],"acts":[{"Nm":"Vlv","Val":"'+valve+'","Fmt":"%"}]}'
 	guess = random.random()
 	if(guess<=MESSAGE_CORRUPTED_PROB):
 		print("-----------Corrupted------------")

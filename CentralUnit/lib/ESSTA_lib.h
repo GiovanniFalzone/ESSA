@@ -23,6 +23,6 @@ void send_string(char* str);
 
 void ESSTA_init();
 void ESSTA_send_node_request(uint8_t id);
-
+void ESSTA_compute_house_status();
 
 #endif //ESSTA_LIB_H

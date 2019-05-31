@@ -19,10 +19,11 @@
 
 struct display_data {
 	uint8_t id;
-	float temperature;
-	float humidity;
 	bool eco;
 	bool error;
+	struct sensor_struct temperature;
+	struct sensor_struct humidity;
+	struct actuator_struct valve;
 };
 
 typedef enum Signal {

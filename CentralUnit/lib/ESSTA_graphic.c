@@ -66,8 +66,12 @@ void graphic_init(){
 		DrawInit(Screen_objects);
 
 		room_selector = 0;
-		display_data.temperature = 00.00;
-		display_data.humidity = 00.00;
+		display_data.temperature.value = 00.00;
+		display_data.temperature.format = '?';
+		display_data.humidity.value = 00.00;
+		display_data.humidity.format = '?';
+		display_data.valve.value = 0;
+		display_data.valve.format = '?';
 		display_data.eco = false;
 		display_data.error = false;
 		display_data.id = 255;
@@ -79,14 +83,12 @@ void graphic_init(){
 }
 
 void graphic_step(){
-	old_display_data = display_data;
-
-	enum Signal sig = check_Event();
-	graphic_dispatch(sig);
-
+	enum Signal sig;
 	#ifdef DEBUG_LOG
 		print_rooms();
 	#else
+		sig = check_Event();
+		graphic_dispatch(sig);
 		graphic_update(false);
 	#endif
 }
@@ -120,8 +122,9 @@ void assign_room_data(struct room_struct room){
 	if(room.id != 255 ){
 		display_data.id = room.id;
 	}
-	display_data.temperature = room.temperature.value;
-	display_data.humidity = room.humidity.value;
+	display_data.temperature = room.temperature;
+	display_data.humidity = room.humidity;
+	display_data.valve = room.valve;
 	display_data.eco = room.eco;
 	display_data.error = room.net_par.error;
 	if(room.temperature.value >= (home_struct.des_temperature - TEMPERATURE_GOAL_OFFSET)){
@@ -135,9 +138,10 @@ void assign_home_data(){
 	display_data.id = 255;	// special id
 	display_data.temperature = home_struct.temperature;
 	display_data.humidity = home_struct.humidity;
+	display_data.valve = home_struct.valve;
 	display_data.eco = home_struct.eco;
 	display_data.error = home_struct.error;
-	if(home_struct.temperature >= (home_struct.des_temperature - TEMPERATURE_GOAL_OFFSET)){
+	if(home_struct.temperature.value >= (home_struct.des_temperature - TEMPERATURE_GOAL_OFFSET)){
 		DrawOn(&Screen_objects[I_HOT_TEMPERATURE]);
 	} else {
 		DrawOn(&Screen_objects[I_COLD_TEMPERATURE]);
@@ -146,8 +150,10 @@ void assign_home_data(){
 
 void assign_home_settings_data(){
 	display_data.id = 255;	// special id
-	display_data.temperature = home_struct.des_temperature;
+	display_data.temperature.value = home_struct.des_temperature;
+	display_data.temperature.format = 'C';
 	display_data.humidity = home_struct.humidity;
+	display_data.valve = home_struct.valve;
 	display_data.eco = home_struct.eco;
 	display_data.error = home_struct.error;	
 	DrawOn(&Screen_objects[I_HOT_TEMPERATURE]);
@@ -284,15 +290,21 @@ void manage_room_settings(enum Signal sig){
 
 void graphic_update(bool init){
 	char str[5];
-	if((display_data.temperature != old_display_data.temperature) || init){
+	if((display_data.temperature.value != old_display_data.temperature.value) || init){
 		WClear(&Screen_objects[T_TEMPERATURE]);
-		sprintf(str, "%2.2fC", display_data.temperature);
+		sprintf(str, "%2.2f%c", display_data.temperature.value, display_data.temperature.format);
 		WPrint(&Screen_objects[T_TEMPERATURE], str);
 	}
-	if((display_data.humidity != old_display_data.humidity) || init){
+	if((display_data.humidity.value != old_display_data.humidity.value) || init){
 		WClear(&Screen_objects[T_HUMIDITY]);
-		sprintf(str, "%2.2f%%", display_data.humidity);
+		sprintf(str, "%2.2f%c", display_data.humidity.value, display_data.humidity.format);
 		WPrint(&Screen_objects[T_HUMIDITY], str);
+	}
+
+	if((display_data.valve.value != old_display_data.valve.value) || init){
+		WClear(&Screen_objects[T_VALVE]);
+		sprintf(str, "%3d%c", display_data.valve.value, display_data.valve.format);
+		WPrint(&Screen_objects[T_VALVE], str);
 	}
 
 	if(display_data.id != 255){
@@ -305,9 +317,9 @@ void graphic_update(bool init){
 
 	if((display_data.error != old_display_data.error) || init){
 		if(display_data.error){
-			DrawOn(&Screen_objects[I_ALERT]);
+			DrawOn(&Screen_objects[I_WARNING]);
 		} else {
-			DrawOff(&Screen_objects[I_ALERT]);
+			DrawOff(&Screen_objects[I_WARNING]);
 		}
 	}
 
@@ -318,6 +330,7 @@ void graphic_update(bool init){
 			DrawOff(&Screen_objects[B_ECO]);
 		}
 	}
+	old_display_data = display_data;
 }
 
 

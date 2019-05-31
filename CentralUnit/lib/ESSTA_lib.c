@@ -1,15 +1,20 @@
 #include "ESSTA_lib.h"
 
-struct room_struct rooms[N_ROOMS] = {0,0,{0,0},{0,0},{0,0,0}};
-struct home_struct home_struct = {0,0,0,0,0};
+struct room_struct rooms[N_ROOMS] = {0,0,{0,0},{0,0},{0,0},{0,0,0}};
+struct home_struct home_struct = {0,0,0,{0,0},{0,0},{0,0}};
 
-void init_rooms(){
-	uint8_t i = 0;
-	home_struct.temperature = 0.0;
-	home_struct.humidity = 0.0;
+void init_home(){
+	home_struct.temperature.value = 0.0;
+	home_struct.temperature.format = 'C';
+	home_struct.humidity.value = 0.0;
+	home_struct.humidity.format = '%';
 	home_struct.des_temperature = DEFAULT_DES_TEMPERATURE;
 	home_struct.eco = false;
 	home_struct.error = false;
+}
+
+void init_rooms(){
+	uint8_t i = 0;
 	for(i=0;i<N_ROOMS;i++){
 		rooms[i].id=255;
 		rooms[i].eco=0;
@@ -47,29 +52,51 @@ void ESSTA_send_node_request(uint8_t id){
 }
 
 void ESSTA_init(){
-	send_string("ESSTA System running\n\0");
-	init_rooms();
 	graphic_init();
+	send_string("ESSTA System running\n\0");
+	init_home();
+	init_rooms();
 }
 
-void compute_house_status(){
-	uint8_t i = 0, count=0;
+void ESSTA_compute_house_status(){
+	uint8_t i = 0, count=0, valv=0;
 	float temp = 0, hum = 0;
 	bool eco = false, err = false;
 
 	for(i=0; i<N_ROOMS; i++){
 		if(rooms[i].id != 255){
 			count++;
-			temp += rooms[i].temperature.value;
-			hum += rooms[i].humidity.value;
+			if(rooms[i].temperature.format=='C'){
+				temp += rooms[i].temperature.value;
+			} else {	// conversion
+				;
+			}
+
+			if(rooms[i].humidity.format=='%'){
+				hum += rooms[i].humidity.value;
+			} else {	// conversion
+				;
+			}
+
+			if(rooms[i].valve.format=='%'){
+				valv += rooms[i].valve.value;
+			} else {	// conversion
+				;
+			}
 			eco |= rooms[i].eco;
 			err |= rooms[i].net_par.error;
 		}
 	}
-	temp = temp/count;
-	hum = hum/count;
 	home_struct.eco = eco;
 	home_struct.error = err;
-	home_struct.temperature = temp;
-	home_struct.humidity = hum;
+	if(temp > 0 && count > 0){
+		home_struct.temperature.value = temp/count;
+	}
+	if(hum > 0 && count > 0){
+		home_struct.humidity.value = hum/count;
+	}
+	home_struct.valve.value = (valv+1)/count;	// round to next digit
+	home_struct.temperature.format = 'C';
+	home_struct.humidity.format = '%';
+	home_struct.valve.format = '%';
 }

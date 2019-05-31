@@ -122,7 +122,6 @@ TASK(CheckMessage) {
 				rooms[my_room.id-1] = my_room;
 				rooms[my_room.id-1].net_par.response = true;
 				rooms[my_room.id-1].net_par.error = false;
-				compute_house_status();
 			}
 			break;
 
@@ -161,6 +160,7 @@ TASK(TaskPollingRooms) {
 		}
 	}
 	ESSTA_send_node_request(id+1);
+	ESSTA_compute_house_status();
 }
 
 TASK(UserTask) {
@@ -211,7 +211,11 @@ int main(void) {
 	 * */
 	SetRelAlarm(Alarm_ReceiveData, 1000, 10);
 	SetRelAlarm(Alarm_TaskLCD, 1000, 50);
-	SetRelAlarm(Alarm_UserTask, 1000, 100);
+	#ifdef DEBUG_LOG
+		SetRelAlarm(Alarm_UserTask, 1000, 10000);
+	#else
+		SetRelAlarm(Alarm_UserTask, 1000, 100);
+	#endif
 	SetRelAlarm(Alarm_PollingRooms, 1000, 5000);
 
 	/* Forever loop: background activities (if any) should go here */
