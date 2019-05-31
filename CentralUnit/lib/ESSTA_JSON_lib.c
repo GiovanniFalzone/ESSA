@@ -291,8 +291,6 @@ bool set_room_Valve(char* str, struct room_struct* my_room){
 		} else {
 			ret = false;
 		}
-	} else {
-		ret = false;
 	}
 
 	#ifdef DEBUG_LOG
@@ -326,8 +324,6 @@ bool set_room_Temperature(char* str, struct room_struct* my_room){
 		} else {
 			ret = false;
 		}
-	} else {
-		ret = false;
 	}
 
 	#ifdef DEBUG_LOG
@@ -361,8 +357,6 @@ bool set_room_Humidity(char* str, struct room_struct* my_room){
 		} else {
 			ret = false;
 		}
-	} else {
-		ret = false;
 	}
 
 	#ifdef DEBUG_LOG
