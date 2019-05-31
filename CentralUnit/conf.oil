@@ -160,25 +160,12 @@ CPU mySystem {
 		SCHEDULE = FULL;	// full preemptive
 	};
 
-	ALARM Alarm_TaskLCD {
+	ALARM Alarm_LCD_Graphic {
 		COUNTER = myCounter;
-		ACTION = ACTIVATETASK { TASK = TaskLCD; };
+		ACTION = ACTIVATETASK { TASK = Task_LCD_Graphic; };
 	};
 
-	TASK TaskLCD {
-		PRIORITY = 0x01;   /* Low priority */
-		AUTOSTART = FALSE;
-		STACK = SHARED;
-		ACTIVATION = 1;    /* only one pending activation */
-		SCHEDULE = FULL;
-	};
-
-	ALARM Alarm_UserTask {
-		COUNTER = myCounter;
-		ACTION = ACTIVATETASK { TASK = UserTask; };
-	};
-
-	TASK UserTask {
+	TASK Task_LCD_Graphic {
 		PRIORITY = 0x01;   /* Low priority */
 		AUTOSTART = FALSE;
 		STACK = SHARED;
@@ -193,7 +180,7 @@ CPU mySystem {
 	};
 
 //	ISR usart6_rx_handler {
-//		CATEGORY = 1;
+//		CATEGORY = 2;
 //		ENTRY = "USART6";
 //		PRIORITY = 2;
 //	};

@@ -81,13 +81,17 @@ ISR2(systick_handler) {
 	CounterTick(myCounter);
 }
 
-// ISR1(usart6_rx_handler) {
+// ISR2(usart6_rx_handler) {
 // 	STM_EVAL_LEDToggle(LED4);
 // 	send_string("ciao\0");
 // }
 
-TASK(TaskLCD) {
+TASK(Task_LCD_Graphic) {		// 50 ms
+	static EE_UINT8 count = 0;
 	touch_event_step();
+	if(((count++)%2)==0){	// skip one job -> 100 ms
+		graphic_step();
+	}
 }
 
 TASK(ReceiveData) {
@@ -164,7 +168,7 @@ TASK(TaskPollingRooms) {
 }
 
 TASK(UserTask) {
-	graphic_step();
+	;
 }
 
 int main(void) {
@@ -210,11 +214,10 @@ int main(void) {
 	 * and after that periodically
 	 * */
 	SetRelAlarm(Alarm_ReceiveData, 1000, 10);
-	SetRelAlarm(Alarm_TaskLCD, 1000, 50);
 	#ifdef DEBUG_LOG
-		SetRelAlarm(Alarm_UserTask, 1000, 10000);
+		SetRelAlarm(Alarm_LCD_Graphic, 1000, 10000);
 	#else
-		SetRelAlarm(Alarm_UserTask, 1000, 100);
+		SetRelAlarm(Alarm_LCD_Graphic, 1000, 50);
 	#endif
 	SetRelAlarm(Alarm_PollingRooms, 1000, 5000);
 
