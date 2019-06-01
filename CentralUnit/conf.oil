@@ -179,10 +179,10 @@ CPU mySystem {
 		PRIORITY = 1;
 	};
 
-//	ISR usart6_rx_handler {
-//		CATEGORY = 2;
-//		ENTRY = "USART6";
-//		PRIORITY = 2;
-//	};
+	ISR usart6_rx_handler {
+		CATEGORY = 2;
+		ENTRY = "USART6";
+		PRIORITY = 2;
+	};
 
 };

@@ -269,6 +269,7 @@ bool check_json_actuator(char* str, char* sensor_name){
 
 bool set_room_Valve(char* str, struct room_struct* my_room){
 	// {"Id":"02","Eco":"1","sens":[{"Nm":"Tmp","Val":"20.94","Fmt":"C"},{"Nm":"Hum","Val":"62.34","Fmt":"%"}],"acts":[{"Nm":"Vlv","Val":"057","Fmt":"%"}]}
+	// {"Id":"01","Eco":"0","sens":[{"Nm":"Tmp","Val":"23.70","Fmt":"C"},{"Nm":"Hum","Val":"51.90","Fmt":"%"}],"acts":[{"Nm":"Vlv","Val":"050","Fmt":"%"}]}␊
 	// {"Nm":"Vlv","Val":"057","Fmt":"%"}
 	bool ret = false;
 	char value_str[3];
@@ -385,7 +386,7 @@ struct room_struct JSON_to_room_struct(char* str){
 		LCD_UsrLog(tmp);
 		if(!check){
 			LCD_ErrLog("\r\n message corrupted!");
-//			LCD_ErrLog("\r\n msg: %s", str);
+			LCD_ErrLog("\r\n msg: %s", str);
 		} else {
 			log_room(my_room);
 		}

@@ -81,10 +81,10 @@ ISR2(systick_handler) {
 	CounterTick(myCounter);
 }
 
-// ISR2(usart6_rx_handler) {
-// 	STM_EVAL_LEDToggle(LED4);
-// 	send_string("ciao\0");
-// }
+ ISR2(usart6_rx_handler) {
+ 	STM_EVAL_LEDToggle(LED4);
+ 	send_string("ciao\0");
+ }
 
 TASK(Task_LCD_Graphic) {		// 50 ms
 	static EE_UINT8 count = 0;
@@ -100,6 +100,7 @@ TASK(ReceiveData) {
 	while (USART_GetFlagStatus(EVAL_COM1, USART_FLAG_RXNE) != RESET){
 		ch = USART_ReceiveData(EVAL_COM1);
 		if(ch != '\n' && ch != '\r'){
+			if(ch == ' ') continue;
 			if(msg_pos >= MSG_LEN){
 				#ifdef DEBUG_LOG
 					LCD_ErrLog("\r\nMessage too long or interleaved %d", msg_pos);
@@ -215,7 +216,7 @@ int main(void) {
 	 * */
 	SetRelAlarm(Alarm_ReceiveData, 1000, 10);
 	#ifdef DEBUG_LOG
-		SetRelAlarm(Alarm_LCD_Graphic, 1000, 10000);
+		SetRelAlarm(Alarm_LCD_Graphic, 1000, 30000);
 	#else
 		SetRelAlarm(Alarm_LCD_Graphic, 1000, 50);
 	#endif

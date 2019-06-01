@@ -355,6 +355,10 @@ void log_room(struct room_struct my_room){
 	sprintf(tmp, "\r\n Hum:%2.2f %c", my_room.humidity.value, my_room.humidity.format);
 	LCD_UsrLog(tmp);
 
+	memset(tmp, '\0', 16);
+	sprintf(tmp, "\r\n Valve:%03d %c", my_room.valve.value, my_room.valve.format);
+	LCD_UsrLog(tmp);
+
 }
 
 void print_rooms(){

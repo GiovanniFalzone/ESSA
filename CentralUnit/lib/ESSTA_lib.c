@@ -95,7 +95,7 @@ void ESSTA_compute_house_status(){
 	if(hum > 0 && count > 0){
 		home_struct.humidity.value = hum/count;
 	}
-	home_struct.valve.value = (valv+1)/count;	// round to next digit
+	home_struct.valve.value = valv/count;	// round to next digit
 	home_struct.temperature.format = 'C';
 	home_struct.humidity.format = '%';
 	home_struct.valve.format = '%';

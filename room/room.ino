@@ -1,7 +1,7 @@
 #include "DHT.h"
 #include <Servo.h>
 
-#define DEBUG
+//#define DEBUG
 
 #define MY_ID 	1
 
@@ -232,6 +232,8 @@ bool set_parameters_from_JSON(char* str){
 			#endif
 			ret = false;
 		}
+	} else {
+		ret = false;
 	}
 	return ret;
 }
@@ -406,11 +408,17 @@ uint8_t valve_pos_to_perc(uint8_t pos){
 
 void send_room_status(){
 	char str_temp[6], str_hum[6], str[256];
-	uint8_t valve_perc;
+	uint8_t valve_perc, i=0;
 	dtostrf(my_room.status.temp, 4, 2, str_temp); /* 4 is mininum width, 2 is precision; float value is copied onto str_temp*/
 	dtostrf(my_room.status.hum, 4, 2, str_hum);
 
 	valve_perc = valve_pos_to_perc(my_room.status.valve_status);
-	sprintf(str, "{\"Id\":\"%02d\",\"Eco\":\"%1d\",\"sens\":[{\"Nm\":\"Tmp\",\"Val\":\"%s\",\"Fmt\":\"C\"},{\"Nm\":\"Hum\",\"Val\":\"%s\",\"Fmt\":\"%%\"}], \"acts\":[{\"Nm\":\"Vlv\",\"Val\":\"%03d\",\"Fmt\":\"%%\"}]}", my_room.settings.Id, my_room.status.eco_mode, str_temp, str_hum, valve_perc);
-	Serial.println(str);
+	sprintf(str, "{\"Id\":\"%02d\",\"Eco\":\"%1d\",\"sens\":[{\"Nm\":\"Tmp\",\"Val\":\"%s\",\"Fmt\":\"C\"},{\"Nm\":\"Hum\",\"Val\":\"%s\",\"Fmt\":\"%%\"}],\"acts\":[{\"Nm\":\"Vlv\",\"Val\":\"%03d\",\"Fmt\":\"%%\"}]}\n\0", my_room.settings.Id, my_room.status.eco_mode, str_temp, str_hum, valve_perc);
+	i = 0;
+	while(str[i] != '\0' && i<256){
+		Serial.write(str[i]);
+		i++;
+		delay(25);
+	}
+//	Serial.print(str);
 }
