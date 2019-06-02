@@ -67,11 +67,11 @@ void graphic_init(){
 
 		room_selector = 0;
 		display_data.temperature.value = 00.00;
-		display_data.temperature.format = '?';
+		display_data.temperature.format = 'C';
 		display_data.humidity.value = 00.00;
-		display_data.humidity.format = '?';
+		display_data.humidity.format = '%';
 		display_data.valve.value = 0;
-		display_data.valve.format = '?';
+		display_data.valve.format = '%';
 		display_data.eco = false;
 		display_data.error = false;
 		display_data.id = 255;
@@ -109,9 +109,6 @@ void graphic_dispatch(enum Signal sig){
 			break;
 		case ROOM:
 			manage_room_page(sig);
-			break;
-		case ROOM_SETTINGS:
-			manage_room_settings(sig);
 			break;
 		default:
 			break;
@@ -214,15 +211,23 @@ void manage_home_settings(enum Signal sig){
 	DrawOff(&Screen_objects[B_PLUS]);
 	switch(sig){
 		case ENTRY_SIG:
+			WClear(&Screen_objects[T_ROOM_ID]);
+			DrawOn(&Screen_objects[I_HOME]);
 			break;
 		case EXIT_SIG:
 			// assign new desired temperature
 			break;
 		case LEFT_ARROW_SIG:
-			graphic_tran(HOME);
+			if(rooms[N_ROOMS-1].id != 255){
+				room_selector = N_ROOMS-1;
+				graphic_tran(ROOM);
+			}
 			break;
 		case RIGHT_ARROW_SIG:
-			graphic_tran(HOME);
+			if(rooms[0].id != 255){
+				room_selector = 0;
+				graphic_tran(ROOM);
+			}
 			break;
 		case SETTINGS_SIG:
 			graphic_tran(HOME);
@@ -274,6 +279,7 @@ void manage_room_page(enum Signal sig){
 			}
 			break;
 		case SETTINGS_SIG:
+			graphic_tran(HOME_SETTINGS);
 			break;
 		case ECO_SIG:
 			break;
@@ -284,8 +290,6 @@ void manage_room_page(enum Signal sig){
 		default:
 			break;
 	}
-}
-void manage_room_settings(enum Signal sig){
 }
 
 void graphic_update(bool init){

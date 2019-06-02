@@ -17,22 +17,30 @@
 #define VALVE_PIN	8
 #define PIR_PIN		9
 
+#define VALVE_CLOSED_PIN	6
+#define VALVE_OPEN_PIN		7
+
 #define TEMP_MAX					30
 #define TEMP_MIN					15
 #define DEFAULT_ENERGY_SAVING_DIFFERENCE	2
 #define DEFAULT_DESIRED_TEMPERATURE			24
 
-#define VALVE_CLOSED	20
+#define VALVE_CLOSED	10
 #define VALVE_LOW		45
 #define VALVE_MIDDLE	90
 #define VALVE_HIGH		135
-#define VALVE_OPEN		160
+#define VALVE_OPEN		170
 
 #define HIGH_VALUE_DIFFERENCE		2
 #define APPROACH_TEMP_DIFFERENCE	1
 
 #define ENERGY_SAVING_MOTION_COUNT_THRESHOLD	10
 #define MAX_MOTION_COUNT	40
+
+#define SYSTEM_ERRORS	3
+#define DHT_ERROR		0
+#define VALVE_ERROR		1
+#define COM_ERROR		2
 
 #define MSG_LEN	64
 //------------------------------
@@ -58,10 +66,23 @@ struct room {
 	struct room_status status;
 };
 
+struct valve_settings{
+	unsigned int open_pos;
+	unsigned int closed_pos;
+	unsigned int middle_pos;
+	unsigned int low_pos;
+	unsigned int high_pos;
+};
+
+struct valve_settings valve_settings = {VALVE_OPEN, VALVE_CLOSED, VALVE_MIDDLE, VALVE_LOW, VALVE_HIGH};
+
 struct room my_room = {{MY_ID, DEFAULT_ENERGY_SAVING_DIFFERENCE, DEFAULT_DESIRED_TEMPERATURE, DEFAULT_DESIRED_TEMPERATURE},{0,0,0,0,0,0}};
 
 DHT dht(DHT_PIN,DHT22);
 Servo valve;
+
+// DHT error, Valve error, Communication error
+bool systems_errors [SYSTEM_ERRORS];
 
 //--------------------------------------
 
@@ -69,17 +90,87 @@ void move_valve(unsigned int pos){
 	valve.write(pos);
 	delay(15);
 	my_room.status.valve_status = pos;
+	systems_errors[VALVE_ERROR] = false;
+
+	if(pos == valve_settings.open_pos || pos == valve_settings.closed_pos){
+		delay(1000);	//wait to reach the position
+		if((pos == valve_settings.open_pos) && (!digitalRead(VALVE_OPEN_PIN))){
+			systems_errors[VALVE_ERROR] = true;
+		}
+		if((pos == valve_settings.closed_pos) && (!digitalRead(VALVE_CLOSED_PIN))){
+			systems_errors[VALVE_ERROR] = true;
+		}
+	}
 }
 
 void init_valve() {
 	unsigned int pos = 0;
+
+	systems_errors[VALVE_ERROR] = false;
+
+	pinMode(VALVE_CLOSED_PIN, INPUT);
+	pinMode(VALVE_OPEN_PIN, INPUT);
 	valve.attach(VALVE_PIN);
-	for(pos=VALVE_CLOSED; pos<=VALVE_OPEN; pos++){
+
+	move_valve(VALVE_MIDDLE);
+	delay(1000);
+	for(pos=VALVE_MIDDLE; pos<=VALVE_OPEN; pos++){
 		move_valve(pos);
+		if(digitalRead(VALVE_OPEN_PIN)){
+			valve_settings.open_pos = pos;
+			digitalWrite(ENERGY_SAVING_LED_PIN, HIGH);
+			delay(200);
+			digitalWrite(ENERGY_SAVING_LED_PIN, LOW);
+			break;
+		}
 	}
-	for(pos=VALVE_OPEN; pos>=VALVE_CLOSED; pos--){
+
+	move_valve(VALVE_MIDDLE);
+	delay(1000);
+	for(pos=VALVE_MIDDLE; pos>=VALVE_CLOSED; pos--){
 		move_valve(pos);
+		if(digitalRead(VALVE_CLOSED_PIN)){
+			valve_settings.closed_pos = pos;
+			digitalWrite(ENERGY_SAVING_LED_PIN, HIGH);
+			delay(200);
+			digitalWrite(ENERGY_SAVING_LED_PIN, LOW);
+			break;
+		}
 	}
+	valve_settings.middle_pos = valve_settings.closed_pos + (valve_settings.open_pos - valve_settings.closed_pos)*0.5;
+	valve_settings.high_pos = valve_settings.middle_pos + (valve_settings.open_pos - valve_settings.middle_pos)*0.5;
+	valve_settings.low_pos = valve_settings.closed_pos + (valve_settings.middle_pos - valve_settings.closed_pos)*0.5;
+
+	#ifdef DEBUG
+	char str[50];
+	sprintf(str, "o:%d, h:%d, m:%d, l:%d, c:%d", valve_settings.open_pos, valve_settings.high_pos, valve_settings.middle_pos, valve_settings.low_pos, valve_settings.closed_pos);
+	Serial.println(str);
+	#endif
+
+
+	if((valve_settings.middle_pos >= valve_settings.open_pos) || (valve_settings.middle_pos <= valve_settings.closed_pos)){
+		digitalWrite(ERROR_LED_PIN, HIGH);
+		while(1);
+	}
+	if((valve_settings.high_pos <= valve_settings.middle_pos) || (valve_settings.high_pos >= valve_settings.open_pos)){
+		digitalWrite(ERROR_LED_PIN, HIGH);
+		while(1);
+	}
+	if((valve_settings.low_pos >= valve_settings.middle_pos) || (valve_settings.low_pos <= valve_settings.closed_pos)){
+		digitalWrite(ERROR_LED_PIN, HIGH);
+		while(1);
+	}
+
+	move_valve(valve_settings.open_pos);
+	delay(1000);
+	move_valve(valve_settings.high_pos);
+	delay(1000);
+	move_valve(valve_settings.middle_pos);
+	delay(1000);
+	move_valve(valve_settings.low_pos);
+	delay(1000);
+	move_valve(valve_settings.closed_pos);
+	delay(1000);
 }
 
 void init_leds(){
@@ -101,6 +192,7 @@ void init_leds(){
 }
 
 void init_DHT(){
+	systems_errors[DHT_ERROR] = false;
 	dht.begin();
 	bool ls = false;
 	while(!dht_sensor_task_run()){
@@ -118,6 +210,7 @@ void init_DHT(){
 
 void init_communication(){
 	Serial.begin(9600);
+	systems_errors[COM_ERROR] = false;
 }
 
 void init_motion() {
@@ -257,14 +350,14 @@ bool receive_command(){
 			msg_i = 0;
 			if(check==1){
 				if(set_parameters_from_JSON(msg)){
-					digitalWrite(ERROR_LED_PIN, LOW);
+					systems_errors[COM_ERROR] = false;
 					ret = true;
 				} else {
-					digitalWrite(ERROR_LED_PIN, HIGH);
+					systems_errors[COM_ERROR] = true;
 					ret = false;
 				}
 			} else {
-				digitalWrite(ERROR_LED_PIN, HIGH);
+				systems_errors[COM_ERROR] = true;
 				ret = false;
 			}
 			#ifdef DEBUG
@@ -280,12 +373,36 @@ bool receive_command(){
 	return ret;
 }
 
+void manage_error_led(){
+	unsigned int i=0;
+	bool error = false;
+	for(i=0; i<SYSTEM_ERRORS; i++){
+		error |= systems_errors[i];
+	}
+	digitalWrite(ERROR_LED_PIN, error);
+
+	if(systems_errors[VALVE_ERROR]){
+		init_valve();
+	}
+
+	if(systems_errors[DHT_ERROR]){
+		init_DHT();
+	}
+
+	#ifdef DEBUG
+		char str[50];
+		sprintf(str, "E_dht:%d, E_com:%d, E_vlv:%d", systems_errors[DHT_ERROR], systems_errors[COM_ERROR], systems_errors[VALVE_ERROR]);
+		Serial.println(str);
+		delay(200);
+	#endif
+}
+
 void setup() {
+	init_DHT();
 	init_communication();
 	init_leds();
 	init_motion();
 	init_valve();
-	init_DHT();
 }
 
 void loop() {
@@ -300,6 +417,7 @@ void loop() {
 	if((this_run-last_run) >= TASK_PERIOD){
 		last_run = this_run;
 
+		manage_error_led();
 		dht_sensor_task_run();
 		manage_Energy_Saving_mode();
 
@@ -351,20 +469,20 @@ void control_valve(){
 	float temp_err_diff = my_room.status.temp - my_room.settings.actual_goal_temperature;
 	// low temperature
 	if(temp_err_diff < -HIGH_VALUE_DIFFERENCE){
-		move_valve(VALVE_OPEN);
+		move_valve(valve_settings.open_pos);
 	} else if(temp_err_diff < -APPROACH_TEMP_DIFFERENCE){
-		move_valve(VALVE_HIGH);
+		move_valve(valve_settings.high_pos);
 	}
 
 	// high temperature
 	if(temp_err_diff > HIGH_VALUE_DIFFERENCE){
-		move_valve(VALVE_CLOSED);
+		move_valve(valve_settings.closed_pos);
 	} else if (temp_err_diff > APPROACH_TEMP_DIFFERENCE){
-		move_valve(VALVE_LOW);
+		move_valve(valve_settings.low_pos);
 	}
 
 	if((temp_err_diff >= -APPROACH_TEMP_DIFFERENCE) &&  (temp_err_diff <= APPROACH_TEMP_DIFFERENCE)){
-		move_valve(VALVE_MIDDLE);
+		move_valve(valve_settings.middle_pos);
 	}
 }
 
@@ -375,8 +493,10 @@ bool dht_sensor_task_run() {
 		#ifdef DEBUG
 			Serial.println("Impossibile leggere il sensore!");
 		#endif
+		systems_errors[DHT_ERROR] = true;
 		return false;
 	} else {
+		systems_errors[DHT_ERROR] = false;
 		my_room.status.hum = hum;
 		my_room.status.temp = temp;
 		return true;
@@ -384,26 +504,7 @@ bool dht_sensor_task_run() {
 }
 
 uint8_t valve_pos_to_perc(uint8_t pos){
-	switch (pos) {
-	case VALVE_CLOSED:
-		return 0;
-		break;
-	case VALVE_LOW:
-		return 25;
-		break;
-	case VALVE_MIDDLE:
-		return 50;
-		break;
-	case VALVE_HIGH:
-		return 75;
-		break;
-	case VALVE_OPEN:
-		return 100;
-		break;
-	default:
-		return 0;
-		break;
-	}
+	return ((pos - valve_settings.closed_pos)*100)/(valve_settings.open_pos - valve_settings.closed_pos);
 }
 
 void send_room_status(){
@@ -420,5 +521,4 @@ void send_room_status(){
 		i++;
 		delay(25);
 	}
-//	Serial.print(str);
 }

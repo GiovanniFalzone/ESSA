@@ -8,6 +8,8 @@ void init_home(){
 	home_struct.temperature.format = 'C';
 	home_struct.humidity.value = 0.0;
 	home_struct.humidity.format = '%';
+	home_struct.valve.value = 0;
+	home_struct.valve.format = '%';
 	home_struct.des_temperature = DEFAULT_DES_TEMPERATURE;
 	home_struct.eco = false;
 	home_struct.error = false;
@@ -22,6 +24,8 @@ void init_rooms(){
 		rooms[i].temperature.format='?';
 		rooms[i].humidity.value=0.0;
 		rooms[i].humidity.format='?';
+		rooms[i].valve.value = 0;
+		rooms[i].valve.format = '?';
 		rooms[i].net_par.response = false;
 		rooms[i].net_par.resend = 0;
 		rooms[i].net_par.error = false;
