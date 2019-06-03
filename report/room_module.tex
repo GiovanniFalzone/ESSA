@@ -10,10 +10,9 @@ The module is composed by:
 	\item Humidity sensor
 	\item Motion sensor
 	\item Valve actuator
-	\item Wireless communication module
 	\item Error led
-	\item Eco mode led
 	\item Motion detection led
+	\item Eco mode led
 \end{itemize}
 
 \subsection{Temperature control}
@@ -31,10 +30,9 @@ The valve is set to different positions based on the temperature error (differen
 In order to minimize the consumpion the module keep tracks oF the presence of motion inside the room
 using a motion sensor.
 If a predefined number of motion is detected in a time slot, the module set the desired temperature to the one set by the user.
-If there is the number of motions counted is greater then a predefined thresholf the module set the desired temperature 
+If there is the number of motions counted is greater then a predefined threshold the module set the desired temperature 
 to a value equal to the user desired temperature minus a default value ENERGY\_SAVING\_TEMPERATURE\_DIFFERENCE.
 
-\newpage
 \subsection{User Requirements}
 \begin{req_enum}
 	\item When a motion is not detected for a predefined period the module shall move in Eco mode
@@ -46,37 +44,33 @@ to a value equal to the user desired temperature minus a default value ENERGY\_S
 \begin{req_enum}
 	\item \textbf{Initialization}
 	\begin{req_enum}[label*=\arabic*.]
-		\item Whenever the module is turn on it shall send an initialization message to the \textit{Central Unit} and wait for the response
-		\item During the initialization phase the module shall continue blinking the ERROR\_LED
-		\item During the initialization phase the module shall check the valve moving it from the CLOSED\_POSITION to the OPEN\_POSITION
+		\item During the initialization phase the module shall check the valve moving it from the DAFULT\_CLOSED\_POSITION to the DAFULT\_OPEN\_POSITION
+		\item During the initialization phase the module shall set the CLOSED\_POSITION, LOW\_POSITION, MIDDLE\_POSITION, HIGH\_POSITION, OPEN\_POSITION
 		\item During the initialization phase the module shall check the temperature sensor until a correct value is received
 		\item During the initialization phase the module shall check the humidity sensor until a correct value is received
 	\end{req_enum}
 
 	\item \textbf{Communication}
 	\begin{req_enum}[label*=\arabic*.]
-		\item The module shall move in COMMUNICATION\_ERROR status if does not receive the check message from the \textit{Central Unit} within 1 minute
-		\item The module shall send its status to the \textit{Central Unit} every 10 seconds
-		\item The module shall send its status in conformance with JSON format
+		\item Whenever the module receive a correct request message from \textit{Central Unit} it shall send its status in conformance with JSON format
 		\begin{req_enum}[label*=\arabic*.]
 			\item The status message shall include its ID in the status message
 			\item The status message shall include the Eco mode status
 			\item The status message shall include its sensors list
 			\item The status message shall include its actuators list
-			\item The status message shall include the name of every sensor and actuator
-			\item The status message shall include the format for every numerical value
+			\item The status message shall include the name of each sensor and actuator
+			\item The status message shall include the format for each numerical value
 		\end{req_enum}
-		\item Whenever a check message from the \textit{Central Unit} is corrupted the module shall go in COMMUNICATION\_ERROR
+		\item Whenever a request message from the \textit{Central Unit} is corrupted the module shall go in COMMUNICATION\_ERROR
 	\end{req_enum}
 
 	\item \textbf{Valve management}
 	\begin{req_enum}[label*=\arabic*.]
-		\item The module shall change the position of the valve every 30 seconds
-		\item The valve shall be in one of the allowed positions
+		\item The module shall change the position of the valve every VALVE\_PERIOD seconds
 		\begin{req_enum}[label*=\arabic*.]
 			\item The valve shall be in OPEN\_POSITION whenever the difference between the actual temperature and the desired temperature is below -COLD\_THRESHOLD C\degree
 			\item The valve shall be in HIGH\_POSITION whenever the difference between the actual temperature and the desired temperature is greater then -COLD\_THRESHOLD C\degree and below -APPROACHING\_THRESHOLD C\degree
-			\item The valve shall be in HALF\_POSITION whenever the difference between the actual temperature and the desired temperature is greater or equal then -APPROACHING\_THRESHOLD C\degree and below or equal then APPROACHING\_THRESHOLD C\degree
+			\item The valve shall be in MIDDLE\_POSITION whenever the difference between the actual temperature and the desired temperature is greater or equal then -APPROACHING\_THRESHOLD C\degree and below or equal then APPROACHING\_THRESHOLD C\degree
 			\item The valve shall be in LOW\_POSITION whenever the difference between the actual temperature and the desired temperature is greater then APPROACHING\_THRESHOLD C\degree and below or equal then HOT\_THRESHOLD C\degree
 			\item The valve shall be in CLOSED\_POSITION whenever the difference between the actual temperature and the desired temperature is greater then HOT\_TEMP C\degree
 		\end{req_enum}
@@ -84,19 +78,19 @@ to a value equal to the user desired temperature minus a default value ENERGY\_S
 
 	\item \textbf{Sensors management}
 		\begin{req_enum}[label*=\arabic*.]
-			\item The module shall update the actual temperature every 10 seconds
-			\item Whenever the actual temperature is below 15 C\degree or greater then 40 C\degree the module shall go in temperature error state
-			\item The module shall update the actual humidity every 10 seconds
-			\item The module shall update the presence of motion every 5 seconds
-			\item Whenever a motion is detected the module shall notify it turning on the MOTION\_LED
-			\item Whenever a motion is detected the module shall increase a MOTION\_COUNTER value
-			\item Whenever a motion is not detected and the MOTION\_COUNTER is greater then zero the module shall decrease the MOTION\_COUNTER
+			\item The module shall update the actual temperature and humidity every TEMPERATURE\_HUMIDITY\_PERIOD seconds
+			\item Whenever the actual temperature is below MIN\_TEMPERATURE C\degree or greater then MAX\_TEMPERATURE C\degree the module shall go in temperature error state
+			\item The module shall update the presence of motion every MOTION\_PERIOD seconds
+			\item Whenever a motion is detected the module shall increase the MOTION\_COUNTER otherwise decrese until zero
+			\item Whenever the MOTION\_COUNTER reaches the MOTION\_THRESOLD value the module shall notify it turning on the MOTIO\_LED and updating the motion status
+			\item Whenever the MOTION\_COUNTER is below the MOTION\_THRESOLD value the module shall notify it turning off the MOTIO\_LED and updating the motion status
+			\item Whenever the valve is in OPEN\_POSITION the module shall check the OPEN\_POSITION\_SENSOR and rise a VALVE\_ERROR if it is not consistent
+			\item Whenever the valve is in CLOSED\_POSITION the module shall check the CLOSED\_POSITION\_SENSOR and rise a VALVE\_ERROR if it is not consistent
 		\end{req_enum}
 
 	\item \textbf{Energy Saving management}
 		\begin{req_enum}[label*=\arabic*.]
-			\item Whenever the MOTION\_COUNTER reaches the MOTION\_THRESOLD value the module shall move in normal mode
-			\item Whenever the MOTION\_COUNTER is below the MOTION\_THRESOLD value the module shall move in Eco mode
+			\item Whenever the motion status is set the module shall move in normal mode otherwise in Eco mode
 			\item Whenever the module is in Eco mode the module shall notify it turning on the ECO\_MODE\_LED
 			\item Whenever the module is in Eco mode the module shall set the desired temperature with the difference between the desired temperature and the ENERGY\_SAVING\_TEMPERATURE\_DIFFERENCE
 		\end{req_enum}
@@ -104,7 +98,7 @@ to a value equal to the user desired temperature minus a default value ENERGY\_S
 		\item \textbf{Error handling}
 		\begin{req_enum}[label*=\arabic*.]
 			\item Whenever an error case is achieved the module shall notify the precense of errors turning on the ERROR\_LED
-			\item Whenever an error case is achieved the module shall continue sending a status message with the error field set to 1 to the \textit{Central Unit}
+			\item Whenever a valve error case is reached the module shall recompute the positions values
 		\end{req_enum}
 
 \end{req_enum}

@@ -5,15 +5,20 @@
 \contentsline {subsection}{\numberline {2.2}Energy Saving mode}{3}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}User Requirements}{4}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Functional requirements}{4}{subsection.2.4}
-\contentsline {section}{\numberline {3}Central Unit}{6}{section.3}
-\contentsline {subsection}{\numberline {3.1}User Requirements}{6}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Functional requirements}{6}{subsection.3.2}
-\contentsline {section}{\numberline {4}Implementationm, Central Unit module}{7}{section.4}
-\contentsline {subsection}{\numberline {4.1}Wiring}{7}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Graphic Interface}{8}{subsection.4.2}
-\contentsline {section}{\numberline {5}Implementation, Room module}{9}{section.5}
-\contentsline {subsection}{\numberline {5.1}Components description}{9}{subsection.5.1}
-\contentsline {subsubsection}{\numberline {5.1.1}ServoMotor}{9}{subsubsection.5.1.1}
-\contentsline {subsubsection}{\numberline {5.1.2}Valve position switches}{10}{subsubsection.5.1.2}
-\contentsline {subsubsection}{\numberline {5.1.3}Temperature-Humidity Sensor}{10}{subsubsection.5.1.3}
-\contentsline {subsection}{\numberline {5.2}Wiring}{11}{subsection.5.2}
+\contentsline {section}{\numberline {3}Central Unit}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1}User Requirements}{7}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Functional requirements}{7}{subsection.3.2}
+\contentsline {section}{\numberline {4}Implementationm, Central Unit module}{8}{section.4}
+\contentsline {subsection}{\numberline {4.1}Wiring}{8}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Graphic Interface}{9}{subsection.4.2}
+\contentsline {section}{\numberline {5}Implementation, Room module}{10}{section.5}
+\contentsline {subsection}{\numberline {5.1}Components description}{10}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}ServoMotor}{10}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}Valve position switches}{11}{subsubsection.5.1.2}
+\contentsline {subsubsection}{\numberline {5.1.3}Temperature-Humidity Sensor}{11}{subsubsection.5.1.3}
+\contentsline {subsection}{\numberline {5.2}Wiring}{12}{subsection.5.2}
+\contentsline {section}{\numberline {6}Implementation values}{13}{section.6}
+\contentsline {subsection}{\numberline {6.1}Parameters}{13}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}JSON messages}{13}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Request Message}{13}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Status Message}{13}{subsubsection.6.2.2}

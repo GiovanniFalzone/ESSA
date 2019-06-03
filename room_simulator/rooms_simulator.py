@@ -54,8 +54,12 @@ def main():
 		raw_msg = ser.readline().decode('utf-8').rstrip()
 		print("--------------------------------")
 		print("Receive: " + raw_msg)
-		json_msg = json.loads(raw_msg)
-		room_simulator(json_msg["Id"])
+		try:
+			json_msg = json.loads(raw_msg)
+			if(json_msg["Id"] == "02"):
+				room_simulator(json_msg["Id"])
+		except ValueError as e:
+			print("JSON not compliant")
 
 if __name__ == "__main__":
     main()

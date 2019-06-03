@@ -1,0 +1,55 @@
+\section{Implementation values}
+\subsection{Parameters}
+\begin{center}
+	\begin{tabular}{||l | l||}
+		\hline
+		DEFAULT\_OPEN\_POSITION 	& 160 \\ 
+		\hline
+		DEFAULT\_HIGH\_POSITION 	& 115 \\ 
+		\hline
+		DEFAULT\_MIDDLE\_POSITION 	& 70 \\ 
+		\hline
+		DEFAULT\_LOW\_POSITION 		& 45 \\ 
+		\hline
+		DEFAULT\_CLOSED\_POSITION	& 20 \\ 
+		\hline
+		MIN\_TEMPERATURE	& 15 \\
+		\hline
+		MAX\_TEMPERATURE	& 30 \\
+		\hline
+		MIN\_HUMIDITY	& 0 \\
+		\hline
+		MAX\_HUMIDITY	& 100 \\
+		\hline
+		MIN\_VALVE		& 0 \\
+		\hline
+		MAX\_VALVE		& 100 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection{JSON messages}
+
+\subsubsection{Request Message}
+\lstset{style=custompython}
+\begin{lstlisting}[language=XML]
+	{
+		"Id":"01",
+		"DTemp":"30.00"
+	}
+\end{lstlisting}
+
+\subsubsection{Status Message}
+\lstset{style=custompython}
+\begin{lstlisting}[language=XML]
+{
+	"Id":"02","Eco":"0",
+	"sens":[
+		{"Nm":"Tmp","Val":"23.70","Fmt":"C"},
+		{"Nm":"Hum","Val":"51.90","Fmt":"\%"}
+	],
+	"acts":[
+		{"Nm":"Vlv","Val":"100","Fmt":"\%"}
+	]
+}
+\end{lstlisting}
