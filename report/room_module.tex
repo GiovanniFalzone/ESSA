@@ -3,6 +3,7 @@ The aim of this module is to control the temperature of the room and act on the 
 achieve the desired temperature set by the user through the \textit{Central Unit} but minimizing the consumption
 reducing the desired temperature when the room is not used.
 \newline
+
 The module is composed by:
 \begin{itemize}
 	\item Temperature sensor
@@ -36,8 +37,8 @@ to a value equal to the user desired temperature minus a default value ENERGY\_S
 \newpage
 \subsection{User Requirements}
 \begin{req_enum}
-	\item Whenever a motion is not detected the module shall move in Eco mode
-	\item Whenever difference between the actual temperature and the desired temperature is included in the range 
+	\item When a motion is not detected for a predefined period the module shall move in Eco mode
+	\item When the difference between the actual temperature and the desired temperature is included in the range 
 	[-APPROACHING\_THRESHOLD, APPROACHING\_THRESHOLD] the valve shall be in HALF\_POSITION
 \end{req_enum}
 
@@ -65,7 +66,7 @@ to a value equal to the user desired temperature minus a default value ENERGY\_S
 			\item The status message shall include the name of every sensor and actuator
 			\item The status message shall include the format for every numerical value
 		\end{req_enum}
-		\item Whenever a check message from the \textit{Central Unit} is not received whitin 1 minute the module shall go in COMMUNICATION\_ERROR
+		\item Whenever a check message from the \textit{Central Unit} is corrupted the module shall go in COMMUNICATION\_ERROR
 	\end{req_enum}
 
 	\item \textbf{Valve management}

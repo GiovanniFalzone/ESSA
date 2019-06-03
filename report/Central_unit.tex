@@ -1,1 +1,43 @@
 \section{Central Unit}
+\subsection{User Requirements}
+\begin{req_enum}
+	\item The module shall represent the average temperature of the building in \textit{Celsius} format
+	\item The module shall represent the averahe humidity of the builg in \textit{Percentage}
+	\item The module shall represent the usage of the heating system in \textit{Percentage}
+	\item The module shall represent the average temperature of each room in \textit{Celsius} format
+	\item The module shall represent the averahe humidity of each \textit{Percentage}
+	\item The module shall represent the usage of each room \textit{Percentage}
+	\item The module shall allow to set a desired temperature in \textit{Celsius} for the building
+	\item The module shall represent the reachability of each room
+\end{req_enum}
+
+\subsection{Functional requirements}
+\begin{req_enum}
+	\item \textbf{Running}
+	\begin{req_enum}[label*=\arabic*.]
+		\item The module shall send a \textit{request message} every POLLING\_PERIOD
+		\item The module shall update the graphic at least every GRAPHIC\_PERIOD
+		\item The module shall check the JSON compliance of the received messages and discard the corrupted ones
+	\end{req_enum}
+
+	\item \textbf{Communication}
+	\begin{req_enum}[label*=\arabic*.]
+		\item The module shall send the \textit{request message} in JSON compliant format
+		\begin{req_enum}[label*=\arabic*.]
+			\item The request message shall include the \textit{ID} of the target room
+			\item The request message shall include the \textit{Desired Temperature}
+		\end{req_enum}
+		\item The module shall check the compliance of the received messages
+		\item The module shall check the correctness of the data in the JSON messages
+		\item The module shall discard every corrupted received message and resend the request
+		\item The module shall resend the same request at least 3 times before marking the target room as crashed
+	\end{req_enum}
+
+	\item \textbf{Values}
+	\begin{req_enum}[label*=\arabic*.]
+		\item The temperature received shall be in the range [MIN\_TEMPERATURE, MAX\_TEMPERATURE]
+		\item The humidity received shall be in the range [MAX\_HUMIDITY, MIN\_HUMIDITY]
+		\item The valve status received shall be in the range [MIN\_VALVE, MAX\_VALVE]
+	\end{req_enum}
+
+\end{req_enum}
