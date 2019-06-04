@@ -1,8 +1,0 @@
-#ifndef GLOBEH
-#define GLOBEH
-
-int motor(int j);
-int led_globe(int i);
-//int led_write(int i);
-
-#endif
