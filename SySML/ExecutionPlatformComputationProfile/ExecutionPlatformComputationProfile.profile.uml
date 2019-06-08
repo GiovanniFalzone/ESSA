@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_9rHbsIkkEemTc-jHdmBBIw" name="ExecutionPlatformComputationProfile">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TcNwgIklEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_g847sIkvEemTc-jHdmBBIw" name="ExecutionPlatformComputationProfile" nsURI="http:///schemas/ExecutionPlatformComputationProfile/_g84UoIkvEemTc-jHdmBBIw/1" nsPrefix="ExecutionPlatformComputationProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_g847sYkvEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_g847tokvEemTc-jHdmBBIw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_g847t4kvEemTc-jHdmBBIw" key="Version" value="0.0.2"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_g847uIkvEemTc-jHdmBBIw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_g847uYkvEemTc-jHdmBBIw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_g847uokvEemTc-jHdmBBIw" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_g847u4kvEemTc-jHdmBBIw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_g847sokvEemTc-jHdmBBIw" name="Board">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_g847s4kvEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Erl00IklEemTc-jHdmBBIw"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks/Block"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_TcO-oIklEemTc-jHdmBBIw" name="ExecutionPlatformComputationProfile" nsURI="http:///schemas/ExecutionPlatformComputationProfile/_TcL7UIklEemTc-jHdmBBIw/0" nsPrefix="ExecutionPlatformComputationProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TcO-oYklEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TcQz0YklEemTc-jHdmBBIw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TcQz0oklEemTc-jHdmBBIw" key="Version" value="0.0.1"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TcQz04klEemTc-jHdmBBIw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TcQz1IklEemTc-jHdmBBIw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TcQz1YklEemTc-jHdmBBIw" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TcQz1oklEemTc-jHdmBBIw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_TcO-ooklEemTc-jHdmBBIw" name="Board">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TcO-o4klEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Erl00IklEemTc-jHdmBBIw"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks/Block"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_9vzucIkkEemTc-jHdmBBIw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_9v08kIkkEemTc-jHdmBBIw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_KdQRcIklEemTc-jHdmBBIw">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_ModelElements"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_KdRfkIklEemTc-jHdmBBIw">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Ports_u0026Flows"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_KdSGoIklEemTc-jHdmBBIw">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_DeprecatedElements"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_KdSGoYklEemTc-jHdmBBIw">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Blocks"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_Erl00IklEemTc-jHdmBBIw" name="Board">
+    <generalization xmi:type="uml:Generalization" xmi:id="_PF0YAIklEemTc-jHdmBBIw">
+      <general xmi:type="uml:Stereotype" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Blocks.stereotype_packagedElement_Block"/>
+    </generalization>
+  </packagedElement>
+</uml:Profile>

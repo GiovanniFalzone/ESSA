@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_5fwEwIjzEemsUp-KEGPgnQ" name="FunctionalPortProfile" metaclassReference="_B2FLoIj2EemsUp-KEGPgnQ">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6l1RIIj1EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_GGGl0Yk3EemTc-jHdmBBIw" name="FunctionalPortProfile" nsURI="http:///schemas/FunctionalPortProfile/_GGGl0Ik3EemTc-jHdmBBIw/6" nsPrefix="FunctionalPortProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GGGl0ok3EemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GGHM4Yk3EemTc-jHdmBBIw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GGHM4ok3EemTc-jHdmBBIw" key="Version" value="0.0.7"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GGHM44k3EemTc-jHdmBBIw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GGHM5Ik3EemTc-jHdmBBIw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GGHM5Yk3EemTc-jHdmBBIw" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GGHM5ok3EemTc-jHdmBBIw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_GGGl04k3EemTc-jHdmBBIw" name="FunctionalFlowPort">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GGGl1Ik3EemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_C4Z2MIj0EemsUp-KEGPgnQ"/>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GGGl1Yk3EemTc-jHdmBBIw" source="duplicates">
+          <contents xmi:type="ecore:EReference" xmi:id="_GGGl1ok3EemTc-jHdmBBIw" name="base_Port" ordered="false" lowerBound="1">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GGGl14k3EemTc-jHdmBBIw" source="redefines">
+              <references xmi:type="ecore:EReference" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort/base_Port"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+          </contents>
+        </eAnnotations>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_GGGl2ok3EemTc-jHdmBBIw" name="FunctionalFlowPort_Float" eSuperTypes="_GGGl04k3EemTc-jHdmBBIw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GGGl24k3EemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_xDmlkIj4EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_GGGl3Ik3EemTc-jHdmBBIw" name="min" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_GGGl3ok3EemTc-jHdmBBIw" name="max" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_GGGl4Yk3EemTc-jHdmBBIw" name="FunctionalFlowPort_Int" eSuperTypes="_GGGl04k3EemTc-jHdmBBIw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GGGl4ok3EemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_yvSEQIj4EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_GGGl44k3EemTc-jHdmBBIw" name="min" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_GGGl5Yk3EemTc-jHdmBBIw" name="max" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_FFqwQYj6EemsUp-KEGPgnQ" name="FunctionalPortProfile" nsURI="http:///schemas/FunctionalPortProfile/_FFqwQIj6EemsUp-KEGPgnQ/5" nsPrefix="FunctionalPortProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FFqwQoj6EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FFrXUIj6EemsUp-KEGPgnQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FFrXUYj6EemsUp-KEGPgnQ" key="Version" value="0.0.6"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FFrXUoj6EemsUp-KEGPgnQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FFrXU4j6EemsUp-KEGPgnQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FFrXVIj6EemsUp-KEGPgnQ" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FFrXVYj6EemsUp-KEGPgnQ" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_FFqwQ4j6EemsUp-KEGPgnQ" name="FunctionalFlowPort">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FFqwRIj6EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_C4Z2MIj0EemsUp-KEGPgnQ"/>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FFqwRYj6EemsUp-KEGPgnQ" source="duplicates">
+          <contents xmi:type="ecore:EReference" xmi:id="_FFqwRoj6EemsUp-KEGPgnQ" name="base_Port" ordered="false" lowerBound="1">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FFqwR4j6EemsUp-KEGPgnQ" source="redefines">
+              <references xmi:type="ecore:EReference" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort/base_Port"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+          </contents>
+        </eAnnotations>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_FFqwSoj6EemsUp-KEGPgnQ" name="FunctionalFlowPort_Float" eSuperTypes="_FFqwQ4j6EemsUp-KEGPgnQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FFqwS4j6EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_xDmlkIj4EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_FFqwTIj6EemsUp-KEGPgnQ" name="min" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_FFqwToj6EemsUp-KEGPgnQ" name="max" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_FFqwUYj6EemsUp-KEGPgnQ" name="FunctionalFlowPort_Int" eSuperTypes="_FFqwQ4j6EemsUp-KEGPgnQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FFqwUoj6EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_yvSEQIj4EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_FFqwU4j6EemsUp-KEGPgnQ" name="min" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_FFqwVYj6EemsUp-KEGPgnQ" name="max" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_6FUoQIj5EemsUp-KEGPgnQ" name="FunctionalPortProfile" nsURI="http:///schemas/FunctionalPortProfile/_6FUBMIj5EemsUp-KEGPgnQ/4" nsPrefix="FunctionalPortProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6FUoQYj5EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6FUoWIj5EemsUp-KEGPgnQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6FUoWYj5EemsUp-KEGPgnQ" key="Version" value="0.0.5"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6FUoWoj5EemsUp-KEGPgnQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6FUoW4j5EemsUp-KEGPgnQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6FUoXIj5EemsUp-KEGPgnQ" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6FUoXYj5EemsUp-KEGPgnQ" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_6FUoQoj5EemsUp-KEGPgnQ" name="FunctionalFlowPort">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6FUoQ4j5EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_C4Z2MIj0EemsUp-KEGPgnQ"/>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6FUoRIj5EemsUp-KEGPgnQ" source="duplicates">
+          <contents xmi:type="ecore:EReference" xmi:id="_6FUoRYj5EemsUp-KEGPgnQ" name="base_Port" ordered="false" lowerBound="1">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6FUoRoj5EemsUp-KEGPgnQ" source="redefines">
+              <references xmi:type="ecore:EReference" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort/base_Port"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+          </contents>
+        </eAnnotations>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_6FUoSYj5EemsUp-KEGPgnQ" name="FloatFlowPort" eSuperTypes="_6FUoQoj5EemsUp-KEGPgnQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6FUoSoj5EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_xDmlkIj4EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_6FUoS4j5EemsUp-KEGPgnQ" name="min" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_6FUoTYj5EemsUp-KEGPgnQ" name="max" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_6FUoUIj5EemsUp-KEGPgnQ" name="IntFlowPort" eSuperTypes="_6FUoQoj5EemsUp-KEGPgnQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6FUoUYj5EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_yvSEQIj4EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_6FUoUoj5EemsUp-KEGPgnQ" name="min" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_6FUoVIj5EemsUp-KEGPgnQ" name="max" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_bs_-8Yj5EemsUp-KEGPgnQ" name="FunctionalPortProfile" nsURI="http:///schemas/FunctionalPortProfile/_bs_-8Ij5EemsUp-KEGPgnQ/3" nsPrefix="FunctionalPortProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bs_-8oj5EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_btBNEYj5EemsUp-KEGPgnQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_btBNEoj5EemsUp-KEGPgnQ" key="Version" value="0.0.4"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_btBNE4j5EemsUp-KEGPgnQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_btBNFIj5EemsUp-KEGPgnQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_btBNFYj5EemsUp-KEGPgnQ" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_btBNFoj5EemsUp-KEGPgnQ" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_bs_-84j5EemsUp-KEGPgnQ" name="FunctionalFlowPort">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bs_-9Ij5EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_C4Z2MIj0EemsUp-KEGPgnQ"/>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bs_-9Yj5EemsUp-KEGPgnQ" source="duplicates">
+          <contents xmi:type="ecore:EReference" xmi:id="_bs_-9oj5EemsUp-KEGPgnQ" name="base_Port" ordered="false" lowerBound="1">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_btAmAIj5EemsUp-KEGPgnQ" source="redefines">
+              <references xmi:type="ecore:EReference" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort/base_Port"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+          </contents>
+        </eAnnotations>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_btAmA4j5EemsUp-KEGPgnQ" name="FloatFlowPort">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_btAmBIj5EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_xDmlkIj4EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_btAmBYj5EemsUp-KEGPgnQ" name="base_FunctionalFlowPort" ordered="false" lowerBound="1" eType="_bs_-84j5EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_btAmB4j5EemsUp-KEGPgnQ" name="min" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_btAmCYj5EemsUp-KEGPgnQ" name="max" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_btAmC4j5EemsUp-KEGPgnQ" name="IntFlowPort">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_btAmDIj5EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_yvSEQIj4EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_btAmDYj5EemsUp-KEGPgnQ" name="base_FunctionalFlowPort" ordered="false" lowerBound="1" eType="_bs_-84j5EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_btAmD4j5EemsUp-KEGPgnQ" name="min" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_btAmEYj5EemsUp-KEGPgnQ" name="max" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_HP4agIj5EemsUp-KEGPgnQ" name="FunctionalPortPRofile" nsURI="http:///schemas/FunctionalPortPRofile/_HP3zcIj5EemsUp-KEGPgnQ/2" nsPrefix="FunctionalPortPRofile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HP4agYj5EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HP5BkIj5EemsUp-KEGPgnQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HP5BkYj5EemsUp-KEGPgnQ" key="Version" value="0.0.3"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HP5Bkoj5EemsUp-KEGPgnQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HP5Bk4j5EemsUp-KEGPgnQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HP5BlIj5EemsUp-KEGPgnQ" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HP5BlYj5EemsUp-KEGPgnQ" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_HP4agoj5EemsUp-KEGPgnQ" name="FunctionalFlowPort">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HP4ag4j5EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_C4Z2MIj0EemsUp-KEGPgnQ"/>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HP4ahIj5EemsUp-KEGPgnQ" source="duplicates">
+          <contents xmi:type="ecore:EReference" xmi:id="_HP4ahYj5EemsUp-KEGPgnQ" name="base_Port" ordered="false" lowerBound="1">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HP4ahoj5EemsUp-KEGPgnQ" source="redefines">
+              <references xmi:type="ecore:EReference" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort/base_Port"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+          </contents>
+        </eAnnotations>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_HP4aiYj5EemsUp-KEGPgnQ" name="FloatFlowPort">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HP4aioj5EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_xDmlkIj4EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HP4ai4j5EemsUp-KEGPgnQ" name="base_FunctionalFlowPort" ordered="false" lowerBound="1" eType="_HP4agoj5EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_HP4ajYj5EemsUp-KEGPgnQ" name="min" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_HP4aj4j5EemsUp-KEGPgnQ" name="max" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_HP4akYj5EemsUp-KEGPgnQ" name="IntFlowPort">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HP4akoj5EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_yvSEQIj4EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HP4ak4j5EemsUp-KEGPgnQ" name="base_FunctionalFlowPort" ordered="false" lowerBound="1" eType="_HP4agoj5EemsUp-KEGPgnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_HP4alYj5EemsUp-KEGPgnQ" name="min" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_HP4al4j5EemsUp-KEGPgnQ" name="max" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_mGAsEIj3EemsUp-KEGPgnQ" name="FunctionalPortPRofile" nsURI="http:///schemas/FunctionalPortPRofile/_mF_d8Ij3EemsUp-KEGPgnQ/1" nsPrefix="FunctionalPortPRofile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mGAsEYj3EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mGBTLIj3EemsUp-KEGPgnQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mGBTLYj3EemsUp-KEGPgnQ" key="Version" value="0.0.2"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mGBTLoj3EemsUp-KEGPgnQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mGBTL4j3EemsUp-KEGPgnQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mGBTMIj3EemsUp-KEGPgnQ" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mGBTMYj3EemsUp-KEGPgnQ" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_mGBTIIj3EemsUp-KEGPgnQ" name="FunctionalFlowPort">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mGBTIYj3EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_C4Z2MIj0EemsUp-KEGPgnQ"/>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mGBTIoj3EemsUp-KEGPgnQ" source="duplicates">
+          <contents xmi:type="ecore:EReference" xmi:id="_mGBTI4j3EemsUp-KEGPgnQ" name="base_Port" ordered="false" lowerBound="1">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mGBTJIj3EemsUp-KEGPgnQ" source="redefines">
+              <references xmi:type="ecore:EReference" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort/base_Port"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+          </contents>
+        </eAnnotations>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_mGBTJoj3EemsUp-KEGPgnQ" name="min" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_mGBTKIj3EemsUp-KEGPgnQ" name="max" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_6l1RIYj1EemsUp-KEGPgnQ" name="FunctionalPortPRofile" nsURI="http:///schemas/FunctionalPortPRofile/_6l0DAIj1EemsUp-KEGPgnQ/0" nsPrefix="FunctionalPortPRofile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6l1RIoj1EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6l3GUIj1EemsUp-KEGPgnQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6l3GUYj1EemsUp-KEGPgnQ" key="Version" value="0.0.1"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6l3GUoj1EemsUp-KEGPgnQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6l3GU4j1EemsUp-KEGPgnQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6l3GVIj1EemsUp-KEGPgnQ" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6l3GVYj1EemsUp-KEGPgnQ" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_6l1RI4j1EemsUp-KEGPgnQ" name="FunctionalFlowPort">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6l1RJIj1EemsUp-KEGPgnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_C4Z2MIj0EemsUp-KEGPgnQ"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements/FlowPort"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:type="uml:ElementImport" xmi:id="_B2FLoIj2EemsUp-KEGPgnQ" alias="Port">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+  </elementImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_5n57MIjzEemsUp-KEGPgnQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_5n6iQIjzEemsUp-KEGPgnQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_o9uyAIj1EemsUp-KEGPgnQ">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_DeprecatedElements"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_o9uyAYj1EemsUp-KEGPgnQ">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_ModelElements"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_o9uyAoj1EemsUp-KEGPgnQ">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Ports_u0026Flows"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_o9vZEIj1EemsUp-KEGPgnQ">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Blocks"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_C4Z2MIj0EemsUp-KEGPgnQ" name="FunctionalFlowPort">
+    <generalization xmi:type="uml:Generalization" xmi:id="_wECtYIj1EemsUp-KEGPgnQ">
+      <general xmi:type="uml:Stereotype" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_DeprecatedElements.stereotype_packagedElement_FlowPort"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F7pS0Ij2EemsUp-KEGPgnQ" name="base_Port" association="_F7mPgIj2EemsUp-KEGPgnQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_F7mPgIj2EemsUp-KEGPgnQ" name="E_FunctionalFlowPort_Port10" memberEnd="_F7orwIj2EemsUp-KEGPgnQ _F7pS0Ij2EemsUp-KEGPgnQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_F7orwIj2EemsUp-KEGPgnQ" name="extension_FunctionalFlowPort" type="_C4Z2MIj0EemsUp-KEGPgnQ" aggregation="composite" association="_F7mPgIj2EemsUp-KEGPgnQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_xDmlkIj4EemsUp-KEGPgnQ" name="FunctionalFlowPort_Float">
+    <generalization xmi:type="uml:Generalization" xmi:id="_49xKUIj5EemsUp-KEGPgnQ" general="_C4Z2MIj0EemsUp-KEGPgnQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DL8rAIj5EemsUp-KEGPgnQ" name="min" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DL8rAYj5EemsUp-KEGPgnQ" name="max" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_yvSEQIj4EemsUp-KEGPgnQ" name="FunctionalFlowPort_Int">
+    <generalization xmi:type="uml:Generalization" xmi:id="_5b530Ij5EemsUp-KEGPgnQ" general="_C4Z2MIj0EemsUp-KEGPgnQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DsCgUIj5EemsUp-KEGPgnQ" name="min" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DsDHYIj5EemsUp-KEGPgnQ" name="max" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </ownedAttribute>
+  </packagedElement>
+</uml:Profile>

@@ -1,7 +1,19 @@
-\newpage
 \section{Implementation, Room module}
-The room module is implemented on a ATM328P, the code is implemented using the Arduino toolchain.
-The tasks of the module are implemented as pseudo-periodical tasks using the \textit{timer0} to check the activation time of each task branch.
+The \textit{Room} functionalities are running on a ATM328P, the tasks of the module are implemented as pseudo-periodical tasks using the \textit{timer0} 
+to check the activation time of each task, the tasks are reported in the following table.
+
+\begin{center}
+	\begin{tabular}{||c | c ||} 
+		\hline
+		Name 	& Frequency \\ 
+		\hline
+		\textbf{Main task}			&	0.5Hz \\ 
+		\hline
+		\textbf{ControlValve task}	&	0.25Hz \\ 
+		\hline
+	\end{tabular}
+	\label{tab:Room_Tasks}
+\end{center}
 
 \begin{figure}[h]
 	\centering
@@ -72,14 +84,13 @@ The module is composed by:
 	\caption{Discovery board wiring}
 	\label{fig:valve}
 \end{figure}
-In order to check the position of the valve, two switches are fixed in the open and closed position.
-During the \textit{init\_valve} phase the position in degree is saved in order to adjust the possible positions of the valve.
-Whenever the valve goes in one of these positions a check is done using the correct switch.	
+In order to check the position of the valve, two switches are fixed in the open and closed position, during the \textit{init\_valve} phase the possible positions are computed starting from the open and closed position.
+Whenever the valve is in the open or closed position a check is done using the switches.
 
 \subsubsection{Temperature-Humidity Sensor}
-The chosen sensor is a DHT22 that is perfect to work in closed environment, 
-a pull-up resistor, connecting the data pin to VCC, is used in order to mantain the line clear when no one is transmitting.
-The sensor has a dedicated one-wire communication protocol implemented by the DHT adafruit library.
+The sensor DHT22 have been used for the projet, in the following tables are reported the features of the sensors.
+The sensor has a dedicated one-wire communication protocol implemented by the DHT adafruit library, a pull-up resistor is used in order to mantain the line clear when no one is transmitting.
+
 \begin{center}
 	\begin{tabular}{||l | l||} 
 		\hline

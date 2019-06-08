@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_c_DYsIklEemTc-jHdmBBIw" name="ExecutionPlatformCommunicationProfile" metaclassReference="_uzAigIklEemTc-jHdmBBIw">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JKOt4IkmEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_dJ-qwIkvEemTc-jHdmBBIw" name="ExecutionPlatformCommunicationProfile" nsURI="http:///schemas/ExecutionPlatformCommunicationProfile/_dJ-DsIkvEemTc-jHdmBBIw/9" nsPrefix="ExecutionPlatformCommunicationProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dJ-qwYkvEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dJ-q1IkvEemTc-jHdmBBIw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dJ-q1YkvEemTc-jHdmBBIw" key="Version" value="0.0.10"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dJ-q1okvEemTc-jHdmBBIw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dJ-q14kvEemTc-jHdmBBIw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dJ-q2IkvEemTc-jHdmBBIw" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dJ-q2YkvEemTc-jHdmBBIw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_dJ-qwokvEemTc-jHdmBBIw" name="SerialLink">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dJ-qw4kvEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_jFr_wIklEemTc-jHdmBBIw"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks/Block"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_dJ-qxIkvEemTc-jHdmBBIw" name="Speed" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dJ-qxokvEemTc-jHdmBBIw" name="base_Connector" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_dJ-qyYkvEemTc-jHdmBBIw" name="USART" eSuperTypes="_dJ-qwokvEemTc-jHdmBBIw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dJ-qyokvEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_KuTIsIkmEemTc-jHdmBBIw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_dJ-qy4kvEemTc-jHdmBBIw" name="ParityBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_dJ-qzYkvEemTc-jHdmBBIw" name="StopBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_dJ-qz4kvEemTc-jHdmBBIw" name="FlowControl" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_NF1joYktEemTc-jHdmBBIw" name="ExecutionPlatformCommunicationProfile" nsURI="http:///schemas/ExecutionPlatformCommunicationProfile/_NF1joIktEemTc-jHdmBBIw/8" nsPrefix="ExecutionPlatformCommunicationProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_NF1jooktEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_NF2KsIktEemTc-jHdmBBIw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NF2KsYktEemTc-jHdmBBIw" key="Version" value="0.0.9"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NF2KsoktEemTc-jHdmBBIw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NF2Ks4ktEemTc-jHdmBBIw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NF2KtIktEemTc-jHdmBBIw" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NF2KtYktEemTc-jHdmBBIw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_NF1jo4ktEemTc-jHdmBBIw" name="SerialLink">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_NF1jpIktEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_jFr_wIklEemTc-jHdmBBIw"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks/Block"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_NF1jpYktEemTc-jHdmBBIw" name="Speed" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_NF1jp4ktEemTc-jHdmBBIw" name="length" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_NF1jqYktEemTc-jHdmBBIw" name="base_Connector" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_NF1jrIktEemTc-jHdmBBIw" name="USART" eSuperTypes="_NF1jo4ktEemTc-jHdmBBIw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_NF1jrYktEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_KuTIsIkmEemTc-jHdmBBIw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_NF1jroktEemTc-jHdmBBIw" name="ParityBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_NF1jsIktEemTc-jHdmBBIw" name="StopBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_NF1jsoktEemTc-jHdmBBIw" name="FlowControl" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_E0gcEIksEemTc-jHdmBBIw" name="ExecutionPlatformCommunicationProfile" nsURI="http:///schemas/ExecutionPlatformCommunicationProfile/_E0f1AIksEemTc-jHdmBBIw/7" nsPrefix="ExecutionPlatformCommunicationProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_E0gcEYksEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_E0gcLIksEemTc-jHdmBBIw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_E0gcLYksEemTc-jHdmBBIw" key="Version" value="0.0.8"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_E0gcLoksEemTc-jHdmBBIw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_E0gcL4ksEemTc-jHdmBBIw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_E0gcMIksEemTc-jHdmBBIw" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_E0gcMYksEemTc-jHdmBBIw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_E0gcEoksEemTc-jHdmBBIw" name="SerialLink">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_E0gcE4ksEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_jFr_wIklEemTc-jHdmBBIw"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_E0gcFIksEemTc-jHdmBBIw" name="base_Block" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks/Block"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_E0gcFoksEemTc-jHdmBBIw" name="Speed" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_E0gcGIksEemTc-jHdmBBIw" name="length" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_E0gcG4ksEemTc-jHdmBBIw" name="USART" eSuperTypes="_E0gcEoksEemTc-jHdmBBIw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_E0gcHIksEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_KuTIsIkmEemTc-jHdmBBIw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_E0gcHYksEemTc-jHdmBBIw" name="ParityBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_E0gcH4ksEemTc-jHdmBBIw" name="StopBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_E0gcIYksEemTc-jHdmBBIw" name="FlowControl" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_E0gcI4ksEemTc-jHdmBBIw" name="RX" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_E0gcJYksEemTc-jHdmBBIw" name="TX" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_2bSwQIkqEemTc-jHdmBBIw" name="ExecutionPlatformCommunicationProfile" nsURI="http:///schemas/ExecutionPlatformCommunicationProfile/_2bSJMIkqEemTc-jHdmBBIw/6" nsPrefix="ExecutionPlatformCommunicationProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2bSwQYkqEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2bSwVokqEemTc-jHdmBBIw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2bSwV4kqEemTc-jHdmBBIw" key="Version" value="0.0.7"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2bSwWIkqEemTc-jHdmBBIw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2bSwWYkqEemTc-jHdmBBIw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2bSwWokqEemTc-jHdmBBIw" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2bSwW4kqEemTc-jHdmBBIw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_2bSwQokqEemTc-jHdmBBIw" name="SerialLink">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2bSwQ4kqEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_jFr_wIklEemTc-jHdmBBIw"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_2bSwRIkqEemTc-jHdmBBIw" name="base_Block" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks/Block"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_2bSwRokqEemTc-jHdmBBIw" name="Speed" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_2bSwSIkqEemTc-jHdmBBIw" name="length" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_2bSwS4kqEemTc-jHdmBBIw" name="USART" eSuperTypes="_2bSwQokqEemTc-jHdmBBIw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2bSwTIkqEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_KuTIsIkmEemTc-jHdmBBIw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_2bSwTYkqEemTc-jHdmBBIw" name="ParityBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_2bSwT4kqEemTc-jHdmBBIw" name="StopBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_2bSwUYkqEemTc-jHdmBBIw" name="FlowControl" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_0pdmQIkqEemTc-jHdmBBIw" name="ExecutionPlatformCommunicationProfile" nsURI="http:///schemas/ExecutionPlatformCommunicationProfile/_0pc_MIkqEemTc-jHdmBBIw/5" nsPrefix="ExecutionPlatformCommunicationProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0pdmQYkqEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0peNUokqEemTc-jHdmBBIw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0peNU4kqEemTc-jHdmBBIw" key="Version" value="0.0.6"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0peNVIkqEemTc-jHdmBBIw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0peNVYkqEemTc-jHdmBBIw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0peNVokqEemTc-jHdmBBIw" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0peNV4kqEemTc-jHdmBBIw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_0pdmQokqEemTc-jHdmBBIw" name="SerialLink">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0pdmQ4kqEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_jFr_wIklEemTc-jHdmBBIw"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_0pdmRIkqEemTc-jHdmBBIw" name="base_Block" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks/Block"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_0pdmRokqEemTc-jHdmBBIw" name="Speed" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_0pdmSIkqEemTc-jHdmBBIw" name="length" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_0pdmS4kqEemTc-jHdmBBIw" name="USART" eSuperTypes="_0pdmQokqEemTc-jHdmBBIw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0pdmTIkqEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_KuTIsIkmEemTc-jHdmBBIw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_0pdmTYkqEemTc-jHdmBBIw" name="ParityBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_0pdmT4kqEemTc-jHdmBBIw" name="StopBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_0pdmUYkqEemTc-jHdmBBIw" name="FlowControl" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_EK8MkYkqEemTc-jHdmBBIw" name="ExecutionPlatformCommunicationProfile" nsURI="http:///schemas/ExecutionPlatformCommunicationProfile/_EK8MkIkqEemTc-jHdmBBIw/4" nsPrefix="ExecutionPlatformCommunicationProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_EK8MkokqEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_EK8zookqEemTc-jHdmBBIw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_EK8zo4kqEemTc-jHdmBBIw" key="Version" value="0.0.5"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_EK8zpIkqEemTc-jHdmBBIw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_EK8zpYkqEemTc-jHdmBBIw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_EK8zpokqEemTc-jHdmBBIw" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_EK8zp4kqEemTc-jHdmBBIw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_EK8Mk4kqEemTc-jHdmBBIw" name="SerialLink">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_EK8MlIkqEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_jFr_wIklEemTc-jHdmBBIw"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_EK8MlYkqEemTc-jHdmBBIw" name="base_Block" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks/Block"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_EK8Ml4kqEemTc-jHdmBBIw" name="Speed" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_EK8MmYkqEemTc-jHdmBBIw" name="length" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_EK8MnIkqEemTc-jHdmBBIw" name="USART" eSuperTypes="_EK8Mk4kqEemTc-jHdmBBIw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_EK8MnYkqEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_KuTIsIkmEemTc-jHdmBBIw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_EK8MnokqEemTc-jHdmBBIw" name="ParityBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_EK8MoIkqEemTc-jHdmBBIw" name="StopBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_EK8MookqEemTc-jHdmBBIw" name="FlowControl" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_4X6x0IkmEemTc-jHdmBBIw" name="ExecutionPlatformCommunicationProfile" nsURI="http:///schemas/ExecutionPlatformCommunicationProfile/_4X6KwIkmEemTc-jHdmBBIw/3" nsPrefix="ExecutionPlatformCommunicationProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4X6x0YkmEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4X6x5okmEemTc-jHdmBBIw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4X6x54kmEemTc-jHdmBBIw" key="Version" value="0.0.4"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4X6x6IkmEemTc-jHdmBBIw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4X6x6YkmEemTc-jHdmBBIw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4X6x6okmEemTc-jHdmBBIw" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4X6x64kmEemTc-jHdmBBIw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_4X6x0okmEemTc-jHdmBBIw" name="SerialLink">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4X6x04kmEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_jFr_wIklEemTc-jHdmBBIw"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_4X6x1IkmEemTc-jHdmBBIw" name="base_Block" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks/Block"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_4X6x1okmEemTc-jHdmBBIw" name="Speed" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_4X6x2IkmEemTc-jHdmBBIw" name="length" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_4X6x24kmEemTc-jHdmBBIw" name="USART" eSuperTypes="_4X6x0okmEemTc-jHdmBBIw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4X6x3IkmEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_KuTIsIkmEemTc-jHdmBBIw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_4X6x3YkmEemTc-jHdmBBIw" name="ParityBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_4X6x34kmEemTc-jHdmBBIw" name="StopBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_4X6x4YkmEemTc-jHdmBBIw" name="FlowControl" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_njfyYYkmEemTc-jHdmBBIw" name="ExecutionPlatformCommunicationProfile" nsURI="http:///schemas/ExecutionPlatformCommunicationProfile/_njfyYIkmEemTc-jHdmBBIw/2" nsPrefix="ExecutionPlatformCommunicationProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_njfyYokmEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_njgZcokmEemTc-jHdmBBIw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_njgZc4kmEemTc-jHdmBBIw" key="Version" value="0.0.3"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_njgZdIkmEemTc-jHdmBBIw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_njgZdYkmEemTc-jHdmBBIw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_njgZdokmEemTc-jHdmBBIw" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_njgZd4kmEemTc-jHdmBBIw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_njfyY4kmEemTc-jHdmBBIw" name="SerialLink">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_njfyZIkmEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_jFr_wIklEemTc-jHdmBBIw"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_njfyZYkmEemTc-jHdmBBIw" name="base_Block" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks/Block"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_njfyZ4kmEemTc-jHdmBBIw" name="Speed" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_njfyaokmEemTc-jHdmBBIw" name="USART" eSuperTypes="_njfyY4kmEemTc-jHdmBBIw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_njfya4kmEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_KuTIsIkmEemTc-jHdmBBIw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_njfybIkmEemTc-jHdmBBIw" name="ParityBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_njfybokmEemTc-jHdmBBIw" name="StopBit" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_njfycIkmEemTc-jHdmBBIw" name="FlowControl" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_OdtZsIkmEemTc-jHdmBBIw" name="ExecutionPlatformCommunicationProfile" nsURI="http:///schemas/ExecutionPlatformCommunicationProfile/_OdsyoIkmEemTc-jHdmBBIw/1" nsPrefix="ExecutionPlatformCommunicationProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_OdtZsYkmEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_OduAwYkmEemTc-jHdmBBIw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_OduAwokmEemTc-jHdmBBIw" key="Version" value="0.0.2"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_OduAw4kmEemTc-jHdmBBIw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_OduAxIkmEemTc-jHdmBBIw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_OduAxYkmEemTc-jHdmBBIw" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_OduAxokmEemTc-jHdmBBIw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_OdtZsokmEemTc-jHdmBBIw" name="SerialLink">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_OdtZs4kmEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_jFr_wIklEemTc-jHdmBBIw"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_OdtZtIkmEemTc-jHdmBBIw" name="base_Block" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks/Block"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_OdtZtokmEemTc-jHdmBBIw" name="Speed" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_OdtZuYkmEemTc-jHdmBBIw" name="USART" eSuperTypes="_OdtZsokmEemTc-jHdmBBIw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_OdtZuokmEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_KuTIsIkmEemTc-jHdmBBIw"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_JKP8AIkmEemTc-jHdmBBIw" name="ExecutionPlatformCommunicationProfile" nsURI="http:///schemas/ExecutionPlatformCommunicationProfile/_JKOG0IkmEemTc-jHdmBBIw/0" nsPrefix="ExecutionPlatformCommunicationProfile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JKP8AYkmEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JKQjEokmEemTc-jHdmBBIw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JKQjE4kmEemTc-jHdmBBIw" key="Version" value="0.0.1"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JKQjFIkmEemTc-jHdmBBIw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JKQjFYkmEemTc-jHdmBBIw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JKQjFokmEemTc-jHdmBBIw" key="Date" value="2019-06-07"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JKQjF4kmEemTc-jHdmBBIw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_JKP8AokmEemTc-jHdmBBIw" name="SerialLink">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JKP8A4kmEemTc-jHdmBBIw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_jFr_wIklEemTc-jHdmBBIw"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_JKP8BIkmEemTc-jHdmBBIw" name="base_Block" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks/Block"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_JKP8BokmEemTc-jHdmBBIw" name="Speed" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:type="uml:ElementImport" xmi:id="_uzAigIklEemTc-jHdmBBIw" alias="Connector">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Connector"/>
+  </elementImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_dCnDAIklEemTc-jHdmBBIw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_dCnqEIklEemTc-jHdmBBIw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_oarugIklEemTc-jHdmBBIw">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Blocks"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_oasVkIklEemTc-jHdmBBIw">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_ModelElements"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_oas8oIklEemTc-jHdmBBIw">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_DeprecatedElements"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_oatjsIklEemTc-jHdmBBIw">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Ports_u0026Flows"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_jFr_wIklEemTc-jHdmBBIw" name="SerialLink">
+    <generalization xmi:type="uml:Generalization" xmi:id="_MbqlQIktEemTc-jHdmBBIw">
+      <general xmi:type="uml:Stereotype" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Blocks.stereotype_packagedElement_Block"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_3oMagIklEemTc-jHdmBBIw" name="Speed" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_L6hnEYktEemTc-jHdmBBIw" name="base_Connector" association="_L6hAAIktEemTc-jHdmBBIw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Connector"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_KuTIsIkmEemTc-jHdmBBIw" name="USART">
+    <generalization xmi:type="uml:Generalization" xmi:id="_NZ3XEIkmEemTc-jHdmBBIw" general="_jFr_wIklEemTc-jHdmBBIw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_a_8LMIkmEemTc-jHdmBBIw" name="ParityBit" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_f-gW8IkmEemTc-jHdmBBIw" name="StopBit" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_h1tJIIkmEemTc-jHdmBBIw" name="FlowControl" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_L6hAAIktEemTc-jHdmBBIw" name="E_SerialLink_Connector11" memberEnd="_L6hnEIktEemTc-jHdmBBIw _L6hnEYktEemTc-jHdmBBIw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_L6hnEIktEemTc-jHdmBBIw" name="extension_SerialLink" type="_jFr_wIklEemTc-jHdmBBIw" aggregation="composite" association="_L6hAAIktEemTc-jHdmBBIw"/>
+  </packagedElement>
+</uml:Profile>

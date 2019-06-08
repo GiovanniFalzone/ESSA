@@ -1,0 +1,65 @@
+\section{Introduction}
+The purpose of this project is to realize a smart-home application to control the heating system of a building based on the temperature of each room, in order to minimize the consumption of the building each room apply an energy saving function reducing the desired temperature when it is not needed.
+The system is composed by two differ modules
+\begin{itemize}
+	\item central unit module 
+	\item room module
+\end{itemize}
+
+\subsection{Central Unit}
+The \textit{Central Unit} has the role of coordinator that retrieve the status of each room and compute the average values for the builng.
+Using a graphical User Interface the module represents the average values of the building and the values for each room, the graphical User Interface is composed by:
+\begin{itemize}
+	\item Main page to represent the overview of the building
+	\item Room page to represent the status of each room
+	\item Setting page to set the desired temperature
+\end{itemize}
+In the Settings page the module shall allow the user to set the desired temperature shared with the rooms.
+The minimum and maximum allowed temperatures are 15 C\degree and 30 C\degree.
+
+%--------------------------------------
+\subsection{Room Module}
+The purpose of this module is to control the temperature of the room acting on a valve in order to 
+reach and mantain the \textit{GoalTemperature}.
+
+\subsubsection{Energy Saving mode}
+In order to minimize the consumpion the module keep tracks of the presence of motion inside the room
+using a motion sensor. \\
+If the number of motions detected in the last 30s is greater then a predefined threshold, the module shall set the \textit{GoalTemperature} to the one set by the user. \\
+If the number of motions detected in the last 30s is less then a predefined threshold the module shall set the \textit{GoalTemperature} to:
+\begin{equation}
+	GoalTemperature = DesiredTemperature - EnergySavingTemperatureOffset
+\end{equation}
+
+\subsubsection{Valve control}
+In order to control the heating of the room the valve is moved to different positions based on the temperature error 
+(\textit{ActualTemperature} - \textit{GoalThemperature}) as in the following table, 
+whenever one of these rules is valid the mosule shall move the valve in the correspondant position described in the third column of the table as percentage of maximum flow.
+\begin{center}
+	\begin{tabular}{| l | l | l |} 
+		\hline
+		\textbf{rule} & \textbf{valve position} & \textbf{Flow in \%}\\
+		\hline
+		\begin{math} error < -WARM \end{math} &  OPEN\_POSITION & 100\\
+		\hline
+		\begin{math} error \in [-WARM, -APPROCHING) \end{math}  & HIGH\_POSITION & 75\\
+		\hline
+		\begin{math} error \in [-APPROCHING, +APPROCHING] \end{math} & MIDDLE\_POSITION & 50 \\
+		\hline
+		\begin{math} error \in (APPROCHING, WARM] \end{math} & LOW\_POSITION & 25\\
+		\hline
+		error > WARM &  CLOSED\_POSITION & 0 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+In the following table are reported the temperature thresholds:
+\begin{center}
+	\begin{tabular}{||l | l||} 
+		\hline
+		WARM 		& 2 C\degree \\ 
+		\hline
+		APPROCHING 	& 1 C\degree \\ 
+		\hline
+	\end{tabular}
+\end{center}

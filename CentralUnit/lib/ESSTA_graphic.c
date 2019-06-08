@@ -99,22 +99,6 @@ void graphic_tran(enum State_Control target){
 	graphic_dispatch(ENTRY_SIG);
 }
 
-void graphic_dispatch(enum Signal sig){
-	switch(State_Control){
-		case HOME:
-			manage_home_page(sig);
-			break;
-		case HOME_SETTINGS:
-			manage_home_settings(sig);
-			break;
-		case ROOM:
-			manage_room_page(sig);
-			break;
-		default:
-			break;
-	}
-}
-
 void assign_room_data(struct room_struct room){
 	if(room.id != 255 ){
 		display_data.id = room.id;
@@ -169,6 +153,7 @@ void decrease_des_temperature(){
 }
 
 void manage_home_page(enum Signal sig){
+	int i;
 	assign_home_data();
 	switch(sig){
 		case ENTRY_SIG:
@@ -180,14 +165,16 @@ void manage_home_page(enum Signal sig){
 		case EXIT_SIG:
 			break;
 		case LEFT_ARROW_SIG:
-			if(rooms[N_ROOMS-1].id != 255){
+			for(i = N_ROOMS-1; (rooms[i].id == 255)&&i>=0; i--) ;
+			if(i>=0){
 				room_selector = N_ROOMS-1;
 				graphic_tran(ROOM);
 			}
 			break;
 		case RIGHT_ARROW_SIG:
-			if(rooms[0].id != 255){
-				room_selector = 0;
+			for(i = 0; (rooms[i].id == 255)&&i<N_ROOMS; i++) ;
+			if(i<N_ROOMS){
+				room_selector = i;
 				graphic_tran(ROOM);
 			}
 			break;
@@ -206,6 +193,7 @@ void manage_home_page(enum Signal sig){
 }
 
 void manage_home_settings(enum Signal sig){
+	int i;
 	assign_home_settings_data();
 	DrawOff(&Screen_objects[B_MINUS]);
 	DrawOff(&Screen_objects[B_PLUS]);
@@ -218,14 +206,16 @@ void manage_home_settings(enum Signal sig){
 			// assign new desired temperature
 			break;
 		case LEFT_ARROW_SIG:
-			if(rooms[N_ROOMS-1].id != 255){
+			for(i = N_ROOMS-1; (rooms[i].id == 255)&&i>=0; i--) ;
+			if(i>=0){
 				room_selector = N_ROOMS-1;
 				graphic_tran(ROOM);
 			}
 			break;
 		case RIGHT_ARROW_SIG:
-			if(rooms[0].id != 255){
-				room_selector = 0;
+			for(i = 0; (rooms[i].id == 255)&&i<N_ROOMS; i++) ;
+			if(i<N_ROOMS){
+				room_selector = i;
 				graphic_tran(ROOM);
 			}
 			break;
@@ -249,6 +239,7 @@ void manage_home_settings(enum Signal sig){
 }
 
 void manage_room_page(enum Signal sig){
+	int i;
 	assign_room_data(rooms[room_selector]);
 	switch(sig){
 		case ENTRY_SIG:
@@ -259,21 +250,19 @@ void manage_room_page(enum Signal sig){
 		case EXIT_SIG:
 			break;
 		case LEFT_ARROW_SIG:
-			if(room_selector > 0){
-				if(rooms[room_selector - 1].id != 255){
-					room_selector--;
-					graphic_tran(ROOM);
-				}
+			for(i = room_selector-1; (rooms[i].id == 255)&&i>=0; i--) ;
+			if(i>=0){
+				room_selector = i;
+				graphic_tran(ROOM);
 			} else {
 				graphic_tran(HOME);
 			}
 			break;
 		case RIGHT_ARROW_SIG:
-			if(room_selector < (N_ROOMS - 1)){
-				if(rooms[room_selector + 1].id != 255){
-					room_selector++;
-					graphic_tran(ROOM);
-				}
+			for(i = room_selector+1; (rooms[i].id == 255)&&i<N_ROOMS; i++) ;
+			if(i<N_ROOMS){
+				room_selector = i;
+				graphic_tran(ROOM);
 			} else {
 				graphic_tran(HOME);
 			}
@@ -286,6 +275,22 @@ void manage_room_page(enum Signal sig){
 		case PLUS_SIG:
 			break;
 		case MINUS_SIG:
+			break;
+		default:
+			break;
+	}
+}
+
+void graphic_dispatch(enum Signal sig){
+	switch(State_Control){
+		case HOME:
+			manage_home_page(sig);
+			break;
+		case HOME_SETTINGS:
+			manage_home_settings(sig);
+			break;
+		case ROOM:
+			manage_room_page(sig);
 			break;
 		default:
 			break;

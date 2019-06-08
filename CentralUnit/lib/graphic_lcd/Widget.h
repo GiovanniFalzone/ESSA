@@ -56,10 +56,10 @@ typedef struct {
 #define imginfo(w) ((Image *)((w)->ws))
 
 unsigned char OnTouch(const Widget ws[], TPoint *press);
-unsigned char DrawInit(Widget ws[]);
-unsigned char DrawOn(Widget *w);
-unsigned char DrawOff(Widget *w);
-unsigned char WPrint(Widget *w, char *s);
-unsigned char WClear(Widget *w);
+unsigned char DrawInit(const Widget ws[]);
+unsigned char DrawOn(const Widget *w);
+unsigned char DrawOff(const Widget *w);
+unsigned char WPrint(const Widget *w, char *s);
+unsigned char WClear(const Widget *w);
 
 #endif /* BUTTON_H_ */

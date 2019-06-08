@@ -7,7 +7,7 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_conf.h"
 #include "stm32f4_discovery.h"
-#include "stm32f4_discovery_lcd.h"T
+#include "stm32f4_discovery_lcd.h"
 #include "lcd_log.h"
 
 #include "ESSTA_definitions.h"

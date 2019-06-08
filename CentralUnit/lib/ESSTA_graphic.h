@@ -41,6 +41,8 @@ uint8_t room_selector;
 
 void graphic_init();
 void graphic_step();
+void graphic_update(bool init);
+void graphic_dispatch(enum Signal sig);
 
 void touch_event_step();
 

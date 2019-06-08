@@ -2,14 +2,15 @@
 #define ESSTA_TYPES_H
 
 #include "lcd_log.h"
+#include <string.h>
 
 #define bool uint8_t
 #define false 0
 #define true 1
 
-#define DEBUG
-// #define DEBUG_LOG
-// #define DEBUG_LOG_JSON
+//#define DEBUG
+//#define DEBUG_LOG
+//#define DEBUG_LOG_JSON
 
 #define N_ROOMS 2
 

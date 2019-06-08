@@ -1,9 +1,5 @@
-\newpage
-\section{Implementationm, Central Unit module}
-In this chapter it is shown the Implementation of each module, the hardware is chosen
-to be compliant with the requirements of the project.
-
-\begin{figure}[h]
+\section{Implementation, Central Unit module}
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=8cm,keepaspectratio]{img/CentralUnit}
 	\caption{Central Unit module}
@@ -12,28 +8,41 @@ to be compliant with the requirements of the project.
 
 The module is composed by:
 \begin{itemize}
-	\item STM32F407VG DISCOVERY
+	\item STM32F407VG DISCOVERY powered by ARM Cortex-M4 32-bit
 	\item LCD board Touchscreen 3”5
 \end{itemize}
-
-
-On the discovery board is running the code on top of Erika RTOS, the systen is composed by three different task:
-\begin{itemize}
-	\item \textbf{Graphic task} running at 10Hz (every 100ms)
-	\item \textbf{Polling task} running at 0.2Hz (every 5s)
-	\item \textbf{Check Message}, aperiodic task
-\end{itemize}
+In the discovery board are running the \textit{CentralUnit's} tasks on top of Erika RTOS, the systen is composed by three different tasks reported in the table \ref{tab:CU_Tasks}.\\
+Whenever a \textit{RoomStatus} message arrives through the \textit{USART} interface, the \textit{CheckMessage} aperiodic task is activated in order to check the message and execute the \textit{RoomManager's} functionalities.\\
+The \textit{CheckMessage} task apply a simple JSON compliance test and check each field name and value of the message, then the message is converted in a \textit{RoomStrunct} and the Room's status and \textit{Building} status are updated.\\
+While the \textit{CheckMessage} task has the role of processing the incoming \textit{RoomStatus}, the \textit{Polling} task has the role of managing the rooms sending a check message periodically one room after the other, 
+if the response \textit{RoomStatus} message doesn't arrive within the next task's job it's considered as an error and the same \textit{RoomRequest} message is sent until a maximum of 3 resend, then the room is marked as crashed.\\
+The \textit{Graphic} task has the role to represent the data of the building and for each room depending on the selected page by the user, in the settings page the user is able to set the desired temperature that will be sent starting from the next job of the \textit{Polling} task.\\
+\begin{center}
+	\begin{tabular}{||c | c | c ||} 
+		\hline
+		Name 	& Frequency & Priority	\\ 
+		\hline
+		\textbf{Check Message task}	&	Aperiodic		& 3 	\\ 
+		\hline
+		\textbf{Polling task}		&	0.2Hz			& 2 	\\ 
+		\hline
+		\textbf{Graphic task}		&	10Hz			& 1 	\\ 
+		\hline
+		\textbf{Receiver}			&	USART background		& / 	\\ 
+		\hline
+	\end{tabular}
+	\label{tab:CU_Tasks}
+\end{center}
 
 \subsection{Wiring}
-
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=6cm,keepaspectratio]{img/discovery_board}
 	\caption{Discovery board wiring}
 	\label{fig:dicovery}
 \end{figure}
 
-The module is using the \textit{USART6} of the discovery board to comunicate with the \textit{room} module, in the following table are reported the features of the \textbf{USART6}
+The module is using the \textit{USART6} of the discovery board to comunicate with the \textit{room} modules, in the following table is reported the configuration of the \textbf{USART6}
 \begin{center}
 	\begin{tabular}{||c | c | c | c | c | c | c ||} 
 		\hline
@@ -44,10 +53,14 @@ The module is using the \textit{USART6} of the discovery board to comunicate wit
 	\end{tabular}
 \end{center}
 
-
-
 \subsection{Graphic Interface}
-\begin{figure}[h]
+The graphic interface is compose by three different screens:
+\begin{itemize}
+	\item Home screen
+	\item Settings screen
+	\item Room screen
+\end{itemize}
+\begin{figure}[H]
 	\centering
 	\begin{subfigure}{0.4\textwidth} % width of left subfigure
 		\includegraphics[width=4cm,keepaspectratio]{img/home_screen}
@@ -66,22 +79,16 @@ The module is using the \textit{USART6} of the discovery board to comunicate wit
 		\label{fig:room_screen}
 	\end{subfigure}
 \end{figure}
-The graphic interface is compose by three different screens:
-\begin{itemize}
-	\item Home screen
-	\item Settings screen
-	\item Room screen
-\end{itemize}
-The main page is the \textbf{home screen} reported in \ref{fig:home_screen}, in this page the user can see the average values of the building, 
-if no room is attached it will display zero or the last computed value.
-If at least one room is in \textit{room crashed mode} then a warning appear on the home screen.
+The main page is the \textbf{home screen} reported in \ref{fig:home_screen}, in this page are reported the average values of the building,
+If at least one room is marked as \textit{crashed} then a warning appear on the home screen.
 If at least one room is in \textit{eco mode} then an \textit{eco} icon is displayed on the home screen.
-Depending on the difference between the desired temperature and the actual average temperature the termometer icon will change in cold or hot.
-In the \textbf{settings screen} reported in \ref{fig:settings_screen} it is possible to set the desired temperature of the building.
+If the difference between the desired temperature and the actual average temperature is less then 0.5C\degree, the shown termometer icon is hot otherwise cold.
+In the \textbf{settings screen} reported in \ref{fig:settings_screen} it is possible to set the desired temperature of the building that is the same for each room.
 In the \textbf{room screen} reported in \ref{fig:room_screen} is displayed the status of the selected room, status composed by:
 \begin{itemize}
-	\item Eco mode
+	\item Eco mode (the icon on the top-left of the screen)
 	\item Temperature
 	\item Humidity
 	\item Valve position
+	\item Warning (Warning icon between the eco icon and the icon in the top-center)
 \end{itemize}

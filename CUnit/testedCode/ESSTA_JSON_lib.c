@@ -1,7 +1,6 @@
 #include "ESSTA_JSON_lib.h"
-//--------------- needed for test--------------------------
 struct room_struct rooms[N_ROOMS] = {0,0,{0,0},{0,0},{0,0},{0,0,0}};
-//---------------------------------------------------------
+struct home_struct home_struct = {0,0,0,{0,0},{0,0},{0,0}};
 
 bool strequal(const char* s1, const char* s2){
 	if(*s1 != '\0' && *s2 != '\0'){
@@ -39,10 +38,16 @@ uint8_t str_2d_to_uint8(char* str){
 	return ret;
 }
 
-float str_2_2d_to_float(char *str){	//01.23
+float str_5_2d_to_float(char *str){	//01.23
 	float ret = (float)str_2d_to_uint8(str);
 	ret += ((float)str_2d_to_uint8(str+3))/100;
 }
+
+float str_6_2d_to_float(char *str){	//001.23
+	float ret = (float)str_3d_to_uint8(str);
+	ret += ((float)str_2d_to_uint8(str+4))/100;
+}
+
 
 uint8_t check_message(char* str){
 	uint8_t count_start_graph = 0;
@@ -162,7 +167,7 @@ bool set_room_Eco(char* str, struct room_struct* my_room){
 }
 
 bool check_json_sensor(char* str, char* sensor_name){
-	// {"Id":"01","Eco":"1","sens":[{"Nm":"Tmp","Val":"24.00","Fmt":"C"},{"Nm":"Hum","Val":"56.78","Fmt":"%"}]}
+	// {"Id":"01","Eco":"1","sens":[{"Nm":"Tmp","Val":"24.00","Fmt":"C"},{"Nm":"Hum","Val":"100.78","Fmt":"%"}]}
 	// {"Nm":"Tmp","Val":"24.00","Fmt":"C"}
 	bool ret = true;
 	char tmp[16];
@@ -202,7 +207,11 @@ bool check_json_sensor(char* str, char* sensor_name){
 	#endif
 
 
-	memcpy(tmp, str+27, 3);
+	if(strequal("Hum\0", sensor_name)){
+		memcpy(tmp, str+28, 3);
+	} else {
+		memcpy(tmp, str+27, 3);
+	}
 	tmp[3]='\0';
 	ret &= strequal(tmp, "Fmt\0");
 
@@ -271,14 +280,14 @@ bool check_json_actuator(char* str, char* sensor_name){
 }
 
 bool set_room_Valve(char* str, struct room_struct* my_room){
-	// {"Id":"02","Eco":"1","sens":[{"Nm":"Tmp","Val":"20.94","Fmt":"C"},{"Nm":"Hum","Val":"62.34","Fmt":"%"}],"acts":[{"Nm":"Vlv","Val":"057","Fmt":"%"}]}
-	// {"Id":"01","Eco":"0","sens":[{"Nm":"Tmp","Val":"23.70","Fmt":"C"},{"Nm":"Hum","Val":"51.90","Fmt":"%"}],"acts":[{"Nm":"Vlv","Val":"050","Fmt":"%"}]}␊
+	// {"Id":"02","Eco":"1","sens":[{"Nm":"Tmp","Val":"20.94","Fmt":"C"},{"Nm":"Hum","Val":"100.34","Fmt":"%"}],"acts":[{"Nm":"Vlv","Val":"057","Fmt":"%"}]}
+	// {"Id":"01","Eco":"0","sens":[{"Nm":"Tmp","Val":"23.70","Fmt":"C"},{"Nm":"Hum","Val":"100.90","Fmt":"%"}],"acts":[{"Nm":"Vlv","Val":"050","Fmt":"%"}]}␊
 	// {"Nm":"Vlv","Val":"057","Fmt":"%"}
 	bool ret = false;
 	char value_str[3];
 	uint8_t value = 0;
 	char format;
-	char* str_json_init = str+112;	// {"Nm":"Vlv","Val":"057","Fmt":"%"}
+	char* str_json_init = str+113;	// {"Nm":"Vlv","Val":"057","Fmt":"%"}
 
 	ret = check_json_actuator(str_json_init, "Vlv\0");
 	if(ret){
@@ -319,7 +328,7 @@ bool set_room_Temperature(char* str, struct room_struct* my_room){
 	if(ret){
 		memcpy(value_str, str_json_init+19, 5);
 		value_str[5]='\0';
-		value = str_2_2d_to_float(value_str);
+		value = str_5_2d_to_float(value_str);
 		format = *(str_json_init + 33);
 		if (value >= TEMP_MIN && value <= TEMP_MAX && (format=='C' || format=='K')){
 			my_room->temperature.value = value;
@@ -341,19 +350,19 @@ bool set_room_Temperature(char* str, struct room_struct* my_room){
 }
 
 bool set_room_Humidity(char* str, struct room_struct* my_room){
-	// {"Id":"01","Eco":"1","sens":[{"Nm":"Tmp","Val":"24.00","Fmt":"C"},{"Nm":"Hum","Val":"56.78","Fmt":"%"}]}
+	// {"Id":"01","Eco":"1","sens":[{"Nm":"Tmp","Val":"24.00","Fmt":"C"},{"Nm":"Hum","Val":"100.78","Fmt":"%"}]}
 	bool ret = false;
-	char value_str[6];
+	char value_str[7];
 	float value;
 	char format;
-	char* str_json_init = str+66;	// {"Nm":"Hum","Val":"56.78","Fmt":"%"}]}
+	char* str_json_init = str+66;	// {"Nm":"Hum","Val":"100.78","Fmt":"%"}]}
 
 	ret = check_json_sensor(str_json_init, "Hum\0");
 	if(ret){
-		memcpy(value_str, str_json_init+19, 5);
-		value_str[5]='\0';
-		value = str_2_2d_to_float(value_str);
-		format = *(str_json_init+33);
+		memcpy(value_str, str_json_init+19, 6);
+		value_str[6]='\0';
+		value = str_6_2d_to_float(value_str);
+		format = *(str_json_init+34);
 		if (value >= HUM_MIN && value <= HUM_MAX && format=='%'){
 			my_room->humidity.value = value;
 			my_room->humidity.format = format;

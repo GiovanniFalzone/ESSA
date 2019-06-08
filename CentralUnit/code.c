@@ -52,7 +52,7 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_conf.h"
 #include "stm32f4_discovery.h"
-#include "stm32f4_discovery_lcd.h"T
+#include "stm32f4_discovery_lcd.h"
 #include "lcd_log.h"
 
 #include <stdio.h>
@@ -62,10 +62,6 @@
 #include "lib/ESSTA_lib.h"
 #include "lib/ESSTA_JSON_lib.h"
 #include "lib/ESSTA_graphic.h"
-
-#define DEBUG
-//#define DEBUG_LOG
-//#define DEBUG_LOG_JSON
 
 USART_InitTypeDef USART_InitStructure;
 
@@ -87,15 +83,11 @@ ISR2(systick_handler) {
  }
 
 TASK(Task_LCD_Graphic) {		// 50 ms
-	static EE_UINT8 count = 0;
 	touch_event_step();
-	if(((count++)%2)==0){	// skip one job -> 100 ms
-		graphic_step();
-	}
+	graphic_step();
 }
 
-TASK(ReceiveData) {
-//void check_USART_RX() {
+void check_USART_RX() {
 	EE_UINT8 ch;
 	while (USART_GetFlagStatus(EVAL_COM1, USART_FLAG_RXNE) != RESET){
 		ch = USART_ReceiveData(EVAL_COM1);
@@ -113,7 +105,6 @@ TASK(ReceiveData) {
 			ActivateTask(CheckMessage);
 		}
 	}
-//}
 }
 
 // sporadic task
@@ -136,7 +127,8 @@ TASK(CheckMessage) {
 		case 3:	// message corrupted
 			#ifdef DEBUG_LOG
 				LCD_ErrLog("\r\n not JSON compliant!");
-			#endif
+				LCD_ErrLog("\r\n msg: %s", msg);
+				#endif
 			msg_pos = 0;
 			memset(msg, '\0', MSG_LEN);
 			break;
@@ -214,16 +206,16 @@ int main(void) {
 	/* Program cyclic alarms which will fire after an initial offset,
 	 * and after that periodically
 	 * */
-	SetRelAlarm(Alarm_ReceiveData, 1000, 10);
 	#ifdef DEBUG_LOG
 		SetRelAlarm(Alarm_LCD_Graphic, 1000, 30000);
 	#else
-		SetRelAlarm(Alarm_LCD_Graphic, 1000, 50);
+		SetRelAlarm(Alarm_LCD_Graphic, 1000, 100);
 	#endif
 	SetRelAlarm(Alarm_PollingRooms, 1000, 5000);
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;) {
+		check_USART_RX();
 	}
 
 }

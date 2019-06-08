@@ -10,13 +10,11 @@
  *
  **************************************************************************/
     /* Definition of task's body */
-    DeclareTask(ReceiveData);
     DeclareTask(CheckMessage);
     DeclareTask(TaskPollingRooms);
     DeclareTask(Task_LCD_Graphic);
 
     const EE_THREAD_PTR EE_hal_thread_body[EE_MAX_TASK] = {
-        &FuncReceiveData,		/* thread ReceiveData */
         &FuncCheckMessage,		/* thread CheckMessage */
         &FuncTaskPollingRooms,		/* thread TaskPollingRooms */
         &FuncTask_LCD_Graphic 		/* thread Task_LCD_Graphic */
@@ -25,7 +23,6 @@
 
     /* ready priority */
     const EE_TYPEPRIO EE_th_ready_prio[EE_MAX_TASK] = {
-        0x4U,		/* thread ReceiveData */
         0x4U,		/* thread CheckMessage */
         0x2U,		/* thread TaskPollingRooms */
         0x1U 		/* thread Task_LCD_Graphic */
@@ -33,7 +30,6 @@
 
     /* dispatch priority */
     const EE_TYPEPRIO EE_th_dispatch_prio[EE_MAX_TASK] = {
-        0x4U,		/* thread ReceiveData */
         0x4U,		/* thread CheckMessage */
         0x2U,		/* thread TaskPollingRooms */
         0x1U 		/* thread Task_LCD_Graphic */
@@ -44,14 +40,12 @@
         EE_TYPESTATUS EE_th_status[EE_MAX_TASK] = {
             EE_READY,
             EE_READY,
-            EE_READY,
             EE_READY
         };
     #endif
 
     /* next thread */
     EE_TID EE_th_next[EE_MAX_TASK] = {
-        EE_NIL,
         EE_NIL,
         EE_NIL,
         EE_NIL
@@ -86,7 +80,6 @@
  *
  **************************************************************************/
     const EE_alarm_ROM_type   EE_alarm_ROM[EE_ALARM_ROM_SIZE] = {
-        {0, EE_ALARM_ACTION_TASK    , ReceiveData, NULL},
         {0, EE_ALARM_ACTION_TASK    , TaskPollingRooms, NULL},
         {0, EE_ALARM_ACTION_TASK    , Task_LCD_Graphic, NULL}
     };

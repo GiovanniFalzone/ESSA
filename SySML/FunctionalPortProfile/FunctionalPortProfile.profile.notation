@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_5hrXYIjzEemsUp-KEGPgnQ" type="PapyrusUMLProfileDiagram" name="Profile Diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_C4fVwIj0EemsUp-KEGPgnQ" type="Stereotype_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_C4gj4Ij0EemsUp-KEGPgnQ" type="Stereotype_NameLabel"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_C4hK8Ij0EemsUp-KEGPgnQ" type="Stereotype_AttributeCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_C4hK8Yj0EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_C4hK8oj0EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_C4hK84j0EemsUp-KEGPgnQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C4hK9Ij0EemsUp-KEGPgnQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_C4hK9Yj0EemsUp-KEGPgnQ" type="Stereotype_OperationCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_C4hK9oj0EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_C4hK94j0EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_C4hK-Ij0EemsUp-KEGPgnQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C4hK-Yj0EemsUp-KEGPgnQ"/>
+    </children>
+    <element xmi:type="uml:Stereotype" href="FunctionalPortProfile.profile.uml#_C4Z2MIj0EemsUp-KEGPgnQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C4fVwYj0EemsUp-KEGPgnQ" x="580" y="200" width="216" height="170"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_pyhE8Ij1EemsUp-KEGPgnQ" type="Stereotype_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_pyhsAIj1EemsUp-KEGPgnQ" type="Stereotype_NameLabel"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_pyhsAYj1EemsUp-KEGPgnQ" type="Stereotype_AttributeCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_pyhsAoj1EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_pyhsA4j1EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_pyhsBIj1EemsUp-KEGPgnQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pyhsBYj1EemsUp-KEGPgnQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_pyhsBoj1EemsUp-KEGPgnQ" type="Stereotype_OperationCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_pyhsB4j1EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_pyhsCIj1EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_pyhsCYj1EemsUp-KEGPgnQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pyhsCoj1EemsUp-KEGPgnQ"/>
+    </children>
+    <element xmi:type="uml:Stereotype" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_DeprecatedElements.stereotype_packagedElement_FlowPort"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pyhE8Yj1EemsUp-KEGPgnQ" x="580" y="40" width="221"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_xDnzsIj4EemsUp-KEGPgnQ" type="Stereotype_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_xDnzsoj4EemsUp-KEGPgnQ" type="Stereotype_NameLabel"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_xDnzs4j4EemsUp-KEGPgnQ" type="Stereotype_AttributeCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_D3Sk4Ik3EemTc-jHdmBBIw" type="Property_ClassAttributeLabel">
+        <element xmi:type="uml:Property" href="FunctionalPortProfile.profile.uml#_DL8rAIj5EemsUp-KEGPgnQ"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_D3Sk4Yk3EemTc-jHdmBBIw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_EP2O0Ik3EemTc-jHdmBBIw" type="Property_ClassAttributeLabel">
+        <element xmi:type="uml:Property" href="FunctionalPortProfile.profile.uml#_DL8rAYj5EemsUp-KEGPgnQ"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EP2O0Yk3EemTc-jHdmBBIw"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_xDnztIj4EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_xDnztYj4EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_xDnztoj4EemsUp-KEGPgnQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xDnzt4j4EemsUp-KEGPgnQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_xDnzuIj4EemsUp-KEGPgnQ" type="Stereotype_OperationCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_xDnzuYj4EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_xDnzuoj4EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_xDnzu4j4EemsUp-KEGPgnQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xDnzvIj4EemsUp-KEGPgnQ"/>
+    </children>
+    <element xmi:type="uml:Stereotype" href="FunctionalPortProfile.profile.uml#_xDmlkIj4EemsUp-KEGPgnQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xDnzsYj4EemsUp-KEGPgnQ" x="520" y="460"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_yvTSYIj4EemsUp-KEGPgnQ" type="Stereotype_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_yvTSYoj4EemsUp-KEGPgnQ" type="Stereotype_NameLabel"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_yvT5cIj4EemsUp-KEGPgnQ" type="Stereotype_AttributeCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_C2t4sIk3EemTc-jHdmBBIw" type="Property_ClassAttributeLabel">
+        <element xmi:type="uml:Property" href="FunctionalPortProfile.profile.uml#_DsCgUIj5EemsUp-KEGPgnQ"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_C2t4sYk3EemTc-jHdmBBIw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_DSsDAIk3EemTc-jHdmBBIw" type="Property_ClassAttributeLabel">
+        <element xmi:type="uml:Property" href="FunctionalPortProfile.profile.uml#_DsDHYIj5EemsUp-KEGPgnQ"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_DSsDAYk3EemTc-jHdmBBIw"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_yvT5cYj4EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_yvT5coj4EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_yvT5c4j4EemsUp-KEGPgnQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yvT5dIj4EemsUp-KEGPgnQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_yvT5dYj4EemsUp-KEGPgnQ" type="Stereotype_OperationCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_yvT5doj4EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_yvT5d4j4EemsUp-KEGPgnQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_yvT5eIj4EemsUp-KEGPgnQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yvT5eYj4EemsUp-KEGPgnQ"/>
+    </children>
+    <element xmi:type="uml:Stereotype" href="FunctionalPortProfile.profile.uml#_yvSEQIj4EemsUp-KEGPgnQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yvTSYYj4EemsUp-KEGPgnQ" x="760" y="460"/>
+  </children>
+  <styles xmi:type="notation:StringValueStyle" xmi:id="_5hrXYYjzEemsUp-KEGPgnQ" name="diagram_compatibility_version" stringValue="1.4.0"/>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_5hrXYojzEemsUp-KEGPgnQ"/>
+  <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_5hrXY4jzEemsUp-KEGPgnQ" diagramKindId="org.eclipse.papyrus.uml.diagram.profile">
+    <owner xmi:type="uml:Profile" href="FunctionalPortProfile.profile.uml#_5fwEwIjzEemsUp-KEGPgnQ"/>
+  </styles>
+  <element xmi:type="uml:Profile" href="FunctionalPortProfile.profile.uml#_5fwEwIjzEemsUp-KEGPgnQ"/>
+  <edges xmi:type="notation:Connector" xmi:id="_wEHl4Ij1EemsUp-KEGPgnQ" type="Generalization_Edge" source="_C4fVwIj0EemsUp-KEGPgnQ" target="_pyhE8Ij1EemsUp-KEGPgnQ">
+    <children xmi:type="notation:DecorationNode" xmi:id="_wEIM8Ij1EemsUp-KEGPgnQ" type="Generalization_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_wop2UIj1EemsUp-KEGPgnQ" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_wEIM8Yj1EemsUp-KEGPgnQ" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_wEHl4Yj1EemsUp-KEGPgnQ"/>
+    <element xmi:type="uml:Generalization" href="FunctionalPortProfile.profile.uml#_wECtYIj1EemsUp-KEGPgnQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wEHl4oj1EemsUp-KEGPgnQ" points="[660, 280, -643984, -643984]$[660, 140, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wFLV0Ij1EemsUp-KEGPgnQ" id="(0.5555555555555556,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wFLV0Yj1EemsUp-KEGPgnQ" id="(0.5429864253393665,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_4900sIj5EemsUp-KEGPgnQ" type="Generalization_Edge" source="_xDnzsIj4EemsUp-KEGPgnQ" target="_C4fVwIj0EemsUp-KEGPgnQ">
+    <children xmi:type="notation:DecorationNode" xmi:id="_4900s4j5EemsUp-KEGPgnQ" type="Generalization_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_4900tIj5EemsUp-KEGPgnQ" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_4900sYj5EemsUp-KEGPgnQ"/>
+    <element xmi:type="uml:Generalization" href="FunctionalPortProfile.profile.uml#_49xKUIj5EemsUp-KEGPgnQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_4900soj5EemsUp-KEGPgnQ" points="[580, 460, -643984, -643984]$[660, 370, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_498wgIj5EemsUp-KEGPgnQ" id="(0.6,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_498wgYj5EemsUp-KEGPgnQ" id="(0.37037037037037035,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_5cAlgIj5EemsUp-KEGPgnQ" type="Generalization_Edge" source="_yvTSYIj4EemsUp-KEGPgnQ" target="_C4fVwIj0EemsUp-KEGPgnQ">
+    <children xmi:type="notation:DecorationNode" xmi:id="_5cBMkIj5EemsUp-KEGPgnQ" type="Generalization_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_5cBMkYj5EemsUp-KEGPgnQ" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_5cAlgYj5EemsUp-KEGPgnQ"/>
+    <element xmi:type="uml:Generalization" href="FunctionalPortProfile.profile.uml#_5b530Ij5EemsUp-KEGPgnQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5cAlgoj5EemsUp-KEGPgnQ" points="[800, 460, -643984, -643984]$[740, 370, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5cK9kIj5EemsUp-KEGPgnQ" id="(0.4,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5cK9kYj5EemsUp-KEGPgnQ" id="(0.7407407407407407,1.0)"/>
+  </edges>
+</notation:Diagram>

@@ -6,7 +6,6 @@
 #define MY_ID 	1
 
 #define TASK_PERIOD 			2000
-#define CHECK_MOTION_PERIOD		2000	// depends on the PIR signal
 #define CONTROL_VALVE_PERIOD	4000
 
 #define ERROR_LED_PIN 			13
@@ -406,34 +405,30 @@ void setup() {
 }
 
 void loop() {
-	static uint32_t  this_run=0, last_run=0, control_valve_last=0, check_motion_last=0;
+	static uint32_t  this_run=0, last_run=0, control_valve_last=0;
 	bool check_cmd = false;
 	this_run = millis();	
+
+	if((this_run-last_run) >= TASK_PERIOD){
+		last_run = this_run;
+		manage_error_led();
+		dht_sensor_task_run();
+		manage_Energy_Saving_mode();
+		check_motion();
+	}
+
+	if((this_run - control_valve_last) >= CONTROL_VALVE_PERIOD){
+		control_valve_last = this_run;
+		control_valve();
+		#ifdef DEBUG
+			send_room_status();
+		#endif
+	}
 
 	if(receive_command()){
 		send_room_status();
 	}
 
-	if((this_run-last_run) >= TASK_PERIOD){
-		last_run = this_run;
-
-		manage_error_led();
-		dht_sensor_task_run();
-		manage_Energy_Saving_mode();
-
-		if((this_run - check_motion_last) >= CHECK_MOTION_PERIOD){
-			check_motion_last = this_run;
-			check_motion();
-		}
-
-		if((this_run - control_valve_last) >= CONTROL_VALVE_PERIOD){
-			control_valve_last = this_run;
-			control_valve();
-			#ifdef DEBUG
-				send_room_status();
-			#endif
-		}
-	}
 }
 
 void manage_Energy_Saving_mode() {
@@ -510,8 +505,8 @@ uint8_t valve_pos_to_perc(uint8_t pos){
 void send_room_status(){
 	char str_temp[6], str_hum[6], str[256];
 	uint8_t valve_perc, i=0;
-	dtostrf(my_room.status.temp, 4, 2, str_temp); /* 4 is mininum width, 2 is precision; float value is copied onto str_temp*/
-	dtostrf(my_room.status.hum, 4, 2, str_hum);
+	dtostrf(my_room.status.temp, 5, 2, str_temp);
+	dtostrf(my_room.status.hum, 6, 2, str_hum);
 
 	valve_perc = valve_pos_to_perc(my_room.status.valve_status);
 	sprintf(str, "{\"Id\":\"%02d\",\"Eco\":\"%1d\",\"sens\":[{\"Nm\":\"Tmp\",\"Val\":\"%s\",\"Fmt\":\"C\"},{\"Nm\":\"Hum\",\"Val\":\"%s\",\"Fmt\":\"%%\"}],\"acts\":[{\"Nm\":\"Vlv\",\"Val\":\"%03d\",\"Fmt\":\"%%\"}]}\n\0", my_room.settings.Id, my_room.status.eco_mode, str_temp, str_hum, valve_perc);

@@ -126,19 +126,6 @@ CPU mySystem {
         	TICKSPERBASE = 1;
     	};
 
-	ALARM Alarm_ReceiveData {
-		COUNTER = myCounter;
-		ACTION = ACTIVATETASK { TASK = ReceiveData; };
-	};
-
-	TASK ReceiveData {
-		PRIORITY = 0x03;   /* High priority */
-		AUTOSTART = FALSE;
-		STACK = SHARED;
-		ACTIVATION = 1;    /* only one pending activation */
-		SCHEDULE = FULL;		
-	};
-
 	TASK CheckMessage {
 		PRIORITY = 0x03;
 		AUTOSTART = FALSE;

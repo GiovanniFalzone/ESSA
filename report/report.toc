@@ -1,31 +1,26 @@
 \babel@toc {english}{}
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}
-\contentsline {section}{\numberline {2}Room Module}{3}{section.2}
-\contentsline {subsection}{\numberline {2.1}Temperature control}{3}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Energy Saving mode}{3}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}User Requirements}{4}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Functional requirements}{4}{subsection.2.4}
-\contentsline {section}{\numberline {3}Central Unit}{7}{section.3}
-\contentsline {subsection}{\numberline {3.1}User Requirements}{7}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Functional requirements}{7}{subsection.3.2}
-\contentsline {section}{\numberline {4}Central Unit}{8}{section.4}
-\contentsline {section}{\numberline {5}ESSTA SySML description}{8}{section.5}
-\contentsline {section}{\numberline {6}Implementationm, Central Unit module}{9}{section.6}
-\contentsline {subsection}{\numberline {6.1}Wiring}{9}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Graphic Interface}{10}{subsection.6.2}
-\contentsline {section}{\numberline {7}Implementation, Room module}{11}{section.7}
-\contentsline {subsection}{\numberline {7.1}Components description}{11}{subsection.7.1}
-\contentsline {subsubsection}{\numberline {7.1.1}ServoMotor}{11}{subsubsection.7.1.1}
-\contentsline {subsubsection}{\numberline {7.1.2}Valve position switches}{12}{subsubsection.7.1.2}
-\contentsline {subsubsection}{\numberline {7.1.3}Temperature-Humidity Sensor}{12}{subsubsection.7.1.3}
-\contentsline {subsection}{\numberline {7.2}Wiring}{13}{subsection.7.2}
-\contentsline {section}{\numberline {8}Implementation values}{14}{section.8}
-\contentsline {subsection}{\numberline {8.1}Parameters}{14}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}JSON messages}{14}{subsection.8.2}
-\contentsline {subsubsection}{\numberline {8.2.1}Request Message}{14}{subsubsection.8.2.1}
-\contentsline {subsubsection}{\numberline {8.2.2}Status Message}{14}{subsubsection.8.2.2}
-\contentsline {section}{\numberline {9}CUnit tests of the system}{14}{section.9}
-\contentsline {section}{\numberline {10}Hardware implementation}{14}{section.10}
-\contentsline {subsection}{\numberline {10.1}Room module}{14}{subsection.10.1}
-\contentsline {subsection}{\numberline {10.2}Central Unit moduke}{15}{subsection.10.2}
-\contentsline {subsection}{\numberline {10.3}Network configuration}{15}{subsection.10.3}
+\contentsline {subsection}{\numberline {1.1}Central Unit}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Room Module}{2}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Energy Saving mode}{2}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}Valve control}{2}{subsubsection.1.2.2}
+\contentsline {section}{\numberline {2}SySML Functional model}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Central Unit}{5}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Room module}{6}{subsection.2.2}
+\contentsline {section}{\numberline {3}Implementation, Central Unit module}{9}{section.3}
+\contentsline {subsection}{\numberline {3.1}Wiring}{10}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Graphic Interface}{10}{subsection.3.2}
+\contentsline {section}{\numberline {4}Implementation, Room module}{12}{section.4}
+\contentsline {subsection}{\numberline {4.1}Components description}{12}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}ServoMotor}{12}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Valve position switches}{13}{subsubsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.3}Temperature-Humidity Sensor}{13}{subsubsection.4.1.3}
+\contentsline {subsection}{\numberline {4.2}Wiring}{14}{subsection.4.2}
+\contentsline {section}{\numberline {5}JSON messages implementation}{15}{section.5}
+\contentsline {subsection}{\numberline {5.1}Request Message}{15}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Status Message}{15}{subsection.5.2}
+\contentsline {section}{\numberline {6}CUnit tests and simulation of the system}{16}{section.6}
+\contentsline {subsection}{\numberline {6.1}Variables tests}{16}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}JSON Compliance tests}{16}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Network noise tests}{17}{subsection.6.3}
+\contentsline {section}{\numberline {7}Future Work}{18}{section.7}
