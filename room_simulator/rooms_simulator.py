@@ -8,7 +8,7 @@ import sys
 
 MESSAGE_LOST_PROB = 0.1
 MESSAGE_CORRUPTED_PROB = 0.1
-SEND_TIME_DELAY = 0.02
+SEND_TIME_DELAY = 0.01
 MANY_CORRUPT = 3
 
 ser = serial.Serial('/dev/ttyUSB0', 9600)

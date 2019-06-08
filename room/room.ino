@@ -3,6 +3,8 @@
 
 //#define DEBUG
 
+#define DELAY_SEND_CHAR	10
+
 #define MY_ID 	1
 
 #define TASK_PERIOD 			2000
@@ -204,7 +206,8 @@ void init_DHT(){
 		delay(100);
 		ls = !ls;
 	}
-	 digitalWrite(ERROR_LED_PIN, LOW);
+	digitalWrite(ERROR_LED_PIN, LOW);
+	delay(TASK_PERIOD);
 }
 
 void init_communication(){
@@ -397,11 +400,21 @@ void manage_error_led(){
 }
 
 void setup() {
-	init_DHT();
+	uint8_t i = 0;
+	for(i=0; i<SYSTEM_ERRORS; i++){
+		systems_errors[i] = false;
+	}
 	init_communication();
+	#ifdef DEBUG
+		Serial.println("-------setup start--------");
+	#endif
+	init_DHT();
 	init_leds();
 	init_motion();
 	init_valve();
+	#ifdef DEBUG
+		Serial.println("-------setup end--------");
+	#endif
 }
 
 void loop() {
@@ -415,14 +428,14 @@ void loop() {
 		dht_sensor_task_run();
 		manage_Energy_Saving_mode();
 		check_motion();
+		#ifdef DEBUG
+			send_room_status();
+		#endif
 	}
 
 	if((this_run - control_valve_last) >= CONTROL_VALVE_PERIOD){
 		control_valve_last = this_run;
 		control_valve();
-		#ifdef DEBUG
-			send_room_status();
-		#endif
 	}
 
 	if(receive_command()){
@@ -434,6 +447,9 @@ void loop() {
 void manage_Energy_Saving_mode() {
 	if(my_room.status.motion_count < ENERGY_SAVING_MOTION_COUNT_THRESHOLD){
 		my_room.settings.actual_goal_temperature = my_room.settings.desired_temperature - my_room.settings.energy_saving_difference;
+		if(my_room.settings.actual_goal_temperature < TEMP_MIN){
+			my_room.settings.actual_goal_temperature = TEMP_MIN;
+		}
 		my_room.status.eco_mode = true;
 		digitalWrite(ENERGY_SAVING_LED_PIN, HIGH);
 	} else {
@@ -503,17 +519,28 @@ uint8_t valve_pos_to_perc(uint8_t pos){
 }
 
 void send_room_status(){
-	char str_temp[6], str_hum[6], str[256];
+	char str_temp[6], str_hum[7], str[256];
 	uint8_t valve_perc, i=0;
+
 	dtostrf(my_room.status.temp, 5, 2, str_temp);
+	for(i=0;i<6;i++){
+		if(str_temp[i]==' ') str_temp[i]='0';
+	}
 	dtostrf(my_room.status.hum, 6, 2, str_hum);
+	for(i=0;i<7;i++){
+		if(str_hum[i]==' ') str_hum[i]='0';
+	}
 
 	valve_perc = valve_pos_to_perc(my_room.status.valve_status);
 	sprintf(str, "{\"Id\":\"%02d\",\"Eco\":\"%1d\",\"sens\":[{\"Nm\":\"Tmp\",\"Val\":\"%s\",\"Fmt\":\"C\"},{\"Nm\":\"Hum\",\"Val\":\"%s\",\"Fmt\":\"%%\"}],\"acts\":[{\"Nm\":\"Vlv\",\"Val\":\"%03d\",\"Fmt\":\"%%\"}]}\n\0", my_room.settings.Id, my_room.status.eco_mode, str_temp, str_hum, valve_perc);
-	i = 0;
-	while(str[i] != '\0' && i<256){
-		Serial.write(str[i]);
-		i++;
-		delay(25);
+	if(DELAY_SEND_CHAR == 0){
+		Serial.print(str);
+	} else {
+		i = 0;
+		while(str[i] != '\0' && i<256){
+			Serial.write(str[i]);
+			i++;
+			delay(DELAY_SEND_CHAR);
+		}
 	}
 }
