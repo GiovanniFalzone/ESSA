@@ -10,17 +10,18 @@ For each variable present in the JSON message a boundary test is exeuted.
 		\hline
 		Variable				& 	Min 	& Max 	& 1\degree	& 2\degree & 3\degree	& 4\degree & 5\degree	& 6\degree & 7\degree\\ 
 		\hline
-		\textbf{Id}			&	1 		& 2		& 0 	& 1 & 2 & 3 & / & / & /\\ 
+		\textbf{Id}				&	1 		& 2		& 0 	& 1 	& 2 	& 3 	& / 	& / 	& / \\ 
 		\hline
-		\textbf{Eco}			&	0 		& 1		& -1  & 0 & 1 & 2 & / & & /\\ 
+		\textbf{Eco}			&	0 		& 1		& -1  	& 0 	& 1 	& 2 	& / 	& /		& / \\ 
 		\hline
-		\textbf{Temperature}	&	15.0 	& 30.0	& 14.99 & 15.0 & 15.01 & 29.99& 30.00 & 30.01 &22.5\\ 
+		\textbf{Temperature}	&	15.0 	& 30.0	& 14.99 & 15.0 	& 15.01 & 29.99	& 30.00 & 30.01 & 22.5 \\ 
 		\hline
-		\textbf{Humidity}		&	0.0		& 100.0	& -0.01	& 0.0 & 0.01 & 99.99 & 100.00 & 100.01 & 50.00\\ 
+		\textbf{Humidity}		&	0.0		& 100.0	& -0.01	& 0.0 	& 0.01 	& 99.99 & 100.00 & 100.01 & 50.00 \\ 
 		\hline
-		\textbf{Valve}			&	0		& 100 	& -1 	& 0 & 1 & 99 & 100 & 101 & 50\\ 
+		\textbf{Valve}			&	0		& 100 	& -1 	& 0 	& 1 	& 99 	& 100 	& 101 	& 50 \\ 
 		\hline
 	\end{tabular}
+	\captionof{table}{Variables tests \label{tab:VariablesTests}}
 \end{center}
 
 \subsection{JSON Compliance  tests}
@@ -59,9 +60,10 @@ In order to check the \textit{JSON compliance code checker} the following tests 
 		\textbf{14}		&	Check Valve format value \textit{\%} \\ 
 		\hline
 	\end{tabular}
+	\captionof{table}{JSON compliance tests \label{tab:JSONComplianceTests}}
 \end{center}
 
-In the following picture \ref{fig:CUnit_result} is reported the result of the tests executed using the framework \textit{CUnit} Version 2.1-3.
+In the following picture \ref{fig:CUnit_result} is reported the result of the tests executed using the framework \textit{CUnit} Version 2.1.3.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=8cm,keepaspectratio]{img/CUnit_result}
@@ -78,11 +80,12 @@ The \textbf{Room simulator} creates the correct JSON string and send it, in orde
 		\hline
 		Number			& 	Description & Probability\\ 
 		\hline
-		\textbf{1}		&	Message lost, the resoinse message is discarded & 0.1 \\ 
+		\textbf{1}		&	Message lost, the response message is discarded & 0.1 \\ 
 		\hline
 		\textbf{2}		&	Message corrupted, 3 random characters are replaced with \textit{?} & 0.1\\ 
 		\hline
 	\end{tabular}
+	\captionof{table}{Network noise tests \label{tab:NetworkNoiseTests}}
 \end{center}
 \begin{figure}[H]
 	\centering

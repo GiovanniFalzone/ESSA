@@ -1,8 +1,7 @@
 #include "DHT.h"
 #include <Servo.h>
 
-#define DEBUG
-//#define DEBUG_STATUS
+//#define DEBUG
 //-----------------------
 #define DELAY_SEND_CHAR	10
 
@@ -14,15 +13,13 @@
 #define HIGH_VALUE_DIFFERENCE		2	// ind C°
 #define APPROACH_TEMP_DIFFERENCE	1	// ind C°
 
-#define COM_ERROR_DEADLINE			30000	// in ms
+#define COM_ERROR_DEADLINE			60000	// in ms
 
-#define ENERGYSAVING_TIME_SLOT					30	// in seconds
-#define ENERGYSAVING_MOTION_COUNT_THRESHOLD		(int)(ENERGYSAVING_TIME_SLOT/(TASK_PERIOD*0.001))	// seconds to number of iteratinos
-#define ENERGYSAVING_MAX_MOTION_COUNT			(ENERGYSAVING_MOTION_COUNT_THRESHOLD << 1)		// double of the timeslot iterations
+#define MOTION_TIME_SLOT			30000	// in ms
 
 #define TEMP_MAX					30
 #define TEMP_MIN					15
-#define DEFAULT_ENERGYSAVING_DIFFERENCE	2
+#define DEFAULT_ENERGYSAVING_OFFSET	2
 #define DEFAULT_DESIRED_TEMPERATURE			24
 
 #define MSG_REQUEST_LEN	64
@@ -46,7 +43,7 @@
 #define VALVE_OPEN		170
 
 #define SYSTEM_ERRORS	3
-#define DHT_ERROR		0
+#define SENSOR_ERROR	0
 #define VALVE_ERROR		1
 #define COM_ERROR		2
 
@@ -65,7 +62,7 @@ struct room_status{
 	bool motion;
 	unsigned int valve_status;
 	bool eco_mode;
-	unsigned int motion_count;
+	unsigned int last_motion_time;
 };
 
 struct room {
@@ -83,7 +80,7 @@ struct valve_settings{
 
 struct valve_settings valve_settings = {VALVE_OPEN, VALVE_CLOSED, VALVE_MIDDLE, VALVE_LOW, VALVE_HIGH};
 
-struct room my_room = {{MY_ID, DEFAULT_ENERGYSAVING_DIFFERENCE, DEFAULT_DESIRED_TEMPERATURE, DEFAULT_DESIRED_TEMPERATURE},{0,0,0,0,0,0}};
+struct room my_room = {{MY_ID, DEFAULT_ENERGYSAVING_OFFSET, DEFAULT_DESIRED_TEMPERATURE, DEFAULT_DESIRED_TEMPERATURE},{0,0,0,0,0,0}};
 
 DHT dht(DHT_PIN,DHT22);
 Servo valve;
@@ -92,6 +89,14 @@ Servo valve;
 bool systems_errors [SYSTEM_ERRORS];
 
 //--------------------------------------
+
+void signal_led(uint8_t pin){
+	digitalWrite(pin, LOW);
+	delay(200);
+	digitalWrite(pin, HIGH);
+	delay(200);
+	digitalWrite(pin, LOW);
+}
 
 void move_valve(unsigned int pos){
 	valve.write(pos);
@@ -125,9 +130,9 @@ void init_valve() {
 		move_valve(pos);
 		if(digitalRead(VALVE_OPEN_PIN)){
 			valve_settings.open_pos = pos;
-			digitalWrite(ENERGYSAVING_LED_PIN, HIGH);
+			digitalWrite(ERROR_LED_PIN, HIGH);
 			delay(200);
-			digitalWrite(ENERGYSAVING_LED_PIN, LOW);
+			digitalWrite(ERROR_LED_PIN, LOW);
 			break;
 		}
 	}
@@ -138,9 +143,9 @@ void init_valve() {
 		move_valve(pos);
 		if(digitalRead(VALVE_CLOSED_PIN)){
 			valve_settings.closed_pos = pos;
-			digitalWrite(ENERGYSAVING_LED_PIN, HIGH);
+			digitalWrite(ERROR_LED_PIN, HIGH);
 			delay(200);
-			digitalWrite(ENERGYSAVING_LED_PIN, LOW);
+			digitalWrite(ERROR_LED_PIN, LOW);
 			break;
 		}
 	}
@@ -199,7 +204,7 @@ void init_leds(){
 }
 
 void init_DHT(){
-	systems_errors[DHT_ERROR] = false;
+	systems_errors[SENSOR_ERROR] = false;
 	dht.begin();
 	bool ls = false;
 	while(!dht_sensor_task_run()){
@@ -346,9 +351,6 @@ bool receive_command(){
 	static char msg[MSG_REQUEST_LEN];
 
  	while(Serial.available() > 0) {
-		#ifdef DEBUG
-			digitalWrite(ENERGYSAVING_LED_PIN, HIGH);
-		#endif
 		char c = Serial.read();
 		if(c != '\n' && c != '\r'){
 			msg[msg_i++] = c;
@@ -360,12 +362,13 @@ bool receive_command(){
 				if(set_parameters_from_JSON(msg)){
 					systems_errors[COM_ERROR] = false;
 					ret = true;
+					#ifdef DEBUG
+						signal_led(ENERGYSAVING_LED_PIN);
+					#endif
 				} else {
-					systems_errors[COM_ERROR] = true;
 					ret = false;
 				}
 			} else {
-				systems_errors[COM_ERROR] = true;
 				ret = false;
 			}
 			#ifdef DEBUG
@@ -374,10 +377,6 @@ bool receive_command(){
 			#endif
 		}
 	}
-	#ifdef DEBUG
-		delay(200);
-		digitalWrite(ENERGYSAVING_LED_PIN, LOW);
-	#endif
 	return ret;
 }
 
@@ -393,13 +392,13 @@ void manage_error_led(){
 		init_valve();
 	}
 
-	if(systems_errors[DHT_ERROR]){
+	if(systems_errors[SENSOR_ERROR]){
 		init_DHT();
 	}
 
 	#ifdef DEBUG
 		char str[50];
-		sprintf(str, "E_dht:%d, E_com:%d, E_vlv:%d", systems_errors[DHT_ERROR], systems_errors[COM_ERROR], systems_errors[VALVE_ERROR]);
+		sprintf(str, "E_dht:%d, E_com:%d, E_vlv:%d", systems_errors[SENSOR_ERROR], systems_errors[COM_ERROR], systems_errors[VALVE_ERROR]);
 		Serial.println(str);
 		delay(200);
 	#endif
@@ -433,11 +432,8 @@ void loop() {
 		last_run = this_run;
 		manage_error_led();
 		dht_sensor_task_run();
-		manage_Energy_Saving_mode();
 		check_motion();
-		#ifdef DEBUG_STATUS
-			send_room_status();
-		#endif
+		manage_Energy_Saving_mode();
 	}
 
 //------------------------------------
@@ -464,7 +460,7 @@ void loop() {
 }
 
 void manage_Energy_Saving_mode() {
-	if(my_room.status.motion_count < ENERGYSAVING_MOTION_COUNT_THRESHOLD){
+	if((millis() - my_room.status.last_motion_time) < MOTION_TIME_SLOT){
 		my_room.settings.actual_goal_temperature = my_room.settings.desired_temperature - my_room.settings.energy_saving_difference;
 		if(my_room.settings.actual_goal_temperature < TEMP_MIN){
 			my_room.settings.actual_goal_temperature = TEMP_MIN;
@@ -479,19 +475,14 @@ void manage_Energy_Saving_mode() {
 	}
 }
 
-void check_motion(){ 	// can be implemented as an interrupt on rising/falling edge
+void check_motion(){
 	if(digitalRead(PIR_PIN)){
 		my_room.status.motion = true;
 		digitalWrite(MOTION_LED_PIN, HIGH);
-		if(my_room.status.motion_count < ENERGYSAVING_MAX_MOTION_COUNT){
-			my_room.status.motion_count++;
-		}
+		my_room.status.last_motion_time = millis();
 	} else {
 		my_room.status.motion = false;
 		digitalWrite(MOTION_LED_PIN, LOW);
-		if(my_room.status.motion_count > 0){
-			my_room.status.motion_count--;
-		}
 	}
 }
 
@@ -523,10 +514,10 @@ bool dht_sensor_task_run() {
 		#ifdef DEBUG
 			Serial.println("Impossibile leggere il sensore!");
 		#endif
-		systems_errors[DHT_ERROR] = true;
+		systems_errors[SENSOR_ERROR] = true;
 		return false;
 	} else {
-		systems_errors[DHT_ERROR] = false;
+		systems_errors[SENSOR_ERROR] = false;
 		my_room.status.hum = hum;
 		my_room.status.temp = temp;
 		return true;

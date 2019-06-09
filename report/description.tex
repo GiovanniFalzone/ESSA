@@ -7,15 +7,46 @@ The system is composed by two differ modules
 \end{itemize}
 
 \subsection{Central Unit}
-The \textit{Central Unit} has the role of coordinator that retrieve the status of each room and compute the average values for the builng.
+The \textit{Central Unit} has the role of coordinator that retrieve the status of each room and compute the average values for the builng.\\
+
+\subsubsection{Graphical user interface}
 Using a graphical User Interface the module represents the average values of the building and the values for each room, the graphical User Interface is composed by:
 \begin{itemize}
-	\item Main page to represent the overview of the building
-	\item Room page to represent the status of each room
-	\item Setting page to set the desired temperature
+	\item \textit{Main page} to represent the overview of the building
+	\item \textit{Room page} to represent the status of each room
+	\item \textit{Setting page} to set the desired temperature
 \end{itemize}
-In the Settings page the module shall allow the user to set the desired temperature shared with the rooms.
+In the \textit{Settings page} the module shall allow the user to set the desired temperature shared with the rooms.
 The minimum and maximum allowed temperatures are 15 C\degree and 30 C\degree.
+
+When the \textit{Main page} is selected the module shall represent the average values among all the rooms for \textit{Temperature}, \textit{Humidity} and \textit{Usage}.
+When the \textit{Main page} is selected the module shall represent the \textit{Energy Saving} if at least one room is set to \textit{Energy Saving mode}.
+When the \textit{Main page} is selected the module shall represent the \textit{Warning} if at least one room is set to \textit{crashed}.
+
+The graphical user interface shall represent the following informations as reported in the following table \ref{tab:GraphicalInformations}.
+\begin{table}[H]
+	\centering
+			\begin{tabular}{||l | l||} 
+			\hline
+			\textbf{Information}	& \textbf{Format} \\ 
+			\hline
+			Temperature	& C\degree \\ 
+			\hline
+			Humidity	& \% \\ 
+			\hline
+			Usage		& \% \\ 
+			\hline
+			Energy Saving	& boolean \\ 
+			\hline
+			Warning		& boolean \\ 
+			\hline
+		\end{tabular}
+		\captionof{table}{\label{tab:GraphicalInformations}}
+\end{table}
+
+\subsubsection{Communication}
+Whenever a \textit{RoomRequest Message} is sent and the \textit{RoomStatus Message} is not received within 20s the module shall mark the room as \textbf{crashed}.
+The module shall send the \textit{RoomRequest Message} for each room at least every 30s.
 
 %--------------------------------------
 \subsection{Room Module}
@@ -25,41 +56,66 @@ reach and mantain the \textit{GoalTemperature}.
 \subsubsection{Energy Saving mode}
 In order to minimize the consumpion the module keep tracks of the presence of motion inside the room
 using a motion sensor. \\
-If the number of motions detected in the last 30s is greater then a predefined threshold, the module shall set the \textit{GoalTemperature} to the one set by the user. \\
-If the number of motions detected in the last 30s is less then a predefined threshold the module shall set the \textit{GoalTemperature} to:
+
+If a motion is detected in the last 30s, the module shall set the \textit{GoalTemperature} to the one set by the user,otherwise the module shall set the \textit{GoalTemperature} to:
+
 \begin{equation}
 	GoalTemperature = DesiredTemperature - EnergySavingTemperatureOffset
 \end{equation}
+Whenever the module is in \textit{Energy Saving mode} it shall notify through the \textit{Interface}.
 
 \subsubsection{Valve control}
 In order to control the heating of the room the valve is moved to different positions based on the temperature error 
 (\textit{ActualTemperature} - \textit{GoalThemperature}) as in the following table, 
-whenever one of these rules is valid the mosule shall move the valve in the correspondant position described in the third column of the table as percentage of maximum flow.
+whenever one of these rules is valid the module shall move the valve in the correspondant position described in the third column of the table \ref{tab:ValvePositions} as percentage of maximum flow.
 \begin{center}
 	\begin{tabular}{| l | l | l |} 
 		\hline
 		\textbf{rule} & \textbf{valve position} & \textbf{Flow in \%}\\
 		\hline
-		\begin{math} error < -WARM \end{math} &  OPEN\_POSITION & 100\\
+		\begin{math} error < -HIGH \end{math} &  OPEN\_POSITION & 100\\
 		\hline
-		\begin{math} error \in [-WARM, -APPROCHING) \end{math}  & HIGH\_POSITION & 75\\
+		\begin{math} error \in [-HIGH, -APPROCHING) \end{math}  & HIGH\_POSITION & 75\\
 		\hline
 		\begin{math} error \in [-APPROCHING, +APPROCHING] \end{math} & MIDDLE\_POSITION & 50 \\
 		\hline
-		\begin{math} error \in (APPROCHING, WARM] \end{math} & LOW\_POSITION & 25\\
+		\begin{math} error \in (APPROCHING, HIGH] \end{math} & LOW\_POSITION & 25\\
 		\hline
-		error > WARM &  CLOSED\_POSITION & 0 \\
+		error > HIGH &  CLOSED\_POSITION & 0 \\
 		\hline
 	\end{tabular}
+	\captionof{table}{\label{tab:ValvePositions}}
 \end{center}
+Whenever the valve is in \textit{OPEN\_POSITION} or \textit{CLOSED\_POSITION} the module shall check the position and set \textbf{Valve Error} if the position is not valid.
 
-In the following table are reported the temperature thresholds:
+In the following table\ref{tab:TemperatureThresholds} are reported the temperature thresholds:
 \begin{center}
 	\begin{tabular}{||l | l||} 
 		\hline
-		WARM 		& 2 C\degree \\ 
+		HIGH 		& 2 C\degree \\ 
 		\hline
 		APPROCHING 	& 1 C\degree \\ 
 		\hline
 	\end{tabular}
+	\captionof{table}{\label{tab:TemperatureThresholds}}
+\end{center}
+
+
+\subsubsection{Communication}
+Whenever a \textit{RoomRequest Message} is not received within 60s the module shall send the \textit{RoomStatus Message} and set the \textbf{Communication Error}.
+
+\subsubsection{Errors}
+Whenever one of the errors are set, the module shall notify it through the \textit{Interface}.
+In the following table \ref{tab:RoomErrors} are reported the possible errors.
+\begin{center}
+	\begin{tabular}{|| l ||} 
+		\hline
+		\textbf{Valve Error} \\ 
+		\hline
+		\textbf{Communication Error} \\ 
+		\hline
+		\textbf{Sensor Error} \\ 
+		\hline
+	\end{tabular}
+	\captionof{table}{\label{tab:RoomErrors}}
 \end{center}
