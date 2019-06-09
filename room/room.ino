@@ -1,18 +1,36 @@
 #include "DHT.h"
 #include <Servo.h>
 
-//#define DEBUG
-
+#define DEBUG
+//#define DEBUG_STATUS
+//-----------------------
 #define DELAY_SEND_CHAR	10
 
 #define MY_ID 	1
 
-#define TASK_PERIOD 			2000
-#define CONTROL_VALVE_PERIOD	4000
+#define TASK_PERIOD 			2000	// ms
+#define CONTROL_VALVE_PERIOD	4000	// ms
+
+#define HIGH_VALUE_DIFFERENCE		2	// ind C°
+#define APPROACH_TEMP_DIFFERENCE	1	// ind C°
+
+#define COM_ERROR_DEADLINE			30000	// in ms
+
+#define ENERGYSAVING_TIME_SLOT					30	// in seconds
+#define ENERGYSAVING_MOTION_COUNT_THRESHOLD		(int)(ENERGYSAVING_TIME_SLOT/(TASK_PERIOD*0.001))	// seconds to number of iteratinos
+#define ENERGYSAVING_MAX_MOTION_COUNT			(ENERGYSAVING_MOTION_COUNT_THRESHOLD << 1)		// double of the timeslot iterations
+
+#define TEMP_MAX					30
+#define TEMP_MIN					15
+#define DEFAULT_ENERGYSAVING_DIFFERENCE	2
+#define DEFAULT_DESIRED_TEMPERATURE			24
+
+#define MSG_REQUEST_LEN	64
+
 
 #define ERROR_LED_PIN 			13
 #define MOTION_LED_PIN 			12
-#define ENERGY_SAVING_LED_PIN 	11
+#define ENERGYSAVING_LED_PIN 	11
 
 #define DHT_PIN		10
 #define VALVE_PIN	8
@@ -21,29 +39,17 @@
 #define VALVE_CLOSED_PIN	6
 #define VALVE_OPEN_PIN		7
 
-#define TEMP_MAX					30
-#define TEMP_MIN					15
-#define DEFAULT_ENERGY_SAVING_DIFFERENCE	2
-#define DEFAULT_DESIRED_TEMPERATURE			24
-
 #define VALVE_CLOSED	10
 #define VALVE_LOW		45
 #define VALVE_MIDDLE	90
 #define VALVE_HIGH		135
 #define VALVE_OPEN		170
 
-#define HIGH_VALUE_DIFFERENCE		2
-#define APPROACH_TEMP_DIFFERENCE	1
-
-#define ENERGY_SAVING_MOTION_COUNT_THRESHOLD	10
-#define MAX_MOTION_COUNT	40
-
 #define SYSTEM_ERRORS	3
 #define DHT_ERROR		0
 #define VALVE_ERROR		1
 #define COM_ERROR		2
 
-#define MSG_LEN	64
 //------------------------------
 
 struct room_settings {
@@ -77,7 +83,7 @@ struct valve_settings{
 
 struct valve_settings valve_settings = {VALVE_OPEN, VALVE_CLOSED, VALVE_MIDDLE, VALVE_LOW, VALVE_HIGH};
 
-struct room my_room = {{MY_ID, DEFAULT_ENERGY_SAVING_DIFFERENCE, DEFAULT_DESIRED_TEMPERATURE, DEFAULT_DESIRED_TEMPERATURE},{0,0,0,0,0,0}};
+struct room my_room = {{MY_ID, DEFAULT_ENERGYSAVING_DIFFERENCE, DEFAULT_DESIRED_TEMPERATURE, DEFAULT_DESIRED_TEMPERATURE},{0,0,0,0,0,0}};
 
 DHT dht(DHT_PIN,DHT22);
 Servo valve;
@@ -119,9 +125,9 @@ void init_valve() {
 		move_valve(pos);
 		if(digitalRead(VALVE_OPEN_PIN)){
 			valve_settings.open_pos = pos;
-			digitalWrite(ENERGY_SAVING_LED_PIN, HIGH);
+			digitalWrite(ENERGYSAVING_LED_PIN, HIGH);
 			delay(200);
-			digitalWrite(ENERGY_SAVING_LED_PIN, LOW);
+			digitalWrite(ENERGYSAVING_LED_PIN, LOW);
 			break;
 		}
 	}
@@ -132,9 +138,9 @@ void init_valve() {
 		move_valve(pos);
 		if(digitalRead(VALVE_CLOSED_PIN)){
 			valve_settings.closed_pos = pos;
-			digitalWrite(ENERGY_SAVING_LED_PIN, HIGH);
+			digitalWrite(ENERGYSAVING_LED_PIN, HIGH);
 			delay(200);
-			digitalWrite(ENERGY_SAVING_LED_PIN, LOW);
+			digitalWrite(ENERGYSAVING_LED_PIN, LOW);
 			break;
 		}
 	}
@@ -176,20 +182,20 @@ void init_valve() {
 
 void init_leds(){
 	pinMode(ERROR_LED_PIN, OUTPUT);
-	pinMode(ENERGY_SAVING_LED_PIN, OUTPUT);
+	pinMode(ENERGYSAVING_LED_PIN, OUTPUT);
 	pinMode(MOTION_LED_PIN, OUTPUT);
 	// check
 	digitalWrite(ERROR_LED_PIN, HIGH);
 	delay(200);
 	digitalWrite(MOTION_LED_PIN, HIGH);
 	delay(200);
-	digitalWrite(ENERGY_SAVING_LED_PIN, HIGH);
+	digitalWrite(ENERGYSAVING_LED_PIN, HIGH);
 	delay(200);
 	digitalWrite(ERROR_LED_PIN, LOW);
 	delay(200);
 	digitalWrite(MOTION_LED_PIN, LOW);
 	delay(200);
-	digitalWrite(ENERGY_SAVING_LED_PIN, LOW);
+	digitalWrite(ENERGYSAVING_LED_PIN, LOW);
 }
 
 void init_DHT(){
@@ -232,7 +238,7 @@ uint8_t check_message(char* str){
 	uint8_t count_end_quad = 0;
 	uint8_t count_quotes = 0;
 	uint8_t len = 0;
-	while(*str != '\0' && len<MSG_LEN){
+	while(*str != '\0' && len<MSG_REQUEST_LEN){
 		switch(*str){
 			case '"':
 				count_quotes++;
@@ -255,7 +261,7 @@ uint8_t check_message(char* str){
 		str++;
 		len++;
 	}
-	if(len>=MSG_LEN)
+	if(len>=MSG_REQUEST_LEN)
 		return 3;	// message corrupted
 
 	if(count_start_graph > count_end_graph)	// message incomplete
@@ -337,11 +343,11 @@ bool receive_command(){
 	bool ret = false;
 	uint8_t check;
 	static uint8_t msg_i = 0;
-	static char msg[MSG_LEN];
+	static char msg[MSG_REQUEST_LEN];
 
  	while(Serial.available() > 0) {
 		#ifdef DEBUG
-			digitalWrite(ENERGY_SAVING_LED_PIN, HIGH);
+			digitalWrite(ENERGYSAVING_LED_PIN, HIGH);
 		#endif
 		char c = Serial.read();
 		if(c != '\n' && c != '\r'){
@@ -370,7 +376,7 @@ bool receive_command(){
 	}
 	#ifdef DEBUG
 		delay(200);
-		digitalWrite(ENERGY_SAVING_LED_PIN, LOW);
+		digitalWrite(ENERGYSAVING_LED_PIN, LOW);
 	#endif
 	return ret;
 }
@@ -418,44 +424,57 @@ void setup() {
 }
 
 void loop() {
-	static uint32_t  this_run=0, last_run=0, control_valve_last=0;
+	static uint32_t  this_run = 0, last_run = 0, control_valve_last = 0, last_message_time = 0;
 	bool check_cmd = false;
 	this_run = millis();	
 
+//------------------------------------
 	if((this_run-last_run) >= TASK_PERIOD){
 		last_run = this_run;
 		manage_error_led();
 		dht_sensor_task_run();
 		manage_Energy_Saving_mode();
 		check_motion();
-		#ifdef DEBUG
+		#ifdef DEBUG_STATUS
 			send_room_status();
 		#endif
 	}
 
+//------------------------------------
 	if((this_run - control_valve_last) >= CONTROL_VALVE_PERIOD){
 		control_valve_last = this_run;
 		control_valve();
 	}
 
+//----------background task-----------
 	if(receive_command()){
+		last_message_time = this_run;
 		send_room_status();
+	} else {
+		if((this_run-last_message_time) > COM_ERROR_DEADLINE){
+			#ifdef DEBUG
+				Serial.println("----------Communication error, no message received-----------");
+			#endif
+			systems_errors[COM_ERROR] = true;
+			last_message_time = this_run;
+			send_room_status();
+		}
 	}
-
+//------------------------------------
 }
 
 void manage_Energy_Saving_mode() {
-	if(my_room.status.motion_count < ENERGY_SAVING_MOTION_COUNT_THRESHOLD){
+	if(my_room.status.motion_count < ENERGYSAVING_MOTION_COUNT_THRESHOLD){
 		my_room.settings.actual_goal_temperature = my_room.settings.desired_temperature - my_room.settings.energy_saving_difference;
 		if(my_room.settings.actual_goal_temperature < TEMP_MIN){
 			my_room.settings.actual_goal_temperature = TEMP_MIN;
 		}
 		my_room.status.eco_mode = true;
-		digitalWrite(ENERGY_SAVING_LED_PIN, HIGH);
+		digitalWrite(ENERGYSAVING_LED_PIN, HIGH);
 	} else {
 		my_room.settings.actual_goal_temperature = my_room.settings.desired_temperature;
 		my_room.status.eco_mode = false;
-		digitalWrite(ENERGY_SAVING_LED_PIN, LOW);
+		digitalWrite(ENERGYSAVING_LED_PIN, LOW);
 
 	}
 }
@@ -464,7 +483,7 @@ void check_motion(){ 	// can be implemented as an interrupt on rising/falling ed
 	if(digitalRead(PIR_PIN)){
 		my_room.status.motion = true;
 		digitalWrite(MOTION_LED_PIN, HIGH);
-		if(my_room.status.motion_count < MAX_MOTION_COUNT){
+		if(my_room.status.motion_count < ENERGYSAVING_MAX_MOTION_COUNT){
 			my_room.status.motion_count++;
 		}
 	} else {
