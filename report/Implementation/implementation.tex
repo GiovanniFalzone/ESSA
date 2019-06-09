@@ -1,0 +1,78 @@
+\documentclass[titlepage,a4paper]{article}
+\usepackage[T1]{fontenc}		% font encode
+\usepackage[utf8]{inputenc}	 % input encode
+\usepackage[english]{babel}		% secondary and main languages
+\usepackage{authblk}			% to add affiliation
+\usepackage[tt]{titlepic}		% to add the logo in first page
+\usepackage{graphicx}			% to add images
+\usepackage{gensymb}			% used for symbols as °(\degree)
+\usepackage{amsmath}
+\usepackage{mathtools}			% used for math formulae
+\usepackage{float}
+\usepackage{titlesec}			%used to add \sectionbreak command
+\usepackage{appendix}
+\usepackage{hyperref}
+\usepackage{footnote}
+\usepackage{enumitem}
+\usepackage{blindtext}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{rotating}
+\usepackage{siunitx}
+\usepackage{listings}		%code listings (lstlisting)
+\usepackage{color}
+
+\setlistdepth{9}									% enumerate depth 
+\newlist{req_enum}{enumerate}{9}					% definition of a new enumerate type
+\setlist[req_enum]{label=\thesubsection.\arabic{*}.}	% include the chapter number
+
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\lstset{basicstyle=\ttfamily,columns=fullflexible,showstringspaces=false,tabsize=2}
+
+\lstdefinestyle{custompython}{backgroundcolor=\color{white},belowcaptionskip=1\baselineskip,breaklines=true,frame=L,xleftmargin=\parindent,language=Python,showstringspaces=false,basicstyle=\footnotesize\ttfamily,keywordstyle=\bfseries\color{darkblue},commentstyle=\itshape\color{green!40!black},identifierstyle=\color{blue},stringstyle=\color{orange},
+}
+
+
+\lstdefinestyle{custombash}{basicstyle=\color{white},backgroundcolor=\color{black},belowcaptionskip=1\baselineskip,breaklines=true,frame=L,xleftmargin=\parindent,language=bash,showstringspaces=false,morekeywords={roslaunch,rosrun},basicstyle=\footnotesize\ttfamily,keywordstyle=\bfseries\color{yellow},commentstyle=\itshape\color{green},identifierstyle=\color{white},stringstyle=\color{orange},
+}
+
+
+\lstdefinelanguage{XML}{morestring=[b]", morestring=[s]{>}{<}, stringstyle=\color{red}, identifierstyle=\color{darkblue}, commentstyle=\color{green}, keywordstyle=\color{cyan}, morekeywords={name,xmlns,version,type}% list your attributes here
+}
+
+\newcommand{\sectionbreak}{\clearpage}	%to start new section in a new page
+
+\graphicspath{{img/}{img/Johnny/}{img/rob/screenshots/}}
+
+\renewcommand\Authfont{\fontsize{12}{14.4}\selectfont}
+\renewcommand\Affilfont{\fontsize{10}{10.8}\selectfont}
+
+%intestazione
+\title{\includegraphics[width=4cm, keepaspectratio]{unipi_blu}\hspace{2cm}\includegraphics [width=4cm, keepaspectratio]{santanna}~\\[2cm]
+\textbf{\LARGE Design of Embedded Systems}\\[1cm] ESSTA, Energy Saving Smart-home distributed Temperature control Application, Implementation}
+
+\author{\emph{Falzone Giovanni}}
+\affil{\emph{jointly M.Sc Embedded Computing Systems}}
+\affil{\emph{Sant'Anna School of Advanced Studies}}
+\affil{\emph{University of Pisa}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\input{introduction.tex}
+\input{SySML.tex}
+\input{CentralUnit_implementation.tex}
+\input{room_implementation.tex}
+\input{implementation_values.tex}
+\input{CUnit.tex}
+\input{future.tex}
+
+\end{document}

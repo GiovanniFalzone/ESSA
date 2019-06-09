@@ -62,7 +62,7 @@ struct room_status{
 	bool motion;
 	unsigned int valve_status;
 	bool eco_mode;
-	unsigned int last_motion_time;
+	unsigned long last_motion_time;
 };
 
 struct room {
@@ -460,7 +460,7 @@ void loop() {
 }
 
 void manage_Energy_Saving_mode() {
-	if((millis() - my_room.status.last_motion_time) < MOTION_TIME_SLOT){
+	if((unsigned long)(millis() - my_room.status.last_motion_time) >= MOTION_TIME_SLOT){
 		my_room.settings.actual_goal_temperature = my_room.settings.desired_temperature - my_room.settings.energy_saving_difference;
 		if(my_room.settings.actual_goal_temperature < TEMP_MIN){
 			my_room.settings.actual_goal_temperature = TEMP_MIN;
@@ -471,7 +471,6 @@ void manage_Energy_Saving_mode() {
 		my_room.settings.actual_goal_temperature = my_room.settings.desired_temperature;
 		my_room.status.eco_mode = false;
 		digitalWrite(ENERGYSAVING_LED_PIN, LOW);
-
 	}
 }
 

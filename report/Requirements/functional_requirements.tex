@@ -1,0 +1,49 @@
+\section{Functional requirements}
+	\subsection{Central Unit}
+		\begin{req_enum}
+			\item \textbf{Communication}
+				\begin{req_enum}[label*=\arabic*.]
+					\item The \textit{Central Unit} shall send a \textit{Room Request message} polling among the rooms.
+					\item The \textit{Room Request message} shall include the Id of the room and the \textit{Desired Temperature} in Celsius\degree.
+					\item The \textit{Room Status message} shall include the Id of the room, the \textit{Energy Saving mode} one if active zero otherwise, the \textit{Temperature} in Celsius\degree, the \textit{Humidity} in \% and the \textit{Valve position} in \%.
+					\item Whenever a \textit{Room Status message} is corrupted or dosen't arrive within 5s from the sent of \textit{Room Request message}, the same \textit{Room Request message} shall be resend until 3 times before marking the room as \textbf{crashed}.
+				\end{req_enum}
+		\end{req_enum}
+
+%------------------------------------------------------------------
+
+	\subsection{Room}
+		\begin{req_enum}
+			\item \textbf{Initialization}
+				\begin{req_enum}[label*=\arabic*.]
+					\item During the initialization phase the module shall check the valve moving it from the DAFULT\_CLOSED\_POSITION to the DAFULT\_OPEN\_POSITION
+					\item During the initialization phase the module shall set the CLOSED\_POSITION, LOW\_POSITION, MIDDLE\_POSITION, HIGH\_POSITION, OPEN\_POSITION
+					\item During the initialization phase the module shall check the temperature sensor until a correct value is received
+					\item During the initialization phase the module shall check the humidity sensor until a correct value is received
+				\end{req_enum}
+		
+			\item \textbf{Energy Saving mode}
+				\begin{req_enum}[label*=\arabic*.]
+					\item Whenever the module is in energy saving mode the ENERGY\_SAVING\_LED shall be turn on
+				\end{req_enum}
+
+			\item \textbf{Valve Control}
+				\begin{req_enum}[label*=\arabic*.]
+					\item The module shall change the position of the valve every VALVE\_PERIOD seconds
+					\item The valve shall be in OPEN\_POSITION whenever the difference between the actual temperature and the desired temperature is below -COLD\_THRESHOLD C\degree
+					\item The valve shall be in HIGH\_POSITION whenever the difference between the actual temperature and the desired temperature is greater then -COLD\_THRESHOLD C\degree and below -APPROACHING\_THRESHOLD C\degree
+					\item The valve shall be in MIDDLE\_POSITION whenever the difference between the actual temperature and the desired temperature is greater or equal then -APPROACHING\_THRESHOLD C\degree and below or equal then APPROACHING\_THRESHOLD C\degree
+					\item The valve shall be in LOW\_POSITION whenever the difference between the actual temperature and the desired temperature is greater then APPROACHING\_THRESHOLD C\degree and below or equal then HOT\_THRESHOLD C\degree
+					\item The valve shall be in CLOSED\_POSITION whenever the difference between the actual temperature and the desired temperature is greater then HOT\_TEMP C\degree
+				\end{req_enum}
+
+		\item \textbf{Communication}
+		\begin{req_enum}[label*=\arabic*.]
+			\item 
+		\end{req_enum}
+
+		\item \textbf{Errors}
+			\begin{req_enum}[label*=\arabic*.]
+				\item If the \textbf{communication error} or \textbf{valve error} or \textbf{sensor error} is set the module shall turn on the ERROR\_LED.
+			\end{req_enum}
+		\end{req_enum}
