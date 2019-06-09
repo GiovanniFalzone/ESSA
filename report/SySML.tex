@@ -25,7 +25,7 @@ The Room module send a \textit{RoomStatus} message composed as follow:
 		\hline
 		Temperature			&  Float & [15.00, 30.00] \\ 
 		\hline
-		Humidity			&  Floar & [0.00, 100.00] \\ 
+		Humidity			&  Float & [0.00, 100.00] \\ 
 		\hline
 		Valve				&  Integer & [0, 100] \\ 
 		\hline
@@ -48,7 +48,7 @@ The Room module send a \textit{RoomStatus} message composed as follow:
 
 \subsection{Central Unit}
 The \textit{Central Unit} is composed by two modules, the \textit{RoomsManager} and the \textit{UserInterfaceManager}.
-The \textit{RoomsManager} implemnets the functionalities related to the status of each room.
+The \textit{RoomsManager} implements the functionalities related to the status of each room.
 The \textit{UserInterfaceManager} that implements the functionalities related to represent the status of the system.
 The two components exchange data as shown in \ref{fig:CentralUnit_internals}.
 \begin{figure}[H]
@@ -67,7 +67,7 @@ The two components exchange data as shown in \ref{fig:CentralUnit_internals}.
 
 
 \subsection{Room module}
-The main component of this module is the \textit{MainController} composed by different funcionts as shown in \ref{fig:RoomInternals}.
+The main component of this module is the \textit{MainController} composed by different functions as shown in \ref{fig:RoomInternals}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=13cm,keepaspectratio]{img/sysml/RoomComponents}

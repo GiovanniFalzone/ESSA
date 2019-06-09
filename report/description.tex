@@ -7,7 +7,7 @@ The system is composed by two differ modules
 \end{itemize}
 
 \subsection{Central Unit}
-The \textit{Central Unit} has the role of coordinator that retrieve the status of each room and compute the average values for the builng.\\
+The \textit{Central Unit} has the role of coordinator that retrieve the status of each room and compute the average values for the building.\\
 
 \subsubsection{Graphical user interface}
 Using a graphical User Interface the module represents the average values of the building and the values for each room, the graphical User Interface is composed by:
@@ -23,7 +23,7 @@ When the \textit{Main page} is selected the module shall represent the average v
 When the \textit{Main page} is selected the module shall represent the \textit{Energy Saving} if at least one room is set to \textit{Energy Saving mode}.
 When the \textit{Main page} is selected the module shall represent the \textit{Warning} if at least one room is set to \textit{crashed}.
 
-The graphical user interface shall represent the following informations as reported in the following table \ref{tab:GraphicalInformations}.
+The graphical user interface shall represent the following information as reported in the table \ref{tab:GraphicalInformations}.
 \begin{table}[H]
 	\centering
 			\begin{tabular}{||l | l||} 
@@ -41,20 +41,20 @@ The graphical user interface shall represent the following informations as repor
 			Warning		& boolean \\ 
 			\hline
 		\end{tabular}
-		\captionof{table}{\label{tab:GraphicalInformations}}
+		\captionof{table}{Display Information\label{tab:GraphicalInformations}}
 \end{table}
 
 \subsubsection{Communication}
-Whenever a \textit{RoomRequest Message} is sent and the \textit{RoomStatus Message} is not received within 20s the module shall mark the room as \textbf{crashed}.
-The module shall send the \textit{RoomRequest Message} for each room at least every 30s.
+Whenever a \textit{Room Request message} is sent and the \textit{Room Status message} is not received within 20s the module shall mark the room as \textbf{crashed}.
+The module shall send the \textit{Room Request message} for each room at least every 30s.
 
 %--------------------------------------
 \subsection{Room Module}
 The purpose of this module is to control the temperature of the room acting on a valve in order to 
-reach and mantain the \textit{GoalTemperature}.
+reach and maintain the \textit{GoalTemperature}.
 
 \subsubsection{Energy Saving mode}
-In order to minimize the consumpion the module keep tracks of the presence of motion inside the room
+In order to minimize the consumption the module keep tracks of the presence of motion inside the room
 using a motion sensor. \\
 
 If a motion is detected in the last 30s, the module shall set the \textit{GoalTemperature} to the one set by the user,otherwise the module shall set the \textit{GoalTemperature} to:
@@ -67,7 +67,7 @@ Whenever the module is in \textit{Energy Saving mode} it shall notify through th
 \subsubsection{Valve control}
 In order to control the heating of the room the valve is moved to different positions based on the temperature error 
 (\textit{ActualTemperature} - \textit{GoalThemperature}) as in the following table, 
-whenever one of these rules is valid the module shall move the valve in the correspondant position described in the third column of the table \ref{tab:ValvePositions} as percentage of maximum flow.
+whenever one of these rules is valid the module shall move the valve in the correspondent position described in the third column of the table \ref{tab:ValvePositions} as percentage of maximum flow.
 \begin{center}
 	\begin{tabular}{| l | l | l |} 
 		\hline
@@ -86,7 +86,7 @@ whenever one of these rules is valid the module shall move the valve in the corr
 	\end{tabular}
 	\captionof{table}{\label{tab:ValvePositions}}
 \end{center}
-Whenever the valve is in \textit{OPEN\_POSITION} or \textit{CLOSED\_POSITION} the module shall check the position and set \textbf{Valve Error} if the position is not valid.
+Whenever the valve is in \textit{OPEN\_POSITION} or \textit{CLOSED\_POSITION} the module shall check the position and set \textbf{Valve Error} if it is not valid.
 
 In the following table\ref{tab:TemperatureThresholds} are reported the temperature thresholds:
 \begin{center}
@@ -102,7 +102,7 @@ In the following table\ref{tab:TemperatureThresholds} are reported the temperatu
 
 
 \subsubsection{Communication}
-Whenever a \textit{RoomRequest Message} is not received within 60s the module shall send the \textit{RoomStatus Message} and set the \textbf{Communication Error}.
+Whenever a \textit{Room Request message} is not received within 60s the module shall send the \textit{Room Status Message} and set the \textbf{Communication error}.
 
 \subsubsection{Errors}
 Whenever one of the errors are set, the module shall notify it through the \textit{Interface}.
@@ -110,11 +110,11 @@ In the following table \ref{tab:RoomErrors} are reported the possible errors.
 \begin{center}
 	\begin{tabular}{|| l ||} 
 		\hline
-		\textbf{Valve Error} \\ 
+		\textbf{Valve error} \\ 
 		\hline
-		\textbf{Communication Error} \\ 
+		\textbf{Communication error} \\ 
 		\hline
-		\textbf{Sensor Error} \\ 
+		\textbf{Sensor error} \\ 
 		\hline
 	\end{tabular}
 	\captionof{table}{\label{tab:RoomErrors}}

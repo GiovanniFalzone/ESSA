@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.22)  9 JUN 2019 15:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.22)  9 JUN 2019 15:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1506,14 +1506,14 @@ File: img/room_simulator.png Graphic file (type png)
 Package pdftex.def Info: img/room_simulator.png  used on input line 92.
 (pdftex.def)             Requested size: 341.43306pt x 116.98648pt.
 ) (/home/hhunt/git/ESSTA/report/future.tex [18 </home/hhunt/git/ESSTA/report/img/CUnit_result.png> </home/hhunt/git/ESSTA/report/img/room_simulator.png>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 80.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 78.
  [19
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 80.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
  (/home/hhunt/git/ESSTA/report/report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 80.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 80.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 78.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 78.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 5EB0D436A8272542E349481E0B739FD4;1936.
 
@@ -1523,20 +1523,20 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 80.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 78.
  ) 
 Here is how much of TeX's memory you used:
  22515 strings out of 494847
  412496 string characters out of 6179080
- 520331 words of memory out of 5000000
+ 520347 words of memory out of 5000000
  25468 multiletter control sequences out of 15000+600000
  546336 words of font info for 61 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  36i,10n,56p,10436b,1181s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0800.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on /home/hhunt/git/ESSTA/report/report.pdf (20 pages, 36656858 bytes).
+Output written on /home/hhunt/git/ESSTA/report/report.pdf (20 pages, 36657200 bytes).
 PDF statistics:
- 820 PDF objects out of 1000 (max. 8388607)
+ 821 PDF objects out of 1000 (max. 8388607)
  359 compressed objects within 4 object streams
  100 named destinations out of 1000 (max. 500000)
  353 words of extra memory for PDF output out of 10000 (max. 10000000)

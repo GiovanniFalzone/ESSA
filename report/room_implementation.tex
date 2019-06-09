@@ -9,7 +9,7 @@ to check the activation time of each task, the tasks are reported in the followi
 		\hline
 		\textbf{Main task}			&	0.5Hz \\ 
 		\hline
-		\textbf{ControlValve task}	&	0.25Hz \\ 
+		\textbf{Control valve task}	&	0.25Hz \\ 
 		\hline
 	\end{tabular}
 	\captionof{table}{Tasks running on the Room module \label{tab:RoomTasks}}
@@ -58,7 +58,7 @@ The module is composed by:
 		\label{fig:ServoMotor}
 	\end{figure}
 
-	The chosen ServoMotor is a Tower Pro SG90 reported in \ref{fig:ServoMotor},
+	The chosen Servo motor is a Tower Pro SG90 reported in \ref{fig:ServoMotor},
 	As reported in the \ref{fig:ServoMotor}, the signal used to move the servomotor in the correct position is a PWM and the duty-cycle describe the position that the motor has to maintain.
 	The signal to control the motor position is managed by the Servo library using the \textbf{timer1} a 16-bit timer.
 	The digital circuit inside the servomotor will adjust the position of the rotor using a potentiometer attached to that.
@@ -85,12 +85,12 @@ The module is composed by:
 	\caption{Discovery board wiring}
 	\label{fig:valve}
 \end{figure}
-In order to check the position of the valve, two switches are fixed in the open and closed position, during the \textit{init\_valve} phase the possible positions are computed starting from the open and closed position.
+In order to check the position of the valve, two switches are fixed in the open and closed position, during the \textit{valve initialization phase} the possible positions are computed starting from the open and closed position.
 Whenever the valve is in the open or closed position a check is done using the switches.
 
 \subsubsection{Temperature-Humidity Sensor}
-The sensor DHT22 have been used for the projet, in the following tables are reported the features of the sensors.
-The sensor has a dedicated one-wire communication protocol implemented by the DHT adafruit library, a pull-up resistor is used in order to mantain the line clear when no one is transmitting.
+The sensor DHT22 have been used for the project, in the following tables are reported the features of the sensors.
+The sensor has a dedicated one-wire communication protocol implemented by the DHT adafruit library, a pull-up resistor is used in order to maintain the line clear when no one is transmitting.
 
 \begin{center}
 	\begin{tabular}{||l | l||} 
