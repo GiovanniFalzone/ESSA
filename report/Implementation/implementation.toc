@@ -12,16 +12,16 @@
 \contentsline {subsection}{\numberline {2.1}Wiring}{6}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Graphic Interface}{6}{subsection.2.2}
 \contentsline {section}{\numberline {3}Implementation, Room module}{8}{section.3}
-\contentsline {subsection}{\numberline {3.1}Components description}{8}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}ServoMotor}{8}{subsubsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1}Components description}{9}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}ServoMotor}{9}{subsubsection.3.1.1}
 \contentsline {subsubsection}{\numberline {3.1.2}Valve position switches}{9}{subsubsection.3.1.2}
 \contentsline {subsubsection}{\numberline {3.1.3}Temperature-Humidity Sensor}{9}{subsubsection.3.1.3}
 \contentsline {subsection}{\numberline {3.2}Wiring}{10}{subsection.3.2}
-\contentsline {section}{\numberline {4}JSON messages implementation}{11}{section.4}
-\contentsline {subsection}{\numberline {4.1}Request Message}{11}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Status Message}{11}{subsection.4.2}
-\contentsline {section}{\numberline {5}CUnit tests and simulation of the system}{12}{section.5}
-\contentsline {subsection}{\numberline {5.1}Variables tests}{12}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}JSON Compliance tests}{12}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Network noise tests}{13}{subsection.5.3}
-\contentsline {section}{\numberline {6}Future Work}{14}{section.6}
+\contentsline {section}{\numberline {4}JSON messages implementation}{12}{section.4}
+\contentsline {subsection}{\numberline {4.1}Request Message}{12}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Status Message}{12}{subsection.4.2}
+\contentsline {section}{\numberline {5}CUnit tests and simulation of the system}{13}{section.5}
+\contentsline {subsection}{\numberline {5.1}Variables tests}{13}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}JSON Compliance tests}{13}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Network noise tests}{14}{subsection.5.3}
+\contentsline {section}{\numberline {6}Future Work}{15}{section.6}
