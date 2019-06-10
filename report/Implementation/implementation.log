@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.22)  10 JUN 2019 09:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.22)  10 JUN 2019 12:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1274,11 +1274,11 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 ) (/home/hhunt/git/ESSTA/report/Implementation/CentralUnit_implementation.tex [4]
-<img/CentralUnit.jpg, id=182, 4673.46pt x 2324.685pt>
+<img/CentralUnit.jpg, id=182, 722.7pt x 359.3425pt>
 File: img/CentralUnit.jpg Graphic file (type jpg)
 <use img/CentralUnit.jpg>
 Package pdftex.def Info: img/CentralUnit.jpg  used on input line 4.
-(pdftex.def)             Requested size: 227.62204pt x 113.19048pt.
+(pdftex.def)             Requested size: 227.62204pt x 113.17703pt.
 
 
 LaTeX Warning: Reference `tab:CU_Tasks' on page 5 undefined on input line 14.
@@ -1293,11 +1293,11 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 34.
 See the caption package documentation for explanation.
 
-<img/discovery_board.jpg, id=183, 4673.46pt x 3505.095pt>
+<img/discovery_board.jpg, id=183, 722.7pt x 542.025pt>
 File: img/discovery_board.jpg Graphic file (type jpg)
 <use img/discovery_board.jpg>
 Package pdftex.def Info: img/discovery_board.jpg  used on input line 40.
-(pdftex.def)             Requested size: 170.71652pt x 127.9857pt.
+(pdftex.def)             Requested size: 170.71652pt x 128.03754pt.
 [5
 
  </home/hhunt/git/ESSTA/report/Implementation/img/CentralUnit.jpg>]
@@ -1311,37 +1311,37 @@ Overfull \hbox (28.87555pt too wide) in paragraph at lines 47--54
  [] 
  []
 
-<img/home_screen.jpg, id=190, 3505.095pt x 3119.655pt>
+<img/home_screen.jpg, id=190, 722.7pt x 643.40375pt>
 File: img/home_screen.jpg Graphic file (type jpg)
 <use img/home_screen.jpg>
 Package pdftex.def Info: img/home_screen.jpg  used on input line 67.
-(pdftex.def)             Requested size: 113.81102pt x 101.24954pt.
-<img/settings_screen.jpg, id=191, 3505.095pt x 2886.785pt>
+(pdftex.def)             Requested size: 113.81102pt x 101.31699pt.
+<img/settings_screen.jpg, id=191, 722.7pt x 595.22375pt>
 File: img/settings_screen.jpg Graphic file (type jpg)
 <use img/settings_screen.jpg>
 Package pdftex.def Info: img/settings_screen.jpg  used on input line 73.
-(pdftex.def)             Requested size: 113.81102pt x 93.69165pt.
-<img/room_screen.jpg, id=192, 3505.095pt x 2954.03625pt>
+(pdftex.def)             Requested size: 113.81102pt x 93.73007pt.
+<img/room_screen.jpg, id=192, 722.7pt x 609.27625pt>
 File: img/room_screen.jpg Graphic file (type jpg)
 <use img/room_screen.jpg>
 Package pdftex.def Info: img/room_screen.jpg  used on input line 78.
-(pdftex.def)             Requested size: 113.81102pt x 95.87431pt.
+(pdftex.def)             Requested size: 113.81102pt x 95.94292pt.
 [6 </home/hhunt/git/ESSTA/report/Implementation/img/discovery_board.jpg>]) (/home/hhunt/git/ESSTA/report/Implementation/room_implementation.tex [7 </home/hhunt/git/ESSTA/report/Implementation/img/home_screen.jpg> </home/hhunt/git/ESSTA/report/Implementation/img/settings_screen.jpg> </home/hhunt/git/ESSTA/report/Implementation/img/room_screen.jpg>]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 15.
 See the caption package documentation for explanation.
 
-<img/room_board.jpg, id=209, 3505.095pt x 2848.6425pt>
+<img/room_board.jpg, id=209, 722.7pt x 587.19376pt>
 File: img/room_board.jpg Graphic file (type jpg)
 <use img/room_board.jpg>
 Package pdftex.def Info: img/room_board.jpg  used on input line 21.
-(pdftex.def)             Requested size: 113.81102pt x 92.45372pt.
-<img/valve.jpg, id=210, 3505.095pt x 2995.19pt>
+(pdftex.def)             Requested size: 113.81102pt x 92.46558pt.
+<img/valve.jpg, id=210, 722.7pt x 617.30624pt>
 File: img/valve.jpg Graphic file (type jpg)
 <use img/valve.jpg>
 Package pdftex.def Info: img/valve.jpg  used on input line 27.
-(pdftex.def)             Requested size: 113.81102pt x 97.20998pt.
+(pdftex.def)             Requested size: 113.81102pt x 97.2074pt.
 <img/servo_signal.png, id=211, 380.42125pt x 258.9675pt>
 File: img/servo_signal.png Graphic file (type png)
 <use img/servo_signal.png>
@@ -1366,7 +1366,7 @@ See the caption package documentation for explanation.
 File: img/valve.jpg Graphic file (type jpg)
 <use img/valve.jpg>
 Package pdftex.def Info: img/valve.jpg  used on input line 84.
-(pdftex.def)             Requested size: 170.71652pt x 145.83783pt.
+(pdftex.def)             Requested size: 170.71652pt x 145.82053pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
@@ -1374,11 +1374,11 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 [9 </home/hhunt/git/ESSTA/report/Implementation/img/servo_signal.png> </home/hhunt/git/ESSTA/report/Implementation/img/servomotor.png>]
-<img/room_board_wiring.jpg, id=230, 3505.095pt x 2344.76pt>
+<img/room_board_wiring.jpg, id=230, 722.7pt x 483.8075pt>
 File: img/room_board_wiring.jpg Graphic file (type jpg)
 <use img/room_board_wiring.jpg>
 Package pdftex.def Info: img/room_board_wiring.jpg  used on input line 120.
-(pdftex.def)             Requested size: 170.71652pt x 114.16794pt.
+(pdftex.def)             Requested size: 170.71652pt x 114.28535pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
@@ -1465,13 +1465,13 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 81.
 Here is how much of TeX's memory you used:
  22425 strings out of 494847
  410647 string characters out of 6179080
- 519146 words of memory out of 5000000
+ 519127 words of memory out of 5000000
  25414 multiletter control sequences out of 15000+600000
  546336 words of font info for 61 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  36i,10n,56p,10459b,1181s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0800.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on /home/hhunt/git/ESSTA/report/Implementation/implementation.pdf (15 pages, 36163848 bytes).
+Output written on /home/hhunt/git/ESSTA/report/Implementation/implementation.pdf (15 pages, 2479267 bytes).
 PDF statistics:
  736 PDF objects out of 1000 (max. 8388607)
  308 compressed objects within 4 object streams
