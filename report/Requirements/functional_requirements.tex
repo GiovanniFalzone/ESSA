@@ -3,10 +3,10 @@
 		\begin{req_enum}
 			\item \textbf{Communication}
 				\begin{req_enum}[label*=\arabic*.]
-					\item The \textit{Central Unit} shall send a \textit{Room Request message} polling among the rooms.
-					\item The \textit{Room Request message} shall include the Id of the room and the \textit{Desired Temperature} in Celsius\degree.
-					\item The \textit{Room Status message} shall include the Id of the room, the \textit{Energy Saving mode} one if active zero otherwise, the \textit{Temperature} in Celsius\degree, the \textit{Humidity} in \% and the \textit{Valve position} in \%.
-					\item Whenever a \textit{Room Status message} is corrupted or dosen't arrive within 5s from the sent of \textit{Room Request message}, the same \textit{Room Request message} shall be resend until 3 times before marking the room as \textbf{crashed}.
+					\item The \textit{Central Unit} shall send a \textit{Room Request message} polling among all the rooms
+					\item The \textit{Room Request message} shall include the Id of the room and the \textit{Desired Temperature} in Celsius\degree
+					\item The \textit{Room Status message} shall include the Id of the room, the \textit{Energy Saving mode} one if active zero otherwise, the \textit{Temperature} in Celsius\degree, the \textit{Humidity} in \% and the \textit{Valve position} in \%
+					\item Whenever a \textit{Room Status message} is corrupted or doesn't arrive within 5s from the sent of the \textit{Room Request message}, the same \textit{Room Request message} shall be resent until 3 times before marking the room as \textbf{crashed}
 				\end{req_enum}
 		\end{req_enum}
 
@@ -16,34 +16,104 @@
 		\begin{req_enum}
 			\item \textbf{Initialization}
 				\begin{req_enum}[label*=\arabic*.]
-					\item During the initialization phase the module shall check the valve moving it from the DAFULT\_CLOSED\_POSITION to the DAFULT\_OPEN\_POSITION
-					\item During the initialization phase the module shall set the CLOSED\_POSITION, LOW\_POSITION, MIDDLE\_POSITION, HIGH\_POSITION, OPEN\_POSITION
-					\item During the initialization phase the module shall check the temperature sensor until a correct value is received
-					\item During the initialization phase the module shall check the humidity sensor until a correct value is received
+					\item The module shall check the position of the valve moving in CLOSED, LOW, MIDDLE, HIGH and OPEN
+					\item The module shall check the correctness of the sensors
+					\item The module shall turn on all the LEDS and the turn off
 				\end{req_enum}
-		
-			\item \textbf{Energy Saving mode}
-				\begin{req_enum}[label*=\arabic*.]
-					\item Whenever the module is in energy saving mode the ENERGY\_SAVING\_LED shall be turn on
-				\end{req_enum}
-
-			\item \textbf{Valve Control}
-				\begin{req_enum}[label*=\arabic*.]
-					\item The module shall change the position of the valve every VALVE\_PERIOD seconds
-					\item The valve shall be in OPEN\_POSITION whenever the difference between the actual temperature and the desired temperature is below -COLD\_THRESHOLD C\degree
-					\item The valve shall be in HIGH\_POSITION whenever the difference between the actual temperature and the desired temperature is greater then -COLD\_THRESHOLD C\degree and below -APPROACHING\_THRESHOLD C\degree
-					\item The valve shall be in MIDDLE\_POSITION whenever the difference between the actual temperature and the desired temperature is greater or equal then -APPROACHING\_THRESHOLD C\degree and below or equal then APPROACHING\_THRESHOLD C\degree
-					\item The valve shall be in LOW\_POSITION whenever the difference between the actual temperature and the desired temperature is greater then APPROACHING\_THRESHOLD C\degree and below or equal then HOT\_THRESHOLD C\degree
-					\item The valve shall be in CLOSED\_POSITION whenever the difference between the actual temperature and the desired temperature is greater then HOT\_TEMP C\degree
-				\end{req_enum}
-
-		\item \textbf{Communication}
-		\begin{req_enum}[label*=\arabic*.]
-			\item 
-		\end{req_enum}
-
-		\item \textbf{Errors}
+			\item \textbf{Running}
 			\begin{req_enum}[label*=\arabic*.]
-				\item If the \textbf{communication error} or \textbf{valve error} or \textbf{sensor error} is set the module shall turn on the ERROR\_LED.
+				\item \textbf{Energy Saving mode}
+					\begin{req_enum}[label*=\arabic*.]
+						\item Whenever the module is in energy saving mode the module shall turn on the ENERGY\_SAVING\_LED
+						\item Whenever the module is in energy saving mode the \textit{Goal Temperature} shall be set to the \textit{Desired Temperature} minus the \textit{Energy Saving Temperature Offset}
+					\end{req_enum}
+
+				\item \textbf{Normal mode}
+					\begin{req_enum}[label*=\arabic*.]
+						\item Whenever the module is in normal mode the module shall turn off the ENERGY\_SAVING\_LED
+						\item Whenever the module is in normal mode the \textit{Goal Temperature} shall be set to the \textit{Desired Temperature}
+					\end{req_enum}
+
+				\item \textbf{Error mode}
+					\begin{req_enum}[label*=\arabic*.]
+						\item If the \textbf{communication error} or \textbf{valve error} or \textbf{sensor error} is set the module shall turn on the ERROR\_LED
+					\end{req_enum}
+				\end{req_enum}
+	
+				\item \textbf{Sensors Control}
+					\begin{req_enum}[label*=\arabic*.]
+						\item The module shall check the motion every MOTION\_PERIOD seconds
+						\item Whenever a motion is detected in the last MOTION\_TIMESLOT the module shall move in \textbf{Enery Saving} mode otherwise in \textbf{Normal mode}
+						\item Whenever a motion is detected the module shall turn on the ENERGY\_SAVING\_LED otherwise shall turn it off
+						\item The module shall read the Temperature every TEMPERATURE\_PERIOD seconds and check if it is between MIN\_TEMPERATURE and MAX\_TEMPERATURE Celsius \degree
+						\item The module shall read the Humidity every HUMIDITY\_PERIOD seconds and check if it is between MIN\_HUMIDITY and MAX\_HUMIDITY in percentage
+						\item The module shall set the \textbf{sensor error} and move in \textbf{Error mode} whenever at least one read data is not consistent with the allowed range of values
+					\end{req_enum}
+	
+					
+				\item \textbf{Valve Control}
+					\begin{req_enum}[label*=\arabic*.]
+						\item The module shall check and move the position of the valve every VALVE\_PERIOD seconds
+						\item The valve shall be in OPEN\_POSITION whenever the difference between the actual temperature and the \textit{Desired Temperature} is below -HIGH\_THRESHOLD C\degree
+						\item The valve shall be in HIGH\_POSITION whenever the difference between the actual temperature and the \textit{Desired Temperature} is greater or equal then -HIGH\_THRESHOLD C\degree and below -APPROACHING\_THRESHOLD C\degree
+						\item The valve shall be in MIDDLE\_POSITION whenever the difference between the actual temperature and the \textit{Desired Temperature} is greater or equal then -APPROACHING\_THRESHOLD C\degree and below or equal then APPROACHING\_THRESHOLD C\degree
+						\item The valve shall be in LOW\_POSITION whenever the difference between the actual temperature and the \textit{Desired Temperature} is greater then APPROACHING\_THRESHOLD C\degree and below or equal then HIGH\_THRESHOLD C\degree
+						\item The valve shall be in CLOSED\_POSITION whenever the difference between the actual temperature and the \textit{Desired Temperature} is greater then HIGH\_THRESHOLD C\degree
+						\item Whenever the valve is in OPEN\_POSITION or in CLOSED\_POSITION the module shall check the consistency of the status using the OPEN\_SWITCH and CLOSED\_SWITCH
+						\item If the status of the valve is not consistent the module shall set the \textbf{valve error} and move in \textbf{Error mode}
+					\end{req_enum}
+
+			\item \textbf{Communication}
+			\begin{req_enum}[label*=\arabic*.]
+				\item Whenever the module does not receive the \textit{Room Request message} within COMMUNICATION\_DEADLINE seconds from the last request message, the module shall send a \textit{Room Status message}, set the \textbf{communication error} and move in \textbf{Error mode}
+				\item The module shall check the correctness and consistency of the \textit{Room Request message} and discard the corrupted messages
+				\item The module shall send the \textit{Room Status message} within COMMUNICATION\_PERIOD seconds from the last \textit{Room Request message} reception
 			\end{req_enum}
+
 		\end{req_enum}
+
+\subsection{parameters}
+in the following table are reported the constant values required and used in the previous requirements.
+\begin{table}[H]
+	\centering
+			\begin{tabular}{||l | l||} 
+			\hline
+			\textbf{Parameter}		& \textbf{description} \\ 
+			\hline
+			MOTION\_PERIOD			& 2 seconds \\ 
+			\hline
+			TEMPERATURE\_PERIOD		& 2 seconds \\ 
+			\hline
+			HUMIDITY\_PERIOD		& 2 seconds \\ 
+			\hline
+			VALVE\_PERIOD Saving	& 4 seconds \\ 
+			\hline
+			COMMUNICATION\_PERIOD	& 1 seconds \\ 
+			\hline
+			COMMUNICATION\_DEADLINE	& 30 seconds \\ 
+			\hline
+			OPEN\_POSITION			& valve position to have the 100\% of the maximum flow \\ 
+			\hline
+			HIGH\_POSITION			& valve position to have the 75\% of the maximum flow \\ 
+			\hline
+			MIDDLE\_POSITION		& valve position to have the 50\% of the maximum flow \\ 
+			\hline
+			LOW\_POSITION			& valve position to have the 25\% of the maximum flow \\ 
+			\hline
+			CLOSED\_POSITION		& valve position to have the 0\% of the maximum flow \\ 
+			\hline
+			HIGH\_THRESHOLD			& 2 Celsius \degree \\ 
+			\hline
+			APPROACHING\_THRESHOLD	& 1 Celsius \degree \\ 
+			\hline
+			MIN\_TEMPERATURE		& 15 Celsius \degree \\ 
+			\hline
+			MAX\_TEMPERATURE		& 30 Celsius \degree \\ 
+			\hline
+			MIN\_HUMIDITY			& 0 Celsius \degree \\ 
+			\hline
+			MAX\_HUMIDITY			& 100 Celsius \degree \\ 
+			\hline
+		\end{tabular}
+		\captionof{table}{Display Information\label{tab:GraphicalInformations}}
+\end{table}

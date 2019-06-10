@@ -8,23 +8,20 @@
 \contentsline {subsubsection}{\numberline {1.2.2}Valve control}{3}{subsubsection.1.2.2}
 \contentsline {subsubsection}{\numberline {1.2.3}Communication}{4}{subsubsection.1.2.3}
 \contentsline {subsubsection}{\numberline {1.2.4}Errors}{4}{subsubsection.1.2.4}
-\contentsline {section}{\numberline {2}SySML Functional model}{5}{section.2}
-\contentsline {subsection}{\numberline {2.1}Central Unit}{6}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Room module}{7}{subsection.2.2}
-\contentsline {section}{\numberline {3}Implementation, Central Unit module}{10}{section.3}
-\contentsline {subsection}{\numberline {3.1}Wiring}{11}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Graphic Interface}{11}{subsection.3.2}
-\contentsline {section}{\numberline {4}Implementation, Room module}{13}{section.4}
-\contentsline {subsection}{\numberline {4.1}Components description}{13}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}ServoMotor}{13}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}Valve position switches}{14}{subsubsection.4.1.2}
-\contentsline {subsubsection}{\numberline {4.1.3}Temperature-Humidity Sensor}{14}{subsubsection.4.1.3}
-\contentsline {subsection}{\numberline {4.2}Wiring}{15}{subsection.4.2}
-\contentsline {section}{\numberline {5}JSON messages implementation}{16}{section.5}
-\contentsline {subsection}{\numberline {5.1}Request Message}{16}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Status Message}{16}{subsection.5.2}
-\contentsline {section}{\numberline {6}CUnit tests and simulation of the system}{17}{section.6}
-\contentsline {subsection}{\numberline {6.1}Variables tests}{17}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}JSON Compliance tests}{17}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Network noise tests}{18}{subsection.6.3}
-\contentsline {section}{\numberline {7}Future Work}{19}{section.7}
+\contentsline {section}{\numberline {2}Implementation, Central Unit module}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}Wiring}{6}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Graphic Interface}{6}{subsection.2.2}
+\contentsline {section}{\numberline {3}Implementation, Room module}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Components description}{8}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}ServoMotor}{8}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Valve position switches}{9}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Temperature-Humidity Sensor}{9}{subsubsection.3.1.3}
+\contentsline {subsection}{\numberline {3.2}Wiring}{10}{subsection.3.2}
+\contentsline {section}{\numberline {4}JSON messages implementation}{11}{section.4}
+\contentsline {subsection}{\numberline {4.1}Request Message}{11}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Status Message}{11}{subsection.4.2}
+\contentsline {section}{\numberline {5}CUnit tests and simulation of the system}{12}{section.5}
+\contentsline {subsection}{\numberline {5.1}Variables tests}{12}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}JSON Compliance tests}{12}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Network noise tests}{13}{subsection.5.3}
+\contentsline {section}{\numberline {6}Future Work}{14}{section.6}

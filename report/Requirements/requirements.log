@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.22)  9 JUN 2019 19:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.22)  10 JUN 2019 09:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1036,20 +1036,20 @@ Package: translator 2018/01/04 v1.12 Easy translation of strings in LaTeX
  (/home/hhunt/git/ESSTA/report/Requirements/requirements.aux)
 \openout1 = `requirements.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count335
@@ -1075,19 +1075,19 @@ Package grfext Info: Graphics extension search list:
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Info: Redefining \celsius on input line 66.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 66.
+LaTeX Info: Redefining \celsius on input line 68.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 68.
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 66.
-Package gensymb Info: Using \Omega for \ohm on input line 66.
+LaTeX Info: Redefining \ohm on input line 68.
+Package gensymb Info: Using \Omega for \ohm on input line 68.
 
 Package gensymb Warning: Not defining \micro.
 
 \AtBeginShipoutBox=\box60
-Package hyperref Info: Link coloring OFF on input line 66.
+Package hyperref Info: Link coloring OFF on input line 68.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -1095,9 +1095,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count341
 )
-LaTeX Info: Redefining \ref on input line 66.
-LaTeX Info: Redefining \pageref on input line 66.
-LaTeX Info: Redefining \nameref on input line 66.
+LaTeX Info: Redefining \ref on input line 68.
+LaTeX Info: Redefining \pageref on input line 68.
+LaTeX Info: Redefining \nameref on input line 68.
  (/home/hhunt/git/ESSTA/report/Requirements/requirements.out) (/home/hhunt/git/ESSTA/report/Requirements/requirements.out)
 \@outlinefile=\write3
 \openout3 = `requirements.out'.
@@ -1187,15 +1187,15 @@ File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 )
 \c__siunitx_mathsf_int=\count343
 \c__siunitx_mathtt_int=\count344
-<img/unipi_blu.png, id=76, 144.54pt x 147.55125pt>
+<img/unipi_blu.png, id=48, 144.54pt x 147.55125pt>
 File: img/unipi_blu.png Graphic file (type png)
 <use img/unipi_blu.png>
-Package pdftex.def Info: img/unipi_blu.png  used on input line 68.
+Package pdftex.def Info: img/unipi_blu.png  used on input line 70.
 (pdftex.def)             Requested size: 113.81102pt x 116.18144pt.
-<img/santanna.png, id=77, 162.206pt x 161.403pt>
+<img/santanna.png, id=49, 162.206pt x 161.403pt>
 File: img/santanna.png Graphic file (type png)
 <use img/santanna.png>
-Package pdftex.def Info: img/santanna.png  used on input line 68.
+Package pdftex.def Info: img/santanna.png  used on input line 70.
 (pdftex.def)             Requested size: 113.81102pt x 113.2473pt.
  [1
 
@@ -1209,67 +1209,9 @@ Package pdftex.def Info: img/santanna.png  used on input line 68.
 l.1 \section{Introduction}
                            [1
 
-]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 5.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 5.
-
-Underfull \hbox (badness 10000) in paragraph at lines 10--11
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 20--24
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 25--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 31--35
-
- []
-
-[2
+]) (/home/hhunt/git/ESSTA/report/Requirements/user_requirements.tex [2
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
-
- []
-
-
-Overfull \hbox (9.30045pt too wide) detected at line 74
-[][]\OML/cmm/m/it/10 GoalTemperature \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 DesiredTemperature \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 EnergySavingTemperatureOffset
- []
-
-[3]
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 97.
-See the caption package documentation for explanation.
-
-
-Overfull \hbox (59.8001pt too wide) in paragraph at lines 82--97
- [] 
- []
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 110.
-See the caption package documentation for explanation.
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 130.
-See the caption package documentation for explanation.
-
-) (/home/hhunt/git/ESSTA/report/Requirements/user_requirements.tex [4]
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
@@ -1324,7 +1266,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--26
 
  []
 
-[5
+[3
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 26--27
@@ -1336,34 +1278,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--28
 
  []
 
-) (/home/hhunt/git/ESSTA/report/Requirements/functional_requirements.tex [6]
-Overfull \hbox (39.47318pt too wide) in paragraph at lines 20--21
-[]\T1/cmr/m/n/10 During the ini-tial-iza-tion phase the mod-ule shall set the CLOSED_POSITION,
+
+Overfull \hbox (28.21898pt too wide) in paragraph at lines 38--39
+\T1/cmr/m/n/10 in \T1/cmr/bx/n/10 En-ery Sav-ing \T1/cmr/m/n/10 mode and show it through the EN-ERGY_SAVING_LED 
  []
 
 
-Overfull \hbox (67.95233pt too wide) in paragraph at lines 20--21
-\T1/cmr/m/n/10 LOW_POSITION, MID-DLE_POSITION, HIGH_POSITION, OPEN_POSITION 
+Overfull \hbox (61.44003pt too wide) in paragraph at lines 39--40
+[]\T1/cmr/m/n/10 Whenever a mo-tion is de-tected shall show it through the EN-ERGY_SAVING_LED 
+ []
+
+) (/home/hhunt/git/ESSTA/report/Requirements/functional_requirements.tex [4] [5
+
+]
+Overfull \hbox (26.25418pt too wide) in paragraph at lines 48--49
+[]\T1/cmr/m/n/10 The mod-ule shall read the Tem-per-a-ture ev-ery TEM-PER-A-TURE_PERIOD
  []
 
 
-Overfull \hbox (38.05685pt too wide) in paragraph at lines 27--28
-[]\T1/cmr/m/n/10 Whenever the mod-ule is in en-ergy sav-ing mode the EN-ERGY_SAVING_LED
+Overfull \hbox (84.57217pt too wide) in paragraph at lines 48--49
+\T1/cmr/m/n/10 sec-onds and check if it is be-tween MIN_TEMPERATURE and MAX_TEMPERATURE
  []
 
 
-Overfull \hbox (19.83908pt too wide) in paragraph at lines 32--33
-[]\T1/cmr/m/n/10 The mod-ule shall change the po-si-tion of the valve ev-ery VALVE_PERIOD
+Overfull \hbox (32.64041pt too wide) in paragraph at lines 49--50
+\T1/cmr/m/n/10 sec-onds and check if it is be-tween MIN_HUMIDITY and MAX_HUMIDITY
  []
 
 
-Overfull \hbox (38.11243pt too wide) in paragraph at lines 34--35
-\T1/cmr/m/n/10 then -COLD_THRESHOLD C$[]$and be-low -APPROACHING_THRESHOLD
+Overfull \hbox (72.09024pt too wide) in paragraph at lines 58--59
+\T1/cmr/m/n/10 or equal then -HIGH_THRESHOLD C$[]$and be-low -APPROACHING_THRESHOLD
  []
 
-[7
 
-]) (/home/hhunt/git/ESSTA/report/Requirements/SySML.tex [8]
+Overfull \hbox (16.89426pt too wide) in paragraph at lines 62--63
+[]\T1/cmr/m/n/10 Whenever the valve is in OPEN_POSITION or in CLOSED_POSITION
+ []
+
+
+Overfull \hbox (41.97256pt too wide) in paragraph at lines 62--63
+\T1/cmr/m/n/10 the mod-ule shall check the con-sis-tency of the sta-tus us-ing the OPEN_SWITCH
+ []
+
+[6]
+Overfull \hbox (73.71063pt too wide) in paragraph at lines 79--118
+ [][] 
+ []
+
+) (/home/hhunt/git/ESSTA/report/Requirements/SySML.tex [7]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 14.
@@ -1374,31 +1336,31 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 33.
 See the caption package documentation for explanation.
 
-<img/sysml/SystemComponents.png, id=203, 737.75626pt x 500.87125pt>
+<img/sysml/SystemComponents.png, id=169, 737.75626pt x 500.87125pt>
 File: img/sysml/SystemComponents.png Graphic file (type png)
 <use img/sysml/SystemComponents.png>
 Package pdftex.def Info: img/sysml/SystemComponents.png  used on input line 38.
 (pdftex.def)             Requested size: 341.43306pt x 231.80217pt.
-<img/sysml/SystemInternals.png, id=204, 933.4875pt x 347.2975pt>
+<img/sysml/SystemInternals.png, id=170, 933.4875pt x 347.2975pt>
 File: img/sysml/SystemInternals.png Graphic file (type png)
 <use img/sysml/SystemInternals.png>
 Package pdftex.def Info: img/sysml/SystemInternals.png  used on input line 44.
 (pdftex.def)             Requested size: 341.43306pt x 127.02484pt.
-[9
+[8
 
  </home/hhunt/git/ESSTA/report/Requirements/img/sysml/SystemComponents.png>]
-<img/sysml/CentralUnitComponents.png, id=215, 1097.09875pt x 609.27625pt>
+<img/sysml/CentralUnitComponents.png, id=181, 1097.09875pt x 609.27625pt>
 File: img/sysml/CentralUnitComponents.png Graphic file (type png)
 <use img/sysml/CentralUnitComponents.png>
 Package pdftex.def Info: img/sysml/CentralUnitComponents.png  used on input line 56.
 (pdftex.def)             Requested size: 341.43306pt x 189.60812pt.
-<img/sysml/CentralUnitInternals.png, id=216, 1102.1175pt x 612.2875pt>
+<img/sysml/CentralUnitInternals.png, id=182, 1102.1175pt x 612.2875pt>
 File: img/sysml/CentralUnitInternals.png Graphic file (type png)
 <use img/sysml/CentralUnitInternals.png>
 Package pdftex.def Info: img/sysml/CentralUnitInternals.png  used on input line 63.
 (pdftex.def)             Requested size: 341.43306pt x 189.6857pt.
- [10 </home/hhunt/git/ESSTA/report/Requirements/img/sysml/SystemInternals.png> </home/hhunt/git/ESSTA/report/Requirements/img/sysml/CentralUnitComponents.png>]
-<img/sysml/RoomComponents.png, id=226, 1061.9675pt x 414.54875pt>
+ [9 </home/hhunt/git/ESSTA/report/Requirements/img/sysml/SystemInternals.png> </home/hhunt/git/ESSTA/report/Requirements/img/sysml/CentralUnitComponents.png>]
+<img/sysml/RoomComponents.png, id=192, 1061.9675pt x 414.54875pt>
 File: img/sysml/RoomComponents.png Graphic file (type png)
 <use img/sysml/RoomComponents.png>
 Package pdftex.def Info: img/sysml/RoomComponents.png  used on input line 73.
@@ -1408,7 +1370,7 @@ Overfull \hbox (24.88582pt too wide) in paragraph at lines 73--74
  [][] 
  []
 
-<img/sysml/RoomInternals.png, id=227, 811.03pt x 518.93875pt>
+<img/sysml/RoomInternals.png, id=193, 811.03pt x 518.93875pt>
 File: img/sysml/RoomInternals.png Graphic file (type png)
 <use img/sysml/RoomInternals.png>
 Package pdftex.def Info: img/sysml/RoomInternals.png  used on input line 80.
@@ -1418,8 +1380,8 @@ Overfull \hbox (24.88582pt too wide) in paragraph at lines 80--81
  [][] 
  []
 
-[11 </home/hhunt/git/ESSTA/report/Requirements/img/sysml/CentralUnitInternals.png> </home/hhunt/git/ESSTA/report/Requirements/img/sysml/RoomComponents.png>]
-<img/sysml/SensorsComponents.png, id=236, 907.39pt x 457.71pt>
+[10 </home/hhunt/git/ESSTA/report/Requirements/img/sysml/CentralUnitInternals.png> </home/hhunt/git/ESSTA/report/Requirements/img/sysml/RoomComponents.png>]
+<img/sysml/SensorsComponents.png, id=202, 907.39pt x 457.71pt>
 File: img/sysml/SensorsComponents.png Graphic file (type png)
 <use img/sysml/SensorsComponents.png>
 Package pdftex.def Info: img/sysml/SensorsComponents.png  used on input line 87.
@@ -1429,46 +1391,46 @@ Overfull \hbox (24.88582pt too wide) in paragraph at lines 87--88
  [][] 
  []
 
-<img/sysml/SensorsInternals.png, id=237, 557.08125pt x 455.7025pt>
+<img/sysml/SensorsInternals.png, id=203, 557.08125pt x 455.7025pt>
 File: img/sysml/SensorsInternals.png Graphic file (type png)
 <use img/sysml/SensorsInternals.png>
 Package pdftex.def Info: img/sysml/SensorsInternals.png  used on input line 94.
 (pdftex.def)             Requested size: 227.62204pt x 186.19255pt.
-[12 </home/hhunt/git/ESSTA/report/Requirements/img/sysml/RoomInternals.png> </home/hhunt/git/ESSTA/report/Requirements/img/sysml/SensorsComponents.png>]
-<img/sysml/ValveControllerComponents.png, id=246, 1163.34625pt x 513.92pt>
+[11 </home/hhunt/git/ESSTA/report/Requirements/img/sysml/RoomInternals.png> </home/hhunt/git/ESSTA/report/Requirements/img/sysml/SensorsComponents.png>]
+<img/sysml/ValveControllerComponents.png, id=211, 1163.34625pt x 513.92pt>
 File: img/sysml/ValveControllerComponents.png Graphic file (type png)
 <use img/sysml/ValveControllerComponents.png>
 Package pdftex.def Info: img/sysml/ValveControllerComponents.png  used on input line 101.
 (pdftex.def)             Requested size: 341.43306pt x 150.82874pt.
-<img/sysml/ValveControllerInternals.png, id=247, 984.67876pt x 432.61626pt>
+<img/sysml/ValveControllerInternals.png, id=212, 984.67876pt x 432.61626pt>
 File: img/sysml/ValveControllerInternals.png Graphic file (type png)
 <use img/sysml/ValveControllerInternals.png>
 Package pdftex.def Info: img/sysml/ValveControllerInternals.png  used on input line 108.
 (pdftex.def)             Requested size: 341.43306pt x 150.0053pt.
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 75.
- [13 </home/hhunt/git/ESSTA/report/Requirements/img/sysml/SensorsInternals.png> </home/hhunt/git/ESSTA/report/Requirements/img/sysml/ValveControllerComponents.png> </home/hhunt/git/ESSTA/report/Requirements/img/sysml/ValveControllerInternals.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 75.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 77.
+ [12 </home/hhunt/git/ESSTA/report/Requirements/img/sysml/SensorsInternals.png> </home/hhunt/git/ESSTA/report/Requirements/img/sysml/ValveControllerComponents.png> </home/hhunt/git/ESSTA/report/Requirements/img/sysml/ValveControllerInternals.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 77.
  (/home/hhunt/git/ESSTA/report/Requirements/requirements.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 75.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 75.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 77.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 77.
 Package rerunfilecheck Info: File `requirements.out' has not changed.
-(rerunfilecheck)             Checksum: 7C51E621B1159DF2BE8482E4337BE9A5;1134.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 75.
+(rerunfilecheck)             Checksum: 3230394A2AF9EB0DF6BA0FF122CA40B4;624.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 77.
  ) 
 Here is how much of TeX's memory you used:
- 22042 strings out of 494847
- 406337 string characters out of 6179080
- 471229 words of memory out of 5000000
- 25040 multiletter control sequences out of 15000+600000
+ 22010 strings out of 494847
+ 405623 string characters out of 6179080
+ 471234 words of memory out of 5000000
+ 25007 multiletter control sequences out of 15000+600000
  544494 words of font info for 58 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 36i,10n,39p,10455b,1125s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on /home/hhunt/git/ESSTA/report/Requirements/requirements.pdf (14 pages, 666639 bytes).
+ 36i,10n,39p,10455b,1122s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on /home/hhunt/git/ESSTA/report/Requirements/requirements.pdf (13 pages, 632241 bytes).
 PDF statistics:
- 594 PDF objects out of 1000 (max. 8388607)
- 276 compressed objects within 3 object streams
- 91 named destinations out of 1000 (max. 500000)
- 205 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 547 PDF objects out of 1000 (max. 8388607)
+ 237 compressed objects within 3 object streams
+ 95 named destinations out of 1000 (max. 500000)
+ 149 words of extra memory for PDF output out of 10000 (max. 10000000)
 

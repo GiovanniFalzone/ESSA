@@ -19,6 +19,10 @@
 
 #define TEMP_MAX					30
 #define TEMP_MIN					15
+
+#define HUM_MAX					100
+#define HUM_MIN					0
+
 #define DEFAULT_ENERGYSAVING_OFFSET	2
 #define DEFAULT_DESIRED_TEMPERATURE			24
 
@@ -509,7 +513,7 @@ void control_valve(){
 bool dht_sensor_task_run() {
 	float hum = dht.readHumidity();
 	float temp = dht.readTemperature();
-	if (isnan(temp) || isnan(hum)) {
+	if (isnan(temp) || isnan(hum) || (temp < TEMP_MIN) || (temp > TEMP_MAX) || (hum < HUM_MIN) || (hum > HUM_MAX)) {
 		#ifdef DEBUG
 			Serial.println("Impossibile leggere il sensore!");
 		#endif
@@ -524,7 +528,11 @@ bool dht_sensor_task_run() {
 }
 
 uint8_t valve_pos_to_perc(uint8_t pos){
-	return ((pos - valve_settings.closed_pos)*100)/(valve_settings.open_pos - valve_settings.closed_pos);
+	if(pos == valve_settings.closed_pos) return 0;
+	if(pos == valve_settings.low_pos) return 25;
+	if(pos == valve_settings.middle_pos) return 50;
+	if(pos == valve_settings.high_pos) return 75;
+	if(pos == valve_settings.open_pos) return 100;
 }
 
 void send_room_status(){
