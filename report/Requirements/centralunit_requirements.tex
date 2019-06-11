@@ -1,0 +1,151 @@
+\section{Requirements}
+	\subsection{Central Unit Data Dictionary}
+		\subsubsection{Events}
+			\begin{center}
+				\resizebox{\textwidth}{!}{\begin{tabular}{|| c | c | c | c| c | c | c | c ||} 
+					\hline
+					\textbf{Signal  Name} 		& \textbf{Description}	& \textbf{Direction} &\textbf{Trigger}	& \textbf{Data Type} 			& \textbf{Min}		& \textbf{Max}	& \textbf{Unit} \\ 
+%------------------------------- User Interface input----------------------------
+					\hline
+					B\_NEXT 			& Next page	button						& input &	rising	&	Boolean 								& 0					& 1 & \\ 
+					\hline
+					B\_PREVIOUS			& Previous page button					& input &	rising	&	Boolean 								& 0					& 1 & \\ 
+					\hline
+					B\_SETTINGS			& Settings button						& input &	rising	&	Boolean 								& 0					& 1 & \\ 
+					\hline
+					B\_PLUS				& Plus button							& input &	rising	&	Boolean 								& 0					& 1 & \\ 
+					\hline
+					B\_MINUS 			& Minus button							& input &	rising	&	Boolean 								& 0					& 1 		& \\ 
+					\hline
+
+%-----------------------------Room Request message --------------------
+					PollingRoomId		& Id of the room displayed				& Output & 				&	Real Positive 						& 1					& 8		 	&   \\ 
+					\hline
+					DesiredTemperature	& Desired Temperature set by the user	& Output & 				&	Real Positive 						& 15.00				& 30.00	 	& Celsius\degree \\ 
+					\hline
+%-----------------------------Room Status message --------------------
+					RoomId				& Id of the room 						& Input & 				&	Real Positive 						& 1					& 8		 	&   \\ 
+					\hline
+					RoomTemperature		& Average Temperature of the building	& Input & 				&	Real Positive 						& 15.00				& 30.00		& Celsius\degree \\ 
+					\hline
+					RoomHumidity		& Average Humidity of the building		& Input & 				&	Real Positive 						& 0.00				& 100.00	& \%	 \\ 
+					\hline
+					RoomValve			& Average Usage of the building			& Input & 				&	Natural 							& 0					&	100 	&	\%	 \\ 
+					\hline
+					RoomEco				& Eco status of the building			& Input & 				&	Boolean								& 0					&	1 		&		  \\ 
+					\hline
+					RoomWarning			& Warning of the building 				& Input & 				&	Boolean								& 0					&	1 		&		  \\ 
+					\hline
+
+				\end{tabular}}
+			\end{center}
+
+	\subsubsection{Parameters}
+		\begin{center}
+			\resizebox{\textwidth}{!}{\begin{tabular}{||c | c | c | c | c | c | c ||} 
+				\hline
+				\textbf{Data} 		& \textbf{Description}					& \textbf{Data Type} 	& \textbf{Min}	& \textbf{Max}	& \textbf{Unit} 	&\textbf{Default}\\ 
+				\hline
+				POLLING\_PERIOD		&	period for requesting room' status	&	Real Positive 		& 0				& 30 		& Seconds				& 5 \\ 
+				\hline
+				BuildingTemperature	& Average Temperature of the building	& 	Real Positive 		& 0				& 1 		& Celsius\degree 		& 0 \\ 
+				\hline
+				BuildingHumidity	& Average Humidity of the building		&	Real Positive 		& 0.00			& 100.00	& \%	 				& 0 \\ 
+				\hline
+				BuildingUsage		& Average Usage of the building			&	Natural 			& 0				&	100 	&	\%	 				& 0 \\ 
+				\hline
+				BuildingEco			& Eco status of the building			&	Boolean				& 0				&	1 		&		 				& 0 \\ 
+				\hline
+				BuildingWarning		& Warning of the building 				&	Boolean				& 0				&	1 		&		 				& 0 \\ 
+				\hline
+				SelectedRoomId		& Id of the displayed room 				&	Natural 			& 1				&	8 		&		 				& 0 \\ 
+				\hline
+
+			\end{tabular}}
+		\end{center}
+
+%-----------------------------------------------------------------------------------------
+
+	\subsection{Central Unit Requirements}
+		\begin{req_enum}
+			\item \textbf{Graphical User Interface}
+			\begin{req_enum}[label*=\arabic*.]
+					\item \textbf{Main Page}
+						\begin{req_enum}[label*=\arabic*.]
+							\item \textbf{During}
+								\begin{req_enum}[label*=\arabic*.]			
+									\item If at least one room is set to \textbf{Energy Saving mode} then the module shall set to true the \textit{BuildingEco} false otherwise \\
+									\item If at least one room is marked as \textbf{crashed} the module shall set to true the \textit{BuildingWarning} false otherwise \\
+	
+									\item If the \textit{Next page} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the lowest Id among the inizialized rooms \\
+									\item If the \textit{Previous page} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the greatest Id among the inizialized rooms \\
+									\item If the \textit{Settings page} event is set the module shall move in the \textit{Settings page} \\
+
+									\item The module shall represent the \textit{BuildingTemperature} in Celsius\degree \\
+									\item The module shall represent the \textit{BuildingHumidity} in \% \\
+									\item The module shall represent the \textit{BuildingUsage} \\
+									\item The module shall represent the \textit{BuildingEco} and \textit{BuildingWarning} as booleans \\
+								\end{req_enum}
+						\end{req_enum}
+
+					\item \textbf{Settings Page}
+						\begin{req_enum}[label*=\arabic*.]
+							\item \textbf{Entry}
+							\begin{req_enum}[label*=\arabic*.]
+								\item The module shall represent the \textit{plus} and \textit{minus} buttons to allow the user to change the \textit{DesiredTemperature} \\
+							\end{req_enum}	
+							\item \textbf{During}
+							\begin{req_enum}[label*=\arabic*.]
+								\item If at least one room is set to \textbf{Energy Saving mode} then the module shall set to true the \textit{BuildingEco} false otherwise \\
+								\item If at least one room is marked as \textbf{crashed} the module shall set to true the \textit{BuildingWarning} false otherwise \\
+
+								\item If the \textit{B\_NEXT} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the lowest Id among the inizialized rooms \\
+								\item If the \textit{B\_PREVIOUS} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the greatest Id among the inizialized rooms \\
+								\item If the \textit{B\_SETTINGS} event is set the module shall move in the \textit{Main page}
+								\item If the \textit{B\_PLUS} event is set the module shall increase the \textit{DesiredTemperature} by a factor of 0.5 Celsius\degree if it not exceed the MAX\_TEMPERATURE
+								\item If the \textit{B\_MINUS} event is set the module shall decrease the \textit{DesiredTemperature} by a factor of 0.5 Celsius\degree if it is not less then MIN\_TEMPERATURE
+
+								\item The module shall represent the \textit{DesiredTemperature} in Celsius\degree \\
+								\item The module shall represent the \textit{BuildingHumidity} in \% \\
+								\item The module shall represent the \textit{BuildingUsage} \\
+								\item The module shall represent the \textit{BuildingEco} and \textit{BuildingWarning} as booleans \\
+							\end{req_enum}
+							\item \textbf{Exit}
+							\begin{req_enum}[label*=\arabic*.]
+								\item The module shall hide the \textit{plus} and \textit{minus} buttons
+							\end{req_enum}	
+						\end{req_enum}
+
+					\item \textbf{Room Page}
+						\begin{req_enum}[label*=\arabic*.]
+							\item \textbf{During}
+							\begin{req_enum}[label*=\arabic*.]
+								\item If the \textit{B\_NEXT} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the next greater Id among the inizialized rooms, if no rooms are available then shall move in the \textit{Main page} \\
+								\item If the \textit{B\_PREVIOUS} event is set the module shall set the \textit{SelectedRoomId} to the previous Id among the inizialized rooms, if no rooms are available then shall move in the \textit{Main page} \\
+								\item If the \textit{B\_SETTINGS} event is set the module shall move in the \textit{Settings page}
+
+								\item The module shall represent the Temperature of the \textit{SelectedRoomId} in Celsius\degree \\
+								\item The module shall represent the Humidity of the \textit{SelectedRoomId} in \% \\
+								\item The module shall represent the Usage of the \textit{SelectedRoomId} \\
+								\item The module shall represent if the \textit{SelectedRoomId} is in \textbf{Energy saving mode} or \textbf{Normal mode} \\
+								\item The module shall represent if the \textit{SelectedRoomId} is considered \textbf{Crashed} or not\\
+							\end{req_enum}
+						\end{req_enum}
+					\end{req_enum}
+%-----------------------------------------------------
+			\item \textbf{Communication}
+				\begin{req_enum}[label*=\arabic*.]
+					\item \textbf{Entry}
+						\begin{req_enum}[label*=\arabic*.]
+							\item The module shall send the \textit{InitialMessage} in broadcast
+						\end{req_enum}	
+					\item \textbf{During}
+						\begin{req_enum}[label*=\arabic*.]
+							\item The \textit{Central Unit} shall send a \textit{Room Request message} with the \textit{PollingRoomId} and the \textit{DesiredTemperature} in Celsius\degree every POLLING\_PERIOD  \textpm 1 second
+							\item The incoming \textit{Room Status message} must include the \textit{RoomId} of the room, the \textit{Energy Saving mode} one if active zero otherwise, the \textit{Temperature} in Celsius\degree, the \textit{Humidity} in \% and the \textit{Valve position} in \%
+							\item The module shall check the correctness of the \textit{Room Status message} and the consistency of each parameter
+							\item Whenever a \textit{Room Status message} is corrupted or doesn't arrive within \textit{POLLING\_PERIOD} \textpm 1 seconds from the sent of the \textit{Room Request message}, the same \textit{Room Request message} shall be resent at least 3 times before marking the room as \textbf{crashed} and increase the \textit{PollingRoomId}
+							\item Whenever a \textit{Room Status message} with \textit{RoomId} equal to \textit{PollingRoomId} arrives and it is not corrupted then the module shall increase the \textit{PollingRoomId} cycling in the range [FirstId, LastId]
+						\end{req_enum}
+				\end{req_enum}	
+		\end{req_enum}
