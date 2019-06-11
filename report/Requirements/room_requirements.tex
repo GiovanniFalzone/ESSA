@@ -95,8 +95,8 @@
 									\item Whenever a motion is detected the module shall turn on the MOTION\_LED
 									\item If in the last MOTION\_TIMESLOT seconds \textpm 10 seconds a motion has been detected then the module shall move in \textbf{Normal Mode}
 									\item If the \textit{Temperature} or the \textit{Humidity} is not consistent then the module shall turn on the ERROR\_LED
-									\item The module shall read and uodate the temperature every TEMPERATURE\_PERIOD \textpm 1 second
-									\item The module shall read and uodate the temperature every HUMIDITY\_PERIOD \textpm 1 second
+									\item The module shall read and update the temperature every TEMPERATURE\_PERIOD \textpm 1 second
+									\item The module shall read and update the temperature every HUMIDITY\_PERIOD \textpm 1 second
 								\end{req_enum}
 							\item \textbf{Exit}
 								\begin{req_enum}[label*=\arabic*.]
@@ -130,7 +130,7 @@
 							\item \textbf{During}
 								\begin{req_enum}[label*=\arabic*.]
 									\item The \textit{Room Request message} must include the \textit{RoomId} and the \textit{DesiredTemperature}
-									\item Whenever a \textit{Room Request message} arrives and it is not cottupted the module shall update the \textit{DesiredTemperature} with the desired temperature in the message and shall send the \textit{Room Status message}
+									\item Whenever a \textit{Room Request message} arrives and it is not corrupted the module shall update the \textit{DesiredTemperature} with the desired temperature in the message and shall send the \textit{Room Status message}
 									\item If no messages arrives in the last COMMUNICATION\_DEADLINE seconds \textpm 2 seconds then the module shall move in \textbf{Error Mode}
 								\end{req_enum}
 	
@@ -147,7 +147,7 @@
 							\item \textbf{During}
 							\begin{req_enum}[label*=\arabic*.]
 								\item The \textit{Room Request message} must include the \textit{RoomId} and the \textit{DesiredTemperature}
-								\item Whenever a \textit{Room Request message} arrives and it is not cottupted the module shall update the \textit{DesiredTemperature} with the desired temperature in the message and move in \textbf{Normal Mode}
+								\item Whenever a \textit{Room Request message} arrives and it is not corrupted the module shall update the \textit{DesiredTemperature} with the desired temperature in the message and move in \textbf{Normal Mode}
 								\item If no messages arrives in the last COMMUNICATION\_DEADLINE seconds \textpm 2 seconds then the module shall send a \textit{Room Status message}
 							\end{req_enum}
 
@@ -172,7 +172,7 @@
 									\item The valve shall be in MIDDLE\_POSITION whenever the difference between the \textit{Temperature} and the \textit{GoalTemperature} is greater or equal then -APPROACHING\_THRESHOLD C\degree and below or equal then APPROACHING\_THRESHOLD C\degree
 									\item The valve shall be in LOW\_POSITION whenever the difference between the \textit{Temperature} and the \textit{GoalTemperature} is greater then APPROACHING\_THRESHOLD C\degree and below or equal then HIGH\_THRESHOLD C\degree
 									\item The valve shall be in CLOSED\_POSITION whenever the difference between the \textit{Temperature} and the \textit{GoalTemperature} is greater then HIGH\_THRESHOLD C\degree
-									\item Whenever the valve is in OPEN\_POSITION or in CLOSED\_POSITION the module shall check the consistency of the status using the OPEN\_SWITCH and CLOSED\_SWITCH and shall moce in \textbf{Error Mode} if it is not consistent
+									\item Whenever the valve is in OPEN\_POSITION or in CLOSED\_POSITION the module shall check the consistency of the status using the OPEN\_SWITCH and CLOSED\_SWITCH and shall move in \textbf{Error Mode} if it is not consistent
 								\end{req_enum}
 
 							\item \textbf{Exit}

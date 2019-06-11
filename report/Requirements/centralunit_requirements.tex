@@ -77,14 +77,14 @@
 									\item If at least one room is set to \textbf{Energy Saving mode} then the module shall set to true the \textit{BuildingEco} false otherwise \\
 									\item If at least one room is marked as \textbf{crashed} the module shall set to true the \textit{BuildingWarning} false otherwise \\
 	
-									\item If the \textit{Next page} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the lowest Id among the inizialized rooms \\
-									\item If the \textit{Previous page} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the greatest Id among the inizialized rooms \\
+									\item If the \textit{Next page} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the lowest Id among the initialized rooms \\
+									\item If the \textit{Previous page} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the greatest Id among the initialized rooms \\
 									\item If the \textit{Settings page} event is set the module shall move in the \textit{Settings page} \\
 
 									\item The module shall represent the \textit{BuildingTemperature} in Celsius\degree \\
 									\item The module shall represent the \textit{BuildingHumidity} in \% \\
 									\item The module shall represent the \textit{BuildingUsage} \\
-									\item The module shall represent the \textit{BuildingEco} and \textit{BuildingWarning} as booleans \\
+									\item The module shall represent the \textit{BuildingEco} and \textit{BuildingWarning} as boolean \\
 								\end{req_enum}
 						\end{req_enum}
 
@@ -99,8 +99,8 @@
 								\item If at least one room is set to \textbf{Energy Saving mode} then the module shall set to true the \textit{BuildingEco} false otherwise \\
 								\item If at least one room is marked as \textbf{crashed} the module shall set to true the \textit{BuildingWarning} false otherwise \\
 
-								\item If the \textit{B\_NEXT} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the lowest Id among the inizialized rooms \\
-								\item If the \textit{B\_PREVIOUS} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the greatest Id among the inizialized rooms \\
+								\item If the \textit{B\_NEXT} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the lowest Id among the initialized rooms \\
+								\item If the \textit{B\_PREVIOUS} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the greatest Id among the initialized rooms \\
 								\item If the \textit{B\_SETTINGS} event is set the module shall move in the \textit{Main page}
 								\item If the \textit{B\_PLUS} event is set the module shall increase the \textit{DesiredTemperature} by a factor of 0.5 Celsius\degree if it not exceed the MAX\_TEMPERATURE
 								\item If the \textit{B\_MINUS} event is set the module shall decrease the \textit{DesiredTemperature} by a factor of 0.5 Celsius\degree if it is not less then MIN\_TEMPERATURE
@@ -108,7 +108,7 @@
 								\item The module shall represent the \textit{DesiredTemperature} in Celsius\degree \\
 								\item The module shall represent the \textit{BuildingHumidity} in \% \\
 								\item The module shall represent the \textit{BuildingUsage} \\
-								\item The module shall represent the \textit{BuildingEco} and \textit{BuildingWarning} as booleans \\
+								\item The module shall represent the \textit{BuildingEco} and \textit{BuildingWarning} as boolean \\
 							\end{req_enum}
 							\item \textbf{Exit}
 							\begin{req_enum}[label*=\arabic*.]
@@ -120,8 +120,8 @@
 						\begin{req_enum}[label*=\arabic*.]
 							\item \textbf{During}
 							\begin{req_enum}[label*=\arabic*.]
-								\item If the \textit{B\_NEXT} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the next greater Id among the inizialized rooms, if no rooms are available then shall move in the \textit{Main page} \\
-								\item If the \textit{B\_PREVIOUS} event is set the module shall set the \textit{SelectedRoomId} to the previous Id among the inizialized rooms, if no rooms are available then shall move in the \textit{Main page} \\
+								\item If the \textit{B\_NEXT} event is set the module shall move in the \textit{Room page} and set the \textit{SelectedRoomId} to the next greater Id among the initialized rooms, if no rooms are available then shall move in the \textit{Main page} \\
+								\item If the \textit{B\_PREVIOUS} event is set the module shall set the \textit{SelectedRoomId} to the previous Id among the initialized rooms, if no rooms are available then shall move in the \textit{Main page} \\
 								\item If the \textit{B\_SETTINGS} event is set the module shall move in the \textit{Settings page}
 
 								\item The module shall represent the Temperature of the \textit{SelectedRoomId} in Celsius\degree \\
