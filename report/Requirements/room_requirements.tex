@@ -1,0 +1,200 @@
+\newpage
+	\subsection{Room Data Dictionary}
+		\subsubsection{Events}
+			\begin{center}
+				\resizebox{\textwidth}{!}{\begin{tabular}{|| c | c | c | c| c | c | c | c ||} 
+					\hline
+					\textbf{Signal  Name} 		& \textbf{Description}	& \textbf{Direction} &\textbf{Trigger}	& \textbf{Data Type} 			& \textbf{Min}		& \textbf{Max}	& \textbf{Unit} \\ 
+					\hline
+					OPEN\_SWITCH 		& 1 when the valve is open						& Input &	rising	&	Boolean 								& 0					& 1			 & \\ 
+					\hline
+					CLOSED\_SWITCH		& 1 when the valve is closed					& Input &	rising	&	Boolean 								& 0					& 1			 & \\ 
+					\hline
+					motion				& 1 when a motion is detected					& Input &	rising	&	Boolean 								& 0					& 1			 & \\ 
+					\hline
+					Temperature			& Temperature from sensors						& Input & 			&	Real Positive 							& 0					& 1 		& Celsius\degree \\ 
+					\hline
+					Humidity			& Humidity from sensors							& Input & 			&	Real Positive 							& 0.00				& 100.00	& \%	 \\ 
+					\hline
+					ValvePosition		& position of the valve							& Output & 			&	Natural 								& 10				& 160		& \degree	 \\ 
+					\hline
+
+		%-----------------------------Room Request message --------------------
+					PollingRoomId		& Id of the room displayed				& Input & 				&	Real Positive 						& 1					& 8		 	&   \\ 
+					\hline
+					DesiredTemperature	& Desired Temperature set by the user	& Input & 				&	Real Positive 						& 15.00				& 30.00	 	& Celsius\degree \\ 
+					\hline
+
+		%-----------------------------Room Status message --------------------
+					RoomId				& Id of the room 						& Output & 				&	Real Positive 						& 1					& 8		 	&   \\ 
+					\hline
+					RoomTemperature		& Temperature of the room				& Output & 				&	Real Positive 						& 15.00				& 30.00		& Celsius\degree \\ 
+					\hline
+					RoomHumidity		& Humidity of the room					& Output & 				&	Real Positive 						& 0.00				& 100.00	& \%	 \\ 
+					\hline
+					RoomUsage			& Usage of the heating in \%			& Output & 				&	Natural 							& 0					&	100 	&	\%	 \\ 
+					\hline
+					EcoMode				& Eco status of the building			& Output & 				&	Boolean								& 0					&	1 		&		  \\ 
+					\hline
+				\end{tabular}}
+			\end{center}
+
+	\subsubsection{Parameters}
+		\begin{center}
+			\resizebox{\textwidth}{!}{\begin{tabular}{||c | c | c | c | c | c | c ||} 
+				\hline
+				\textbf{Data} 		& \textbf{Description}					& \textbf{Data Type} 	& \textbf{Min}	& \textbf{Max}	& \textbf{Unit} 	&\textbf{Default}\\ 
+				\hline
+				MOTION\_TIMESLOT		&										&	Real Positive 		& 1				& 60 		& Seconds				& 30 \\ 
+				\hline
+				TEMPERATURE\_PERIOD	&										&	Real Positive 		& 2				& 60 		& Seconds				& 2 \\ 
+				\hline
+				HUMIDITY\_PERIOD	&										&	Real Positive 		& 2				& 60 		& Seconds				& 2 \\ 
+				\hline
+				VALVE\_PERIOD		&										&	Real Positive 		& 2				& 120 		& Seconds				& 4 \\ 
+				\hline
+				COMMUNICATION\_DEADLINE	&										&	Real Positive 	& 30			& 3600 		& Seconds				& 30 \\ 
+				\hline
+				OPEN\_POSITION		&										&	Real Positive 		& 0				& 180 		& \degree				& 170 \\ 
+				\hline
+				HIGH\_POSITION		&										&	Real Positive 		& 0				& 180 		& \degree				& 135 \\ 
+				\hline
+				MIDDLE\_POSITION	&										&	Real Positive 		& 0				& 180 		& \degree				& 90 \\ 
+				\hline
+				LOW\_POSITION		&										&	Real Positive 		& 0				& 180 		& \degree				& 45 \\ 
+				\hline
+				CLOSED\_POSITION	&										&	Real Positive 		& 0				& 180 		& \degree				& 10 \\ 
+
+				\hline
+				HIGH\_THRESHOLD		&										&	Real Positive 		& 0				& 10 		& C\degree				& 2 \\ 
+				\hline
+				APPROACHING\_THRESHOLD	&									&	Real Positive 		& 0				& 5 		& C\degree				& 1 \\ 
+				\hline	
+				GoalTemperature		& temperature to control the valve		&	Real Positive 		& 15.00			& 30.00		& C\degree				& 24.00 \\ 
+				\hline
+				APPROACHING\_THRESHOLD	&									&	Real Positive 		& 0				& 5 		& C\degree				& 1 \\ 
+				\hline
+
+			\end{tabular}}
+		\end{center}
+
+%-----------------------------------------------------
+\subsection{Room Requirements}
+		\begin{req_enum}
+			\item \textbf{Energy Saving}
+				\begin{req_enum}[label*=\arabic*.]
+					\item \textbf{Energy Saving Mode}
+						\begin{req_enum}[label*=\arabic*.]
+							\item \textbf{Entry}
+								\begin{req_enum}[label*=\arabic*.]
+									\item The module shall set the \textit{GoalTemperature} to the \textit{DesiredTemperature} minus the \textit{TemperatureEcoOffset}
+									\item The module shall turn on the ENERGY\_SAVING\_LED
+								\end{req_enum}
+							\item \textbf{During}
+								\begin{req_enum}[label*=\arabic*.]
+									\item Whenever a motion is detected the module shall turn on the MOTION\_LED
+									\item If in the last MOTION\_TIMESLOT seconds \textpm 10 seconds a motion has been detected then the module shall move in \textbf{Normal Mode}
+									\item If the \textit{Temperature} or the \textit{Humidity} is not consistent then the module shall turn on the ERROR\_LED
+									\item The module shall read and update the temperature every TEMPERATURE\_PERIOD \textpm 1 second
+									\item The module shall read and update the temperature every HUMIDITY\_PERIOD \textpm 1 second
+								\end{req_enum}
+							\item \textbf{Exit}
+								\begin{req_enum}[label*=\arabic*.]
+									\item The module shall turn off the ENERGY\_SAVING\_LED
+								\end{req_enum}
+						\end{req_enum}
+	
+					\item \textbf{Normal Mode}
+						\begin{req_enum}[label*=\arabic*.]
+							\item \textbf{Entry}
+								\begin{req_enum}[label*=\arabic*.]
+									\item The module shall set the \textit{GoalTemperature} to the \textit{DesiredTemperature}
+								\end{req_enum}
+							\item \textbf{During}
+								\begin{req_enum}[label*=\arabic*.]
+									\item If in the last MOTION\_TIMESLOT seconds \textpm 10 seconds have not been detected any motion then the module shall move in \textbf{Energy Saving Mode}
+									\item If the \textit{Temperature} or the \textit{Humidity} is not consistent then the module shall turn on the ERROR\_LED
+									\item whenever a motion is detected the module shall turn on the MOTION\_LED
+								\end{req_enum}
+
+							\item \textbf{Exit}
+						\end{req_enum}
+				\end{req_enum}
+
+%-----------------------------------------------------
+			\item \textbf{Communication}
+				\begin{req_enum}[label*=\arabic*.]
+					\item \textbf{Normal Mode}
+						\begin{req_enum}[label*=\arabic*.]
+							\item \textbf{Entry}
+							\item \textbf{During}
+								\begin{req_enum}[label*=\arabic*.]
+									\item The \textit{Room Request message} must include the \textit{RoomId} and the \textit{DesiredTemperature}
+									\item Whenever a \textit{Room Request message} arrives and it is not corrupted the module shall update the \textit{DesiredTemperature} with the desired temperature in the message and shall send the \textit{Room Status message}
+									\item If no messages arrives in the last COMMUNICATION\_DEADLINE seconds \textpm 2 seconds then the module shall move in \textbf{Error Mode}
+								\end{req_enum}
+	
+							\item \textbf{Exit}
+						\end{req_enum}
+
+					\item \textbf{Error Mode}
+						\begin{req_enum}[label*=\arabic*.]
+							\item \textbf{Entry}
+								\begin{req_enum}[label*=\arabic*.]
+									\item The module shall turn on the ERROR\_LED
+								\end{req_enum}
+
+							\item \textbf{During}
+							\begin{req_enum}[label*=\arabic*.]
+								\item The \textit{Room Request message} must include the \textit{RoomId} and the \textit{DesiredTemperature}
+								\item Whenever a \textit{Room Request message} arrives and it is not corrupted the module shall update the \textit{DesiredTemperature} with the desired temperature in the message and move in \textbf{Normal Mode}
+								\item If no messages arrives in the last COMMUNICATION\_DEADLINE seconds \textpm 2 seconds then the module shall send a \textit{Room Status message}
+							\end{req_enum}
+
+							\item \textbf{Exit}
+								\begin{req_enum}[label*=\arabic*.]
+									\item The module shall turn off the ERROR\_LED
+								\end{req_enum}
+						\end{req_enum}
+				\end{req_enum}
+%-----------------------------------------------------
+			\item \textbf{Control Valve}
+				\begin{req_enum}[label*=\arabic*.]
+					\item \textbf{Normal Mode}
+						\begin{req_enum}[label*=\arabic*.]
+							\item \textbf{Entry}
+
+							\item \textbf{During}
+								\begin{req_enum}[label*=\arabic*.]
+									\item The module shall check and move the position of the valve every VALVE\_PERIOD seconds \textpm 1 second
+									\item The valve shall be in OPEN\_POSITION whenever the difference between the \textit{Temperature} and the \textit{GoalTemperature} is below -HIGH\_THRESHOLD C\degree
+									\item The valve shall be in HIGH\_POSITION whenever the difference between the \textit{Temperature} and the \textit{GoalTemperature} is greater or equal then -HIGH\_THRESHOLD C\degree and below -APPROACHING\_THRESHOLD C\degree
+									\item The valve shall be in MIDDLE\_POSITION whenever the difference between the \textit{Temperature} and the \textit{GoalTemperature} is greater or equal then -APPROACHING\_THRESHOLD C\degree and below or equal then APPROACHING\_THRESHOLD C\degree
+									\item The valve shall be in LOW\_POSITION whenever the difference between the \textit{Temperature} and the \textit{GoalTemperature} is greater then APPROACHING\_THRESHOLD C\degree and below or equal then HIGH\_THRESHOLD C\degree
+									\item The valve shall be in CLOSED\_POSITION whenever the difference between the \textit{Temperature} and the \textit{GoalTemperature} is greater then HIGH\_THRESHOLD C\degree
+									\item Whenever the valve is in OPEN\_POSITION or in CLOSED\_POSITION the module shall check the consistency of the status using the OPEN\_SWITCH and CLOSED\_SWITCH and shall move in \textbf{Error Mode} if it is not consistent
+								\end{req_enum}
+
+							\item \textbf{Exit}
+						\end{req_enum}
+
+					\item \textbf{Error Mode}
+						\begin{req_enum}[label*=\arabic*.]
+							\item \textbf{Entry}
+								\begin{req_enum}[label*=\arabic*.]
+									\item The module shall turn on the ERROR\_LED
+								\end{req_enum}
+							\item \textbf{During}
+								\begin{req_enum}[label*=\arabic*.]
+									\item The module shall move the valve in the opening direction until the OPEN\_SWITCH is set and update the OPEN\_POSITION with the new position then shall move the valve in the closing direction until the CLOSED\_SWITCH is set and update the CLOSED\_POSITION with the new position and update the MIDDLE\_POSITION, LOW\_POSITION and HIGH\_POSITION if the positions are consistent with the OPEN\_SWITCH and CLOSED\_SWITCH then the module shall move in \textbf{Normal Mode}
+								\end{req_enum}
+
+							\item \textbf{Exit}
+								\begin{req_enum}[label*=\arabic*.]
+									\item The module shall turn off the ERROR\_LED
+								\end{req_enum}
+
+						\end{req_enum}
+				\end{req_enum}
+		\end{req_enum}
+

@@ -3,7 +3,7 @@
 In order to check the behaviour of the system a sequence of tests have been executed on the \textit{ESTA\_JSON\_lib} functions, that is used to convert the incoming JSON string from the module \textit{Room}.
 
 \subsection{Variables tests}
-For each variable present in the JSON message a boundary test is exeuted.
+For each variable present in the JSON message a \textit{Robustness Boundary Values test} is exeuted maintaining the other variables in the nominal value.
 \newline
 \begin{center}
 	\begin{tabular}{|| c | c | c | c | c | c | c | c | c | c | c||} 
@@ -72,9 +72,9 @@ In the following picture \ref{fig:CUnit_result} is reported the result of the te
 \end{figure}
 
 
-\subsection{Network noise tests}
+\subsection{Nominal testing and Network noise tests}
 In order to check the correctness behaviour of the \textit{Central Unit} module a python script that simulates the rooms has been created and used to test the module simulating two different rooms.
-The \textbf{Room simulator} creates the correct JSON string and send it, in order to simulate the \textbf{noise} of the network this cases have been considered:
+The \textbf{Room simulator} creates the correct JSON string with random values for the variables and send it; in order to simulate the \textbf{noise} of the network this cases have been considered:
 \begin{center}
 	\begin{tabular}{||c | c | c ||} 
 		\hline
