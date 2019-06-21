@@ -5,13 +5,19 @@ import json
 import random
 import signal
 import sys
+import _thread
 
 MESSAGE_LOST_PROB = 0.1
 MESSAGE_CORRUPTED_PROB = 0.1
 SEND_TIME_DELAY = 0.01
+SEND_INIT_DELAY = 2
+COM_DEADLINE = 30
 MANY_CORRUPT = 3
 
-ser = serial.Serial('/dev/ttyUSB0', 9600)
+rooms = ['02', '03', '04']
+rooms_request_time = [0, 0, 0]
+
+ser = serial.Serial('/dev/ttyUSB1', 9600)
 
 def signal_handler(sig, frame):
 	print('You pressed Ctrl+C!')
@@ -20,7 +26,22 @@ def signal_handler(sig, frame):
 
 signal.signal(signal.SIGINT, signal_handler)
 
-def room_simulator(Id):
+def check_com_deadline(threadName):
+	while(1):
+		for i in range(0, len(rooms_request_time)):
+			if (int(time.time() - rooms_request_time[i])>COM_DEADLINE):
+				print('------------Room: ' + rooms[i] + ' COM_DEADLINE expired--------------')
+				room_step(rooms[i])
+		time.sleep(COM_DEADLINE)
+
+def init_rooms():
+	for i in range(0, len(rooms)):
+		rooms_request_time[i] = int(time.time())
+		print('Init room: ' + rooms[i])
+		room_step(rooms[i])
+		time.sleep(SEND_INIT_DELAY)
+
+def room_step(Id):
 	temp = "{:05.2f}".format(random.uniform(15.0,30.0))
 	hum = "{:06.2f}".format(random.uniform(0.0,100.0))
 	valve = "{:03d}".format(random.randint(0,100))
@@ -46,9 +67,12 @@ def room_simulator(Id):
 
 def main():
 	ser.flushInput()
-	raw_msg = ser.readline().decode('utf-8').rstrip()
-	print("--------------------------------")
-	print(raw_msg)
+	init_rooms()
+	try:
+		_thread.start_new_thread( check_com_deadline, ("Thread-check_COM_DEADLINE", ))
+	except:
+		print("Error: unable to start thread")
+
 	while(1):
 		ser.flushInput()
 		raw_msg = ser.readline().decode('utf-8').rstrip()
@@ -56,8 +80,10 @@ def main():
 		print("Receive: " + raw_msg)
 		try:
 			json_msg = json.loads(raw_msg)
-#			if(json_msg["Id"] == "02"):
-			room_simulator(json_msg["Id"])
+			if(json_msg["Id"] in rooms):
+				i = rooms.index(json_msg["Id"])
+				rooms_request_time[i] = int(time.time())
+				room_step(json_msg["Id"])
 		except ValueError as e:
 			print("JSON not compliant")
 

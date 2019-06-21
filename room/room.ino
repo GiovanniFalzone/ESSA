@@ -421,6 +421,7 @@ void setup() {
 	init_leds();
 	init_motion();
 	init_valve();
+	send_room_status();
 	#ifdef DEBUG
 		Serial.println("-------setup end--------");
 	#endif

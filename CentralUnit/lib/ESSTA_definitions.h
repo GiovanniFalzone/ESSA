@@ -8,11 +8,11 @@
 #define false 0
 #define true 1
 
-//#define DEBUG
-//#define DEBUG_LOG
+// #define DEBUG
+// #define DEBUG_LOG
 //#define DEBUG_LOG_JSON
 
-#define N_ROOMS 2
+#define N_ROOMS 4
 
 #define MSG_LEN	256
 

@@ -118,6 +118,7 @@ TASK(CheckMessage) {
 				rooms[my_room.id-1] = my_room;
 				rooms[my_room.id-1].net_par.response = true;
 				rooms[my_room.id-1].net_par.error = false;
+				ESSTA_compute_house_status();
 			}
 			break;
 
@@ -140,28 +141,38 @@ TASK(CheckMessage) {
 
 TASK(TaskPollingRooms) {
 	static uint8_t id = 0;
-	if(rooms[id].net_par.response == true) {
-		rooms[id].net_par.response = false;
-		rooms[id].net_par.resend = 0;
-		id = (id+1)%N_ROOMS;
-	} else {
-		if(rooms[id].net_par.resend > 2){
-			#ifdef DEBUG_LOG
-				LCD_ErrLog("\r\n Polling error node %2d crashed", (id+1));
-			#endif
-			rooms[id].net_par.error = true;
-			rooms[id].net_par.resend = 0;
-			id = (id+1)%N_ROOMS;
-		} else {
-			rooms[id].net_par.resend++;
-		}
-	}
-	ESSTA_send_node_request(id+1);
-	ESSTA_compute_house_status();
-}
+	uint8_t count = 0;
 
-TASK(UserTask) {
-	;
+	for(count=0; ((count < N_ROOMS) && (rooms[id].id == 255)); count++) {	// skip uninitialized room
+		id = (id+1)%N_ROOMS;	// go to next room
+	}
+
+	if(rooms[id].id != 255){	// skip uninitialized room
+		#ifdef DEBUG_LOG
+			LCD_UsrLog("\r\n ---- Polling: %2d ----", rooms[id].id);
+		#endif
+		ESSTA_send_node_request(rooms[id].id);
+		if(rooms[id].net_par.response == true) {
+			rooms[id].net_par.response = false;
+			rooms[id].net_par.resend = 0;
+			id = (id+1)%N_ROOMS;	// go to next room
+		} else {
+			if(rooms[id].net_par.resend > 2){
+				#ifdef DEBUG_LOG
+					LCD_ErrLog("\r\n Polling error node %2d crashed", rooms[id].id);
+				#endif
+				rooms[id].net_par.error = true;
+				rooms[id].net_par.resend = 0;
+				id = (id+1)%N_ROOMS;	// go to next room
+			} else {
+				rooms[id].net_par.resend++;
+			}
+		}
+	} else {
+		#ifdef DEBUG_LOG
+			LCD_UsrLog("\r\n Polling: No rooms initialized");
+		#endif
+	}
 }
 
 int main(void) {

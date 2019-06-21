@@ -85,7 +85,7 @@ void graphic_init(){
 void graphic_step(){
 	enum Signal sig;
 	#ifdef DEBUG_LOG
-		print_rooms();
+		// print_rooms();
 	#else
 		sig = check_Event();
 		graphic_dispatch(sig);
@@ -153,7 +153,7 @@ void decrease_des_temperature(){
 }
 
 void manage_home_page(enum Signal sig){
-	int i;
+	int i = 0;
 	assign_home_data();
 	switch(sig){
 		case ENTRY_SIG:
@@ -167,7 +167,7 @@ void manage_home_page(enum Signal sig){
 		case LEFT_ARROW_SIG:
 			for(i = N_ROOMS-1; (rooms[i].id == 255)&&i>=0; i--) ;
 			if(i>=0){
-				room_selector = N_ROOMS-1;
+				room_selector = i;
 				graphic_tran(ROOM);
 			}
 			break;
