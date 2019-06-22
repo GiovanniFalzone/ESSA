@@ -12,3 +12,4 @@
 \contentsline {section}{\numberline {3}SySML Functional model}{10}{section.3}
 \contentsline {subsection}{\numberline {3.1}Central Unit}{11}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Room module}{12}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Communication State Machines}{15}{subsection.3.3}
