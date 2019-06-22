@@ -65,7 +65,6 @@ The two components exchange data as shown in \ref{fig:CentralUnit_internals}.
 	\label{fig:CentralUnit_internals}
 \end{figure}
 
-
 \subsection{Room module}
 The main component of this module is the \textit{MainController} composed by different functions as shown in \ref{fig:RoomInternals}.
 \begin{figure}[H]
@@ -108,4 +107,32 @@ The main component of this module is the \textit{MainController} composed by dif
 	\includegraphics[width=12cm,keepaspectratio]{img/sysml/ValveControllerInternals}
 	\caption{Valve Controller internals}
 	\label{fig:valve_internals}
+\end{figure}
+
+\subsection{Communication State Machines}
+In the following pictures are illustrated the behaviour of the communication between the \textit{CentralUnit} and the \textit{Room}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm,keepaspectratio]{img/Com_SM_Room}
+	\caption{Room communication management}
+	\label{fig:room_com}
+\end{figure}
+
+In the figure \ref{fig:CU_com_receiver} is described the behaviour of the receiver part in the \textit{CentralUnit}, for readibility is reported just the case of a paramentric room X.\\
+
+In the figure \ref{fig:CU_com_sender} is described the behaviour of the sender part in the \textit{CentralUnit}, for readibility is reported just the case of 2 rooms.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm,keepaspectratio]{img/Com_SM_CU_Receiver}
+	\caption{Central Unit communication receiver management}
+	\label{fig:CU_com_receiver}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm,keepaspectratio]{img/Com_SM_CU_Sender}
+	\caption{Central Unit communication sender management}
+	\label{fig:CU_com_sender}
 \end{figure}

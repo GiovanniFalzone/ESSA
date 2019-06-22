@@ -12,7 +12,7 @@ The module is composed by:
 	\item STM32F407VG DISCOVERY powered by ARM Cortex-M4 32-bit
 	\item LCD board Touchscreen 3”5
 \end{itemize}
-In the discovery board are running the \textit{Central Unit's} tasks on top of Erika RTOS, the system is composed by three different tasks reported in the table \ref{tab:CU_Tasks}.\\
+In the discovery board are running the \textit{Central Unit's} tasks on top of Erika RTOS, the system is composed by three different tasks reported in the table \ref{tab:CU_tasks}.\\
 Whenever a \textit{Room Status} message arrives through the \textit{USART} interface, the \textit{Check message} aperiodic task is activated in order to check the message and execute the \textit{Room's} functionalities.\\
 The \textit{Check  message} task apply a simple JSON compliance test and check each field name and value of the message, then the message is converted in a \textit{Room structure} and the Room's status and \textit{Building} status are updated.\\
 While the \textit{Check message} task has the role of processing the incoming \textit{Room Status}, the \textit{Polling} task has the role of managing the rooms sending a check message periodically one room after the other, 
