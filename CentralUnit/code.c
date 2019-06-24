@@ -77,10 +77,10 @@ ISR2(systick_handler) {
 	CounterTick(myCounter);
 }
 
- ISR2(usart6_rx_handler) {
- 	STM_EVAL_LEDToggle(LED4);
- 	send_string("ciao\0");
- }
+ISR2(usart6_rx_handler) {
+	STM_EVAL_LEDToggle(LED4);
+	send_string("ciao\0");
+}
 
 TASK(Task_LCD_Graphic) {		// 50 ms
 	touch_event_step();
@@ -118,7 +118,6 @@ TASK(CheckMessage) {
 				rooms[my_room.id-1] = my_room;
 				rooms[my_room.id-1].net_par.response = true;
 				rooms[my_room.id-1].net_par.error = false;
-				ESSTA_compute_house_status();
 			}
 			break;
 
@@ -173,6 +172,7 @@ TASK(TaskPollingRooms) {
 			LCD_UsrLog("\r\n Polling: No rooms initialized");
 		#endif
 	}
+	ESSTA_compute_house_status();
 }
 
 int main(void) {
@@ -222,7 +222,7 @@ int main(void) {
 	#else
 		SetRelAlarm(Alarm_LCD_Graphic, 1000, 100);
 	#endif
-	SetRelAlarm(Alarm_PollingRooms, 1000, 5000);
+	SetRelAlarm(Alarm_PollingRooms, 1000, 10000);
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;) {
