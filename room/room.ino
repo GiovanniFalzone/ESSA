@@ -3,7 +3,7 @@
 
 //#define DEBUG
 //-----------------------
-#define DELAY_SEND_CHAR	10
+#define DELAY_SEND_CHAR	20
 
 #define MY_ID 	1
 
@@ -357,11 +357,12 @@ bool receive_command(){
  	while(Serial.available() > 0) {
 		char c = Serial.read();
 		if(c != '\n' && c != '\r'){
-			msg[msg_i++] = c;
+			msg[msg_i] = c;
+			msg_i = (msg_i+1)%MSG_REQUEST_LEN;
 		} else {
-			check = check_message(msg);
 			msg[msg_i] = '\0';
 			msg_i = 0;
+			check = check_message(msg);
 			if(check==1){
 				if(set_parameters_from_JSON(msg)){
 					systems_errors[COM_ERROR] = false;

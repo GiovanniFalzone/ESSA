@@ -7,17 +7,19 @@ import signal
 import sys
 import _thread
 
+NOISE = True
+
 MESSAGE_LOST_PROB = 0.1
 MESSAGE_CORRUPTED_PROB = 0.1
-SEND_TIME_DELAY = 0.01
+DELAY_SEND_BYTE = 0.02
 SEND_INIT_DELAY = 2
-COM_DEADLINE = 30
+COM_DEADLINE = 62
 MANY_CORRUPT = 3
 
 rooms = ['02', '03', '04']
 rooms_request_time = [0, 0, 0]
 
-ser = serial.Serial('/dev/ttyUSB1', 9600)
+ser = serial.Serial('/dev/ttyUSB0', 9600)
 
 def signal_handler(sig, frame):
 	print('You pressed Ctrl+C!')
@@ -32,6 +34,7 @@ def check_com_deadline(threadName):
 			if (int(time.time() - rooms_request_time[i])>COM_DEADLINE):
 				print('------------Room: ' + rooms[i] + ' COM_DEADLINE expired--------------')
 				room_step(rooms[i])
+				time.sleep(5)
 		time.sleep(COM_DEADLINE)
 
 def init_rooms():
@@ -48,7 +51,7 @@ def room_step(Id):
 	eco = str(random.randint(0,1))
 	msg = '{"Id":"'+Id+'","Eco":"'+eco+'","sens":[{"Nm":"Tmp","Val":"'+temp+'","Fmt":"C"},{"Nm":"Hum","Val":"'+hum+'","Fmt":"%"}],"acts":[{"Nm":"Vlv","Val":"'+valve+'","Fmt":"%"}]}'
 	guess = random.random()
-	if(guess<=MESSAGE_CORRUPTED_PROB):
+	if(guess<=MESSAGE_CORRUPTED_PROB and NOISE):
 		print("-----------Corrupted------------")
 		c=list(msg)
 		for j in range(0,MANY_CORRUPT):
@@ -56,13 +59,13 @@ def room_step(Id):
 		msg = "".join(c)
 
 	guess = random.random()
-	if(guess<=MESSAGE_LOST_PROB):
+	if(guess<=MESSAGE_LOST_PROB and NOISE):
 		print("Message lost")
 	else:
 		print("Send: "+msg)
 		for i in msg:
 			ser.write(bytes(i, 'utf-8'))
-			time.sleep(SEND_TIME_DELAY)
+			time.sleep(DELAY_SEND_BYTE)
 		ser.write(bytes('\n', 'utf-8'))
 
 def main():
