@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.22)  22 JUN 2019 16:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.22)  24 JUN 2019 13:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1271,12 +1271,12 @@ File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 )
 \c__siunitx_mathsf_int=\count343
 \c__siunitx_mathtt_int=\count344
-<img/unipi_blu.png, id=60, 144.54pt x 147.55125pt>
+<img/unipi_blu.png, id=64, 144.54pt x 147.55125pt>
 File: img/unipi_blu.png Graphic file (type png)
 <use img/unipi_blu.png>
 Package pdftex.def Info: img/unipi_blu.png  used on input line 71.
 (pdftex.def)             Requested size: 113.81102pt x 116.18144pt.
-<img/santanna.png, id=61, 162.206pt x 161.403pt>
+<img/santanna.png, id=65, 162.206pt x 161.403pt>
 File: img/santanna.png Graphic file (type png)
 <use img/santanna.png>
 Package pdftex.def Info: img/santanna.png  used on input line 71.
@@ -1296,12 +1296,32 @@ l.1 \section{Introduction}
 ]) (/home/hhunt/git/ESSTA/report/Requirements/centralunit_requirements.tex [2
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
 
  []
 
@@ -1310,7 +1330,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 80--81
 
  []
 
+[3
 
+]
 Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
@@ -1321,29 +1343,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--83
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--85
-
- []
-
-[3
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 85--86
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 87--88
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
@@ -1358,26 +1383,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--101
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--109
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
-
- []
-
-
+[4]
 Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
@@ -1387,87 +1407,69 @@ Underfull \hbox (badness 10000) in paragraph at lines 111--112
 
  []
 
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 123--124
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--129
-
+Overfull \hbox (53.12273pt too wide) in paragraph at lines 130--131
+[]\T1/cmr/m/n/10 Whenever a \T1/cmr/m/it/10 Room Sta-tus mes-sage \T1/cmr/m/n/10 doesn't ar-rive within \T1/cmr/m/it/10 POLLING_PERIOD
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 129--130
-
+) (/home/hhunt/git/ESSTA/report/Requirements/room_requirements.tex [5]
+Overfull \hbox (3.46677pt too wide) in paragraph at lines 103--104
+[]\T1/cmr/m/n/10 The mod-ule shall set the \T1/cmr/m/it/10 Goal-Tem-per-a-ture \T1/cmr/m/n/10 to the \T1/cmr/m/it/10 De-siredTem-
  []
 
+[6
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--131
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
-
- []
-
-
-Overfull \hbox (75.80048pt too wide) in paragraph at lines 144--145
-\T1/cmr/m/it/10 PollingRoo-mId \T1/cmr/m/n/10 and the \T1/cmr/m/it/10 De-siredTem-per-a-ture \T1/cmr/m/n/10 in Cel-sius\TS1/cmr/m/n/10 °\T1/cmr/m/n/10 every POLLING_PERIOD
- []
-
-
-Overfull \hbox (14.39601pt too wide) in paragraph at lines 148--149
-[]\T1/cmr/m/n/10 Whenever a \T1/cmr/m/it/10 Room Sta-tus mes-sage \T1/cmr/m/n/10 with \T1/cmr/m/it/10 Roo-mId \T1/cmr/m/n/10 equal to \T1/cmr/m/it/10 PollingRoo-
- []
-
-[5]) (/home/hhunt/git/ESSTA/report/Requirements/room_requirements.tex [6]
-Overfull \hbox (3.46677pt too wide) in paragraph at lines 90--91
+]
+Overfull \hbox (3.46677pt too wide) in paragraph at lines 115--116
 []\T1/cmr/m/n/10 The mod-ule shall set the \T1/cmr/m/it/10 Goal-Tem-per-a-ture \T1/cmr/m/n/10 to the \T1/cmr/m/it/10 De-siredTem-
  []
 
 [7]
-Overfull \hbox (3.46677pt too wide) in paragraph at lines 111--112
-[]\T1/cmr/m/n/10 The mod-ule shall set the \T1/cmr/m/it/10 Goal-Tem-per-a-ture \T1/cmr/m/n/10 to the \T1/cmr/m/it/10 De-siredTem-
+Overfull \hbox (44.4254pt too wide) in paragraph at lines 177--178
+[]\T1/cmr/m/n/10 The mod-ule shall check the OPEN_POSITION and CLOSED_POSITION
  []
 
 
-Overfull \hbox (29.76755pt too wide) in paragraph at lines 134--135
-[]\T1/cmr/m/n/10 If no mes-sages ar-rives in the last COM-MU-NI-CA-TION_DEADLINE
+Overfull \hbox (4.03358pt too wide) in paragraph at lines 177--178
+\T1/cmr/m/n/10 and then com-pute the HIGH_POSITION, MID-DLE_POSITION
  []
 
 
-Overfull \hbox (29.76755pt too wide) in paragraph at lines 151--152
-[]\T1/cmr/m/n/10 If no mes-sages ar-rives in the last COM-MU-NI-CA-TION_DEADLINE
- []
-
-[8]
-Overfull \hbox (8.78233pt too wide) in paragraph at lines 172--173
+Overfull \hbox (8.78233pt too wide) in paragraph at lines 188--189
 \T1/cmr/m/it/10 ture \T1/cmr/m/n/10 is greater or equal then -APPROACHING_THRESHOLD
  []
 
 
-Overfull \hbox (52.59421pt too wide) in paragraph at lines 175--176
+Overfull \hbox (52.59421pt too wide) in paragraph at lines 191--192
 []\T1/cmr/m/n/10 Whenever the valve is in OPEN_POSITION or in CLOSED_POSITION
  []
 
 
-Overfull \hbox (22.60153pt too wide) in paragraph at lines 189--190
+Overfull \hbox (22.60153pt too wide) in paragraph at lines 203--204
 \T1/cmr/m/n/10 til the OPEN_SWITCH is set and up-date the OPEN_POSITION
  []
 
-) (/home/hhunt/git/ESSTA/report/Requirements/SySML.tex [9]
+
+Overfull \hbox (11.66086pt too wide) in paragraph at lines 203--204
+\T1/cmr/m/n/10 pute and up-date the MID-DLE_POSITION, LOW_POSITION
+ []
+
+[8]) (/home/hhunt/git/ESSTA/report/Requirements/SySML.tex [9]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 14.
@@ -1478,12 +1480,12 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 33.
 See the caption package documentation for explanation.
 
-<img/sysml/SystemComponents.png, id=238, 737.75626pt x 500.87125pt>
+<img/sysml/SystemComponents.png, id=240, 737.75626pt x 500.87125pt>
 File: img/sysml/SystemComponents.png Graphic file (type png)
 <use img/sysml/SystemComponents.png>
 Package pdftex.def Info: img/sysml/SystemComponents.png  used on input line 38.
 (pdftex.def)             Requested size: 341.43306pt x 231.80217pt.
-<img/sysml/SystemInternals.png, id=239, 933.4875pt x 347.2975pt>
+<img/sysml/SystemInternals.png, id=241, 933.4875pt x 347.2975pt>
 File: img/sysml/SystemInternals.png Graphic file (type png)
 <use img/sysml/SystemInternals.png>
 Package pdftex.def Info: img/sysml/SystemInternals.png  used on input line 44.
@@ -1491,18 +1493,18 @@ Package pdftex.def Info: img/sysml/SystemInternals.png  used on input line 44.
 [10
 
  </home/hhunt/git/ESSTA/report/Requirements/img/sysml/SystemComponents.png>]
-<img/sysml/CentralUnitComponents.png, id=250, 1097.09875pt x 609.27625pt>
+<img/sysml/CentralUnitComponents.png, id=252, 1097.09875pt x 609.27625pt>
 File: img/sysml/CentralUnitComponents.png Graphic file (type png)
 <use img/sysml/CentralUnitComponents.png>
 Package pdftex.def Info: img/sysml/CentralUnitComponents.png  used on input line 56.
 (pdftex.def)             Requested size: 341.43306pt x 189.60812pt.
-<img/sysml/CentralUnitInternals.png, id=251, 1102.1175pt x 612.2875pt>
+<img/sysml/CentralUnitInternals.png, id=253, 1102.1175pt x 612.2875pt>
 File: img/sysml/CentralUnitInternals.png Graphic file (type png)
 <use img/sysml/CentralUnitInternals.png>
 Package pdftex.def Info: img/sysml/CentralUnitInternals.png  used on input line 63.
 (pdftex.def)             Requested size: 341.43306pt x 189.6857pt.
  [11 </home/hhunt/git/ESSTA/report/Requirements/img/sysml/SystemInternals.png> </home/hhunt/git/ESSTA/report/Requirements/img/sysml/CentralUnitComponents.png>]
-<img/sysml/RoomComponents.png, id=262, 1061.9675pt x 414.54875pt>
+<img/sysml/RoomComponents.png, id=264, 1061.9675pt x 414.54875pt>
 File: img/sysml/RoomComponents.png Graphic file (type png)
 <use img/sysml/RoomComponents.png>
 Package pdftex.def Info: img/sysml/RoomComponents.png  used on input line 72.
@@ -1512,7 +1514,7 @@ Overfull \hbox (24.88582pt too wide) in paragraph at lines 72--73
  [][] 
  []
 
-<img/sysml/RoomInternals.png, id=263, 811.03pt x 518.93875pt>
+<img/sysml/RoomInternals.png, id=265, 811.03pt x 518.93875pt>
 File: img/sysml/RoomInternals.png Graphic file (type png)
 <use img/sysml/RoomInternals.png>
 Package pdftex.def Info: img/sysml/RoomInternals.png  used on input line 79.
@@ -1523,7 +1525,7 @@ Overfull \hbox (24.88582pt too wide) in paragraph at lines 79--80
  []
 
 [12 </home/hhunt/git/ESSTA/report/Requirements/img/sysml/CentralUnitInternals.png> </home/hhunt/git/ESSTA/report/Requirements/img/sysml/RoomComponents.png>]
-<img/sysml/SensorsComponents.png, id=273, 907.39pt x 457.71pt>
+<img/sysml/SensorsComponents.png, id=275, 907.39pt x 457.71pt>
 File: img/sysml/SensorsComponents.png Graphic file (type png)
 <use img/sysml/SensorsComponents.png>
 Package pdftex.def Info: img/sysml/SensorsComponents.png  used on input line 86.
@@ -1533,23 +1535,23 @@ Overfull \hbox (24.88582pt too wide) in paragraph at lines 86--87
  [][] 
  []
 
-<img/sysml/SensorsInternals.png, id=274, 557.08125pt x 455.7025pt>
+<img/sysml/SensorsInternals.png, id=276, 557.08125pt x 455.7025pt>
 File: img/sysml/SensorsInternals.png Graphic file (type png)
 <use img/sysml/SensorsInternals.png>
 Package pdftex.def Info: img/sysml/SensorsInternals.png  used on input line 93.
 (pdftex.def)             Requested size: 227.62204pt x 186.19255pt.
 [13 </home/hhunt/git/ESSTA/report/Requirements/img/sysml/RoomInternals.png> </home/hhunt/git/ESSTA/report/Requirements/img/sysml/SensorsComponents.png>]
-<img/sysml/ValveControllerComponents.png, id=282, 1163.34625pt x 513.92pt>
+<img/sysml/ValveControllerComponents.png, id=284, 1163.34625pt x 513.92pt>
 File: img/sysml/ValveControllerComponents.png Graphic file (type png)
 <use img/sysml/ValveControllerComponents.png>
 Package pdftex.def Info: img/sysml/ValveControllerComponents.png  used on input line 100.
 (pdftex.def)             Requested size: 341.43306pt x 150.82874pt.
-<img/sysml/ValveControllerInternals.png, id=283, 984.67876pt x 432.61626pt>
+<img/sysml/ValveControllerInternals.png, id=285, 984.67876pt x 432.61626pt>
 File: img/sysml/ValveControllerInternals.png Graphic file (type png)
 <use img/sysml/ValveControllerInternals.png>
 Package pdftex.def Info: img/sysml/ValveControllerInternals.png  used on input line 107.
 (pdftex.def)             Requested size: 341.43306pt x 150.0053pt.
-<img/Com_SM_Room.png, id=284, 763.85374pt x 303.1325pt>
+<img/Com_SM_Room.png, id=286, 763.85374pt x 303.1325pt>
 File: img/Com_SM_Room.png Graphic file (type png)
 <use img/Com_SM_Room.png>
 Package pdftex.def Info: img/Com_SM_Room.png  used on input line 117.
@@ -1559,12 +1561,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
-<img/Com_SM_CU_Receiver.png, id=297, 573.14125pt x 302.12875pt>
+<img/Com_SM_CU_Receiver.png, id=299, 573.14125pt x 302.12875pt>
 File: img/Com_SM_CU_Receiver.png Graphic file (type png)
 <use img/Com_SM_CU_Receiver.png>
 Package pdftex.def Info: img/Com_SM_CU_Receiver.png  used on input line 128.
 (pdftex.def)             Requested size: 284.52756pt x 149.98984pt.
-<img/Com_SM_CU_Sender.png, id=298, 905.3825pt x 422.57875pt>
+<img/Com_SM_CU_Sender.png, id=300, 905.3825pt x 422.57875pt>
 File: img/Com_SM_CU_Sender.png Graphic file (type png)
 <use img/Com_SM_CU_Sender.png>
 Package pdftex.def Info: img/Com_SM_CU_Sender.png  used on input line 135.
@@ -1577,22 +1579,22 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 78.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 78.
 Package rerunfilecheck Info: File `requirements.out' has not changed.
-(rerunfilecheck)             Checksum: BCD69E75FAFBB5060FE48D55750EE3E5;908.
+(rerunfilecheck)             Checksum: 684D207B1FB117A28230AD9671AE902C;965.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 78.
  ) 
 Here is how much of TeX's memory you used:
- 22513 strings out of 494847
- 413341 string characters out of 6179080
- 484792 words of memory out of 5000000
- 25434 multiletter control sequences out of 15000+600000
+ 22512 strings out of 494847
+ 413337 string characters out of 6179080
+ 486792 words of memory out of 5000000
+ 25435 multiletter control sequences out of 15000+600000
  546521 words of font info for 64 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 36i,7n,39p,10426b,1229s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,7n,39p,10426b,1244s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/hhunt/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk>
-Output written on /home/hhunt/git/ESSTA/report/Requirements/requirements.pdf (17 pages, 724767 bytes).
+Output written on /home/hhunt/git/ESSTA/report/Requirements/requirements.pdf (17 pages, 726341 bytes).
 PDF statistics:
- 660 PDF objects out of 1000 (max. 8388607)
- 328 compressed objects within 4 object streams
- 151 named destinations out of 1000 (max. 500000)
- 188 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 664 PDF objects out of 1000 (max. 8388607)
+ 329 compressed objects within 4 object streams
+ 149 named destinations out of 1000 (max. 500000)
+ 196 words of extra memory for PDF output out of 10000 (max. 10000000)
 

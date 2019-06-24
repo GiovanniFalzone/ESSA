@@ -5,7 +5,7 @@
 \contentsline {subsubsection}{\numberline {1.1.2}Communication}{3}{subsubsection.1.1.2}
 \contentsline {subsection}{\numberline {1.2}Room Module}{3}{subsection.1.2}
 \contentsline {subsubsection}{\numberline {1.2.1}Energy Saving mode}{3}{subsubsection.1.2.1}
-\contentsline {subsubsection}{\numberline {1.2.2}Valve control}{3}{subsubsection.1.2.2}
+\contentsline {subsubsection}{\numberline {1.2.2}Valve control}{4}{subsubsection.1.2.2}
 \contentsline {subsubsection}{\numberline {1.2.3}Communication}{4}{subsubsection.1.2.3}
 \contentsline {subsubsection}{\numberline {1.2.4}Errors}{4}{subsubsection.1.2.4}
 \contentsline {section}{\numberline {2}Implementation, Central Unit module}{5}{section.2}

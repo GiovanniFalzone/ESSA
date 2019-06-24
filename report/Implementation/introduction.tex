@@ -55,8 +55,8 @@ The graphical user interface shall represent the following information as report
 \end{table}
 
 \subsubsection{Communication}
-Whenever a \textit{Room Request message} is sent and the \textit{Room Status message} is not received within 20s the module shall mark the room as \textbf{crashed}.
-The module shall send the \textit{Room Request message} for each room at least every 30s.
+Whenever a \textit{Room Request message} is sent and the \textit{Room Status message} is not received within 40s the module shall mark the room as \textbf{crashed}.
+The module shall send the \textit{Room Request message} for each initialized room at least every 160s.
 
 %--------------------------------------
 \subsection{Room Module}
@@ -67,7 +67,7 @@ reach and maintain the \textit{GoalTemperature}.
 In order to minimize the consumption the module keep tracks of the presence of motion inside the room
 using a motion sensor. \\
 
-If a motion is detected in the last 30s, the module shall set the \textit{GoalTemperature} to the one set by the user,otherwise the module shall set the \textit{GoalTemperature} to:
+If at least one motion is detected in the last 30s, the module shall set the \textit{GoalTemperature} to the one set by the user, otherwise the module shall set the \textit{GoalTemperature} to:
 
 \begin{equation}
 	GoalTemperature = DesiredTemperature - EnergySavingTemperatureOffset
@@ -96,7 +96,7 @@ whenever one of these rules is valid the module shall move the valve in the corr
 	\end{tabular}
 	\captionof{table}{\label{tab:ValvePositions}}
 \end{center}
-Whenever the valve is in \textit{OPEN\_POSITION} or \textit{CLOSED\_POSITION} the module shall check the position and set \textbf{Valve Error} if it is not valid.
+Whenever the valve is in \textit{OPEN\_POSITION} or \textit{CLOSED\_POSITION} the module shall check the position and set the \textbf{Valve Error} if it is not valid.
 
 In the following table\ref{tab:TemperatureThresholds} are reported the temperature thresholds:
 \begin{center}
