@@ -14,7 +14,7 @@ The module is composed by:
 \end{itemize}
 In the discovery board are running the \textit{Central Unit's} tasks on top of Erika RTOS, the system is composed by three different tasks reported in the table \ref{tab:CU_tasks}.\\
 Whenever a \textit{Room Status} message arrives through the \textit{USART} interface, the \textit{Check message} aperiodic task is activated in order to check the message and execute the \textit{Room's} functionalities.\\
-The \textit{Check  message} task apply a simple JSON compliance test and check each field name and value of the message, then the message is converted in a \textit{Room structure} and the Room's status and \textit{Building} status are updated.\\
+The \textit{Check  message} task apply a simple JSON compliance test and check each field name and value of the message, then the message is converted in a \textit{Room structure} and the status of the Room and the \textit{Building} are updated.\\
 While the \textit{Check message} task has the role of processing the incoming \textit{Room Status}, the \textit{Polling} task has the role of managing the rooms sending a check message periodically one room after the other, 
 if the response \textit{Room Status} message doesn't arrive within the next task's job it's considered as an error and the same \textit{Room Request} message is sent until a maximum of 3 resend, then the room is marked as crashed.\\
 The \textit{Graphic} task has the role to represent the data of the building and for each room depending on the selected page by the user, in the settings page the user is able to set the desired temperature that will be sent starting from the next job of the \textit{Polling} task.\\

@@ -17,20 +17,16 @@ Using a graphical User Interface the module represents the average values of the
 	\item \textit{Settings page} to set the desired temperature
 \end{itemize}
 
-Whenever the \textit{Main page} is selected the module shall represent the average values among all the rooms for \textit{Temperature}, \textit{Humidity} and \textit{Usage}.\\
-Whenever the \textit{Main page} is selected the module shall represent the \textit{Energy Saving} if at least one room is set to \textit{Energy Saving mode}.\\
-Whenever the \textit{Main page} is selected the module shall represent the \textit{Warning} if at least one room is set to \textit{crashed}.\\
-Whenever the \textit{Main page} is selected the module shall allow the user to move in the \textit{Settings page}, next and previous \textit{Room page}.\\
+Whenever the \textit{Main page} is selected the module shall represent the average values among all the rooms for \textit{Temperature}, \textit{Humidity} and \textit{Valve Usage}, 
+the \textit{Energy Saving} mode if at least one room is set to \textit{Energy Saving mode}, the presence of \textit{Warning} if at least one room is set to \textit{crashed} 
+and shall allow the user to move in the \textit{Settings page}, next and previous \textit{Room page}.\\
 
 Whenever the \textit{Settings page} is selected the module shall represent the \textit{Desired Temperature} and shall allow the user to increase or deacrease it by a factor of 0.5 C\degree in the range of 15 C\degree and 30 C\degree.\\
-Whenever the \textit{Settings page} is selected the module shall represent the average values among all the rooms for \textit{Humidity} and \textit{Usage}.\\
-Whenever the \textit{Settings page} is selected the module shall represent the \textit{Energy Saving} if at least one room is set to \textit{Energy Saving mode}.\\
-Whenever the \textit{Settings page} is selected the module shall represent the \textit{Warning} if at least one room is set to \textit{crashed}.\\
-Whenever the \textit{Settings page} is selected the module shall allow the user to move in the \textit{Main page}.\\
+Whenever the \textit{Settings page} is selected the module  shall represent the average values among all the rooms for \textit{Temperature}, \textit{Humidity} and \textit{Valve Usage}, 
+the \textit{Energy Saving} mode if at least one room is set to \textit{Energy Saving mode}, the presence of \textit{Warning} if at least one room is set to \textit{crashed} 
+and shall allow the user to move in the \textit{Main page}, next and previous \textit{Room page}.\\
 
-Whenever the \textit{Room page} is selected the module shall represent the average values among all the rooms for \textit{Temperature}, \textit{Humidity} and \textit{Usage}.\\
-Whenever the \textit{Room page} is selected the module shall represent the \textit{Energy Saving} if at least one room is set to \textit{Energy Saving mode}.\\
-Whenever the \textit{Room page} is selected the module shall represent the \textit{Warning} if at least one room is set to \textit{crashed}.\\
+Whenever the \textit{Room page} is selected the module shall represent the \textit{Temperature}, \textit{Humidity}, \textit{Valve Usage}, \textit{Energy Saving} mode, \textit{Warning} if the room is considered \textit{crashed}.\\
 Whenever the \textit{Room page} is selected the module shall allow the user to move in the \textit{Main page}, \textit{Settings page}, next and previous \textit{Room page}.\\
 
 The graphical user interface shall represent the following information as reported in the table \ref{tab:GraphicalInformations}.
@@ -44,7 +40,7 @@ The graphical user interface shall represent the following information as report
 			\hline
 			Humidity	& \% \\ 
 			\hline
-			Usage		& \% \\ 
+			Valve Usage		& \% \\ 
 			\hline
 			Energy Saving	& boolean \\ 
 			\hline
@@ -53,10 +49,6 @@ The graphical user interface shall represent the following information as report
 		\end{tabular}
 		\captionof{table}{Display Information\label{tab:GraphicalInformations}}
 \end{table}
-
-\subsubsection{Communication}
-Whenever a \textit{Room Request message} is sent and the \textit{Room Status message} is not received within 40s the module shall mark the room as \textbf{crashed}.
-The module shall send the \textit{Room Request message} for each initialized room at least every 160s.
 
 %--------------------------------------
 \subsection{Room Module}
@@ -77,11 +69,11 @@ Whenever the module is in \textit{Energy Saving mode} it shall notify it through
 \subsubsection{Valve control}
 In order to control the heating of the room the valve is moved to different positions based on the temperature error 
 (\textit{ActualTemperature} - \textit{GoalThemperature}) as in the following table, 
-whenever one of these rules is valid the module shall move the valve in the correspondent position described in the third column of the table \ref{tab:ValvePositions} as percentage of maximum flow.
+whenever one of these rules is valid the module shall move the valve in the correspondent position described in the third column of the table \ref{tab:ValvePositions} as valve usage.
 \begin{center}
 	\begin{tabular}{| l | l | l |} 
 		\hline
-		\textbf{rule} & \textbf{valve position} & \textbf{Flow in \%}\\
+		\textbf{rule} & \textbf{valve position} & \textbf{Valve usage in \%}\\
 		\hline
 		\begin{math} error < -HIGH \end{math} &  OPEN\_POSITION & 100\\
 		\hline
@@ -98,7 +90,7 @@ whenever one of these rules is valid the module shall move the valve in the corr
 \end{center}
 Whenever the valve is in \textit{OPEN\_POSITION} or \textit{CLOSED\_POSITION} the module shall check the position and set the \textbf{Valve Error} if it is not valid.
 
-In the following table\ref{tab:TemperatureThresholds} are reported the temperature thresholds:
+In the following table \ref{tab:TemperatureThresholds} are reported the temperature thresholds:
 \begin{center}
 	\begin{tabular}{||l | l||} 
 		\hline
