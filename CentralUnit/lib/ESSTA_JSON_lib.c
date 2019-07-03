@@ -39,11 +39,13 @@ uint8_t str_2d_to_uint8(char* str){
 float str_5_2d_to_float(char *str){	//01.23
 	float ret = (float)str_2d_to_uint8(str);
 	ret += ((float)str_2d_to_uint8(str+3))/100;
+	return ret;
 }
 
 float str_6_2d_to_float(char *str){	//001.23
 	float ret = (float)str_3d_to_uint8(str);
 	ret += ((float)str_2d_to_uint8(str+4))/100;
+	return ret;
 }
 
 

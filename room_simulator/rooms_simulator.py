@@ -13,11 +13,11 @@ MESSAGE_LOST_PROB = 0.1
 MESSAGE_CORRUPTED_PROB = 0.1
 DELAY_SEND_BYTE = 0.02
 SEND_INIT_DELAY = 2
-COM_DEADLINE = 62
+COM_DEADLINE = 60
 MANY_CORRUPT = 3
 
-rooms = ['02', '03', '04']
-rooms_request_time = [0, 0, 0]
+rooms = [ '04']
+rooms_request_time = [ 0]
 
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 
